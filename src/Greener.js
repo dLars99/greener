@@ -1,4 +1,6 @@
 import React, { useState } from "react"
+import Header from "./components/Header"
+import Footer from "./components/Footer"
 import WindowViews from "./components/WindowViews"
 import "./Greener.css"
 
@@ -12,7 +14,7 @@ const Greener = () => {
     const [hasUser, setHasUser] = useState(isAuthenticated())
 
     const setUser = user => {
-        sessionStorage.setItem("credneitals", user.id)
+        sessionStorage.setItem("credentials", user.id)
     }
 
     const clearUser = () => {

@@ -1,10 +1,10 @@
 import React from "react"
-import "./Footer.css"
+import "./Dashboard.css"
 
 const Dashboard = (props) => {
 
     return (
-        <p>Footer</p>
+        <h1>Welcome!</h1>
     )
 }
 
