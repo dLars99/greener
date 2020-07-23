@@ -11,11 +11,12 @@
 # production
 /build
 
-# Windows
-*Zone.Identifier
+#database
+database.json
 
 # misc
 .DS_Store
+*Zone.Identifier
 .env.local
 .env.development.local
 .env.test.local
