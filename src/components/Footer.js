@@ -4,7 +4,9 @@ import "./Footer.css"
 const Dashboard = (props) => {
 
     return (
-        <p>Footer</p>
+        <footer>
+            <p>Copyright &copy; 2020 David P. Larsen</p>
+        </footer>
     )
 }
 

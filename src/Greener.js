@@ -24,13 +24,15 @@ const Greener = () => {
 
     return (
         <>
-            {hasUser &&
-                <>
-                    <Header clearUser={clearUser} />
-                    <WindowViews hasUser={hasUser}/>
-                    <Footer />
-                </>
-            }
+            <div className="content-window">
+                {hasUser &&  
+                    <>
+                        <Header clearUser={clearUser} />
+                        <WindowViews hasUser={hasUser}/>
+                        <Footer />
+                    </>
+                }
+            </div>
         </>
     )
 

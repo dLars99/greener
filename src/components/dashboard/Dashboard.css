@@ -1,0 +1,44 @@
+.dashboard {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.reminders {
+    width: 100%;
+    border: 1px dashed black;
+}
+.main-actions {
+    display: flex;
+    width: 100%;
+}
+
+.addNew {
+    flex: 2;
+    border: 1px dashed black;
+}
+
+.currentWeather {
+    flex: 2;
+    border: 1px dashed black;
+}
+
+.water {
+    flex: 1;
+    border: 1px dashed black;
+}
+
+.logEntries {
+    display: flex;
+    width: 100%;
+}
+
+.lastEntry {
+    flex: 1;
+    border: 1px dashed black;
+}
+
+.nextSchedule {
+    flex: 1;
+    border: 1px dashed black;
+}
