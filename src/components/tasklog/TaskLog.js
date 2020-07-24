@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
 import DatabaseManager from "../../modules/DatabaseManager"
+import LogCard from "./LogCard"
 import "./TaskLog.css"
 
 const TaskLog = (props) => {
@@ -41,7 +42,7 @@ const TaskLog = (props) => {
                 Search functions go here
             </div>
             <div className="logList">
-
+                {entries.map(entry => <LogCard key={entry.id} entry={entry} {...props} /> )}
             </div>
         </>
     )
