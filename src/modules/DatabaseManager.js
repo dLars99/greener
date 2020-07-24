@@ -5,7 +5,13 @@ to the main application database json-server API */
 const url = "http://localhost:8088"
 
 // Fetch calls
-const getAll = (table) => {
-    return fetch(`${url}/${table}`).then(response => response.json())
-}
+export default {
 
+    getAll(table) {
+        return fetch(`${url}/${table}`).then(response => response.json())
+    },
+    getByUser(table, id, embed) {
+        return fetch(`${url}/${table}?userId=${id}&_embed=${embed}`).then(response => response.json())
+    }
+    
+} 

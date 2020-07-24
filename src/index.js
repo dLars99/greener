@@ -1,4 +1,4 @@
-/* This is the initial parent module for the app */
+/* This is the initial parent component for the app */
 
 import React from 'react';
 import ReactDOM from 'react-dom';

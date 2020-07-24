@@ -4,10 +4,15 @@ Parent: Greener */
 
 import { Route, Redirect } from "react-router-dom"
 import React from "react"
-import Dashboard from "./dashboard/Dashboard.js"
+import Dashboard from "./dashboard/Dashboard"
+
+import TaskLog from "./tasklog/TaskLog"
 
 const WindowViews = (props) => {
+
+    // Pass parent functions to child components
     const hasUser = props.hasUser
+    const retrieveUser = props.retrieveUser
 
     return (
         <>
@@ -16,6 +21,15 @@ const WindowViews = (props) => {
                 render={props => {
                     if (hasUser) {
                         return <Dashboard {...props} />
+                    }
+                }}
+            />
+
+            <Route
+                exact path="/log"
+                render={props => {
+                    if (hasUser) {
+                        return <TaskLog retrieveUser={retrieveUser} {...props} />
                     }
                 }}
             />

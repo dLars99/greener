@@ -1,4 +1,4 @@
-/* This module acts as the primary window for the app.
+/* This component acts as the primary window for the app.
 If the user is new or not logged in, they will see the login screen.
 If the user is logged in, they will be taken to the Dashboard.
 Parent: index */
@@ -22,6 +22,10 @@ const Greener = () => {
         sessionStorage.setItem("credentials", user.id)
     }
 
+    const retrieveUser = () => {
+        return sessionStorage.getItem("credentials")
+    }
+
     const clearUser = () => {
         sessionStorage.clear()
         setHasUser(isAuthenticated())
@@ -32,7 +36,7 @@ const Greener = () => {
             {hasUser &&  
                 <>
                     <Header clearUser={clearUser} />
-                    <WindowViews hasUser={hasUser}/>
+                    <WindowViews hasUser={hasUser} retrieveUser={retrieveUser} />
                     <Footer />
                 </>
             }
