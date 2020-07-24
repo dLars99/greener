@@ -1,3 +1,6 @@
+/* This module renders the header for the app.
+Parent module: Greener */
+
 import React from "react"
 import "./Header.css"
 

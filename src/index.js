@@ -1,3 +1,5 @@
+/* This is the initial parent module for the app */
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router } from "react-router-dom"

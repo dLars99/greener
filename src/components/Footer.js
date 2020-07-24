@@ -1,3 +1,6 @@
+/* This module displays the footer when the user is logged in.
+Parent: Greener */
+
 import React from "react"
 import "./Footer.css"
 
