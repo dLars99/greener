@@ -22,7 +22,6 @@ const TaskLog = (props) => {
                         return activitiesList.find(activity => uniqueActivity.activityId === activity.id)
                     })}
                 })
-                console.log(entriesWithActivities)
                 setEntries(entriesWithActivities)
             })
         })
@@ -35,7 +34,7 @@ const TaskLog = (props) => {
     return (
         <>
             <div className="log--top">
-                <Link to="/dashboard">&lt; Back to Dashboard</Link>
+                <Link to="/">&lt; Back to Dashboard</Link>
                 <button type="button" className="button" onClick={() => props.history.push("/log/new")}>+ New Entry</button>
             </div>
             <div className="log--filters">
