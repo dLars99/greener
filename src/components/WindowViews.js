@@ -9,7 +9,10 @@ import Dashboard from "./dashboard/Dashboard"
 import TaskLog from "./tasklog/TaskLog"
 
 const WindowViews = (props) => {
+
+    // Pass parent functions to child components
     const hasUser = props.hasUser
+    const retrieveUser = props.retrieveUser
 
     return (
         <>
@@ -26,7 +29,7 @@ const WindowViews = (props) => {
                 exact path="/log"
                 render={props => {
                     if (hasUser) {
-                        return <TaskLog {...props} />
+                        return <TaskLog retrieveUser={retrieveUser} {...props} />
                     }
                 }}
             />

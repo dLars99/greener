@@ -22,6 +22,10 @@ const Greener = () => {
         sessionStorage.setItem("credentials", user.id)
     }
 
+    const retrieveUser = () => {
+        return sessionStorage.getItem("credentials")
+    }
+
     const clearUser = () => {
         sessionStorage.clear()
         setHasUser(isAuthenticated())
@@ -32,7 +36,7 @@ const Greener = () => {
             {hasUser &&  
                 <>
                     <Header clearUser={clearUser} />
-                    <WindowViews hasUser={hasUser}/>
+                    <WindowViews hasUser={hasUser} retrieveUser={retrieveUser} />
                     <Footer />
                 </>
             }
