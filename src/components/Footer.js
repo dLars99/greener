@@ -1,10 +1,10 @@
-/* This module displays the footer when the user is logged in.
+/* This component displays the footer when the user is logged in.
 Parent: Greener */
 
 import React from "react"
 import "./Footer.css"
 
-const Dashboard = (props) => {
+const Footer = (props) => {
 
     return (
         <footer>
@@ -13,4 +13,4 @@ const Dashboard = (props) => {
     )
 }
 
-export default Dashboard
+export default Footer

@@ -1,17 +1,20 @@
-/* This module renders the header for the app.
+/* This component renders the header for the app.
 Parent module: Greener */
 
 import React from "react"
 import "./Header.css"
+import { Link } from "react-router-dom"
 
-const Dashboard = (props) => {
+const Header = (props) => {
 
     return (
         <>
             <header>
                 <div className="title">
                     <h1>Grass is Greener</h1>
-                    <p>View Log</p>
+                    <Link to="/log">
+                        View Log
+                    </Link>
                 </div>
                 <div className="userLogo">
                     User Logo Goes Here
@@ -21,4 +24,4 @@ const Dashboard = (props) => {
     )
 }
 
-export default Dashboard
+export default Header
