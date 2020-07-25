@@ -38,6 +38,12 @@ const NewTask = (props) => {
         setEntry(stateToChange)
     }
 
+    const handleFieldChange = evt => {
+        const updatedState = {...entry}
+        updatedState[evt.target.id] = evt.target.value
+        setEntry(updatedState)
+    }
+
     const submitNewEvent = evt => {
         evt.preventDefault()
         console.log(entry)
@@ -68,7 +74,7 @@ const NewTask = (props) => {
                         <label htmlFor={activity.name}>{activity.name}</label>
                     </span>
                 })}
-                <input type="date" id="date" />
+                <input type="date" id="date" onChange={handleFieldChange}/>
                 <label htmlFor="date">Date Completed</label>
                 </fieldset>
                 <fieldset className="mowProperties">
