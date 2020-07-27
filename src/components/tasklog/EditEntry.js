@@ -62,6 +62,24 @@ const EditEntry = props => {
         })
     }, [])
     
+    const submitEditedEvent = evt => {
+        evt.preventDefault()
+        setIsLoading(true)
+        // Construct and PUT the edited object
+        const newEntry = {
+            id: entry.id,
+            userId: entry.userId,
+            date: entry.date,
+            logActivities: entry.logActivities,
+            length: entry.length,
+            direction: entry.direction,
+            amount: entry.amount,
+            notes: entry.notes
+        }
+        DatabaseManager.updateObject("entries", entry.id, newEntry)
+        .then(savedEntry => props.history.push("/log"))
+    }
+
     return (
         <section>
 
@@ -135,7 +153,7 @@ const EditEntry = props => {
                 <label htmlFor="notes">Notes</label>
                 <textarea id="notes" name="notes" rows="4" cols="40" onChange={handleFieldChange} value={entry.notes} />
             </fieldset>
-            {/* <button type="button" onClick={submitNewEvent}>Complete Entry</button> */}
+            <button type="button" onClick={submitEditedEvent}>Update Entry</button>
         </form>
 
     </section>
