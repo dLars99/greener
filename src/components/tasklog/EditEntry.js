@@ -74,7 +74,6 @@ const EditEntry = props => {
                 <h3>Activity</h3>
                 <p>Check all that apply</p>
                 {/* Populate activities list from database */}
-                {console.log(entry.logActivities)}
                 {activities.map(activity => {
                     return <span key={activity.id}>
                         <input type="checkbox" id="activity" 
@@ -83,7 +82,7 @@ const EditEntry = props => {
                         <label htmlFor={activity.name}>{activity.name}</label>
                     </span>
                 })}
-                <input type="date" id="date" name="date" onChange={handleFieldChange} value={entry.date} />
+                <input type="date" id="date" name="date" onChange={handleFieldChange} defaultValue={entry.date} />
                 <label htmlFor="date">Date Completed</label>
             </fieldset>
             {/* These fields only appear if the user checks the "mow" activity */}
