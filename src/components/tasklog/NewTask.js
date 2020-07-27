@@ -7,8 +7,8 @@ import DatabaseManager from "../../modules/DatabaseManager"
 
 const NewTask = (props) => {
 
-    const [entry, setEntry] = useState({ date: "", length: "2.5", direction: "horizontal", amount: ".25" })
-    const [newActivity, setNewActivity] = useState([])
+    const [entry, setEntry] = useState({ date: "", length: "", direction: "", amount: "", notes: "" })
+    const [newActivities, setNewActivities] = useState([])
     const [activities, setActivities] = useState([])
     const [mow, setMow] = useState(false)
     const [water, setWater] = useState(false)
@@ -18,13 +18,16 @@ const NewTask = (props) => {
         // Toggle additional fields for "mow"
         if (evt.target.value === "1") {
             setMow(!mow)
+            entry.length=""
+            entry.direction=""
         }
         // Toggle additional fields for "water"
         if (evt.target.value === "3") {
             setWater(!water)
+            entry.amount=""
         }
         const checkedActivity = evt.target.value
-        const activityList = newActivity
+        const activityList = newActivities
         if (evt.target.checked) {
             // If the box was checked, add activity to the array in state
             activityList.push(checkedActivity)
@@ -35,7 +38,7 @@ const NewTask = (props) => {
                 activityList.splice(index, 1)
             }
         }
-        setNewActivity(activityList)
+        setNewActivities(activityList)
     }
 
     const handleFieldChange = evt => {
@@ -46,8 +49,33 @@ const NewTask = (props) => {
 
     const submitNewEvent = evt => {
         evt.preventDefault()
-        console.log(entry)
-        console.log(newActivity)
+        setIsLoading(true)
+        // Retrieve current user ID from session storage
+        const currentUser = parseInt(sessionStorage.getItem("credentials"))
+        // Construct and POST the main entry object
+        const newEntry = {
+            userId: currentUser,
+            date: entry.date,
+            length: entry.length,
+            direction: entry.direction,
+            amount: entry.amount,
+            notes: entry.notes
+        }
+        DatabaseManager.addNew("entries", newEntry)
+        .then(savedEntry => {
+            //  Iterate through the entry's activities and post each to its own join table
+            let promisedLogActivities = []
+            newActivities.forEach(activity => {
+                const newLogActivity = {
+                    entryId: savedEntry.id,
+                    activityId: parseInt(activity)
+                }
+                console.log(newLogActivity)
+                promisedLogActivities.push(DatabaseManager.addNew("logActivities", newLogActivity))
+            })
+            Promise.all(promisedLogActivities)
+            .then(() => props.history.push("/log"))
+        })
     }
 
     // Populate list of activities
@@ -84,6 +112,7 @@ const NewTask = (props) => {
                     <fieldset className="mowProperties hidden">
                         <label htmlFor="length">Grass length before mowing</label>
                         <select name="length" id="length" name="length" onChange={handleFieldChange}>
+                            <option defaultValue=""></option>
                             <option value="2.5">2.5"</option>
                             <option value="3">3"</option>
                             <option value="3.5">3.5"</option>
@@ -110,6 +139,7 @@ const NewTask = (props) => {
                     <fieldset className="waterProperties hidden">
                         <label htmlFor="water">Amount of water added</label>
                         <select name="water" id="water" name="water" onChange={handleFieldChange}>
+                            <option value=""></option>
                             <option value=".25">.25"</option>
                             <option value=".5">.5"</option>
                             <option value=".75">.75"</option>
