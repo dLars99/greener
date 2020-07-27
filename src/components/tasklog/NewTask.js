@@ -7,7 +7,7 @@ import DatabaseManager from "../../modules/DatabaseManager"
 
 const NewTask = (props) => {
 
-    const [entry, setEntry] = useState({ date: "", length: "", direction: "", amount: "", notes: "" })
+    const [entry, setEntry] = useState({ date: "", length: "", direction: "", amount: "", notes: "", logActivities: [] })
     const [newActivities, setNewActivities] = useState([])
     const [activities, setActivities] = useState([])
     const [mow, setMow] = useState(false)
@@ -15,6 +15,7 @@ const NewTask = (props) => {
     const [isLoading, setIsLoading] = useState(false)
 
     const handleActivityChange = evt => {
+        const updatedState = {...entry}
         // Toggle additional fields for "mow"
         if (evt.target.value === "1") {
             setMow(!mow)
@@ -27,13 +28,13 @@ const NewTask = (props) => {
             entry.amount=""
         }
         const checkedActivity = evt.target.value
-        const activityList = newActivities
+        const activityList = entry.logActivities
         if (evt.target.checked) {
             // If the box was checked, add activity to the array in state
-            activityList.push(checkedActivity)
+            activityList.push(parseInt(checkedActivity))
         } else {
             // If the box was unchecked, remove the activity from the array in state
-            const index = activityList.indexOf(checkedActivity)
+            const index = activityList.indexOf(parseInt(checkedActivity))
             if (index > -1) {
                 activityList.splice(index, 1)
             }
@@ -56,26 +57,14 @@ const NewTask = (props) => {
         const newEntry = {
             userId: currentUser,
             date: entry.date,
+            logActivities: entry.logActivities,
             length: entry.length,
             direction: entry.direction,
             amount: entry.amount,
             notes: entry.notes
         }
         DatabaseManager.addNew("entries", newEntry)
-        .then(savedEntry => {
-            //  Iterate through the entry's activities and post each to its own join table
-            let promisedLogActivities = []
-            newActivities.forEach(activity => {
-                const newLogActivity = {
-                    entryId: savedEntry.id,
-                    activityId: parseInt(activity)
-                }
-                console.log(newLogActivity)
-                promisedLogActivities.push(DatabaseManager.addNew("logActivities", newLogActivity))
-            })
-            Promise.all(promisedLogActivities)
             .then(() => props.history.push("/log"))
-        })
     }
 
     // Populate list of activities
