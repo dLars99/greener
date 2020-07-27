@@ -12,6 +12,14 @@ export default {
     },
     getByUser(table, id, embed) {
         return fetch(`${url}/${table}?userId=${id}&_embed=${embed}`).then(response => response.json())
-    }
-    
+    },
+    addNew(table, newObject) {
+        return fetch(`${url}/${table}`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(newObject)
+        }).then(response => response.json())
+    }  
 } 

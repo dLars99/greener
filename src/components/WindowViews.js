@@ -7,6 +7,7 @@ import React from "react"
 import Dashboard from "./dashboard/Dashboard"
 
 import TaskLog from "./tasklog/TaskLog"
+import NewTask from "./tasklog/NewTask"
 
 const WindowViews = (props) => {
 
@@ -30,6 +31,15 @@ const WindowViews = (props) => {
                 render={props => {
                     if (hasUser) {
                         return <TaskLog retrieveUser={retrieveUser} {...props} />
+                    }
+                }}
+            />
+
+            <Route
+                path="/log/new"
+                render={props => {
+                    if (hasUser) {
+                        return <NewTask retrieveUser={retrieveUser} {...props} />
                     }
                 }}
             />
