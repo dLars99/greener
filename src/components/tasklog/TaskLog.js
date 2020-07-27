@@ -10,18 +10,18 @@ const TaskLog = (props) => {
 
     const getFullLog = () => {
         // First, get all entries for the user
-        DatabaseManager.getByUser("entries", props.retrieveUser(), "logActivities")
+        DatabaseManager.getByUser("entries", props.retrieveUser())
         .then(entriesFromAPI => {
-            setEntries(entriesFromAPI)
             // Then, pull the master list of activities
             DatabaseManager.getAll("activities")
             .then(activitiesList => {
                 // Now, integrate the two lists, replacing the activity IDs in the entry with activity details
                 const entriesWithActivities = entriesFromAPI.map(entry => {
                     return {...entry, logActivities: entry.logActivities.map(uniqueActivity => {
-                        return activitiesList.find(activity => uniqueActivity.activityId === activity.id)
+                        return activitiesList.find(activity => uniqueActivity === activity.id)
                     })}
                 })
+                console.log(entriesWithActivities)
                 setEntries(entriesWithActivities)
             })
         })
