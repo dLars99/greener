@@ -9,6 +9,7 @@ import Dashboard from "./dashboard/Dashboard"
 import TaskLog from "./tasklog/TaskLog"
 import NewTask from "./tasklog/NewTask"
 import EntryDetail from "./tasklog/EntryDetail"
+import EditEntry from "./tasklog/EditEntry"
 
 const WindowViews = (props) => {
 
@@ -50,6 +51,15 @@ const WindowViews = (props) => {
                 render={props => {
                     if (hasUser) {
                         return <EntryDetail {...props} />
+                    }
+                }}
+            />
+
+            <Route
+                path="/log/:entryId(\d+)/edit"
+                render={props => {
+                    if (hasUser) {
+                        return <EditEntry {...props} />
                     }
                 }}
             />

@@ -1,3 +1,6 @@
+/* This component renders the details for an
+individual entry from the log selected by the user */
+
 import React, { useState, useEffect } from "react"
 import DatabaseManager from "../../modules/DatabaseManager"
 
@@ -57,7 +60,7 @@ const TaskLog = (props) => {
                 <p>{currentEntry.notes}</p>
             </div>
 
-            <button type="button" disabled={isLoading} onClick={() => props.history.push(`/log/${props.entry.id}/edit`)}>Edit Entry</button>
+            <button type="button" disabled={isLoading} onClick={() => props.history.push(`/log/${currentEntry.id}/edit`)}>Edit Entry</button>
             <button type="button" disabled={isLoading} onClick={() => handleDelete(currentEntry.id)}>Delete Entry</button>
 
         </article>

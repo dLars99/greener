@@ -13,6 +13,9 @@ export default {
     getByUser(table, id, embed) {
         return fetch(`${url}/${table}?userId=${id}&_embed=${embed}`).then(response => response.json())
     },
+    getById(table, itemId) {
+        return fetch(`${url}/${table}/${itemId}`).then(response => response.json())
+    },
     addNew(table, newObject) {
         return fetch(`${url}/${table}`, {
             method: "POST",
@@ -25,6 +28,15 @@ export default {
     deleteObject(table, id) {
         return fetch(`${url}/${table}/${id}`, {
             method: "DELETE"
+        })
+    },
+    updateObject(table, id, updatedObject) {
+        return fetch(`${url}/${table}/${id}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(updatedObject)
         })
     }
 } 

@@ -1,4 +1,4 @@
-/* This component renders the full detail page
+/* This component renders the summary details
 for an individual log entry */
 
 import React from "react"
