@@ -21,5 +21,10 @@ export default {
             },
             body: JSON.stringify(newObject)
         }).then(response => response.json())
-    }  
+    },
+    deleteObject(table, id) {
+        return fetch(`${url}/${table}/${id}`, {
+            method: "DELETE"
+        })
+    }
 } 

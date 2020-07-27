@@ -70,7 +70,6 @@ const NewTask = (props) => {
                     entryId: savedEntry.id,
                     activityId: parseInt(activity)
                 }
-                console.log(newLogActivity)
                 promisedLogActivities.push(DatabaseManager.addNew("logActivities", newLogActivity))
             })
             Promise.all(promisedLogActivities)

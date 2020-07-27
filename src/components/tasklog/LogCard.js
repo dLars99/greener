@@ -1,5 +1,5 @@
-/* This component renders each individual entry
-within the Log component */
+/* This component renders the full detail page
+for an individual log entry */
 
 import React from "react"
 
@@ -16,7 +16,7 @@ const LogCard = props => {
             }
             <h3>Notes</h3>
             <p>{props.entry.notes}</p>
-            <p>View &gt;&gt;</p>
+            <p onClick={() => props.history.push(`/log/${props.entry.id}/details`, props.entry)}>View &gt;&gt;</p>
         </div>
     )
 }
