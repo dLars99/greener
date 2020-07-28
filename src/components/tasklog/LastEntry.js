@@ -1,16 +1,17 @@
+/* This component will render the most
+log entry on the dashboard */
+
 import React, { useState, useEffect } from "react"
-import { Link } from "react-router-dom"
 import DatabaseManager from "../../modules/DatabaseManager"
 import LogCard from "./LogCard"
-import "./TaskLog.css"
 
-const TaskLog = (props) => {
+const LastEntry = (props) => {
 
-    const [entries, setEntries] = useState([])
+    const [lastEntry, setLastEntry] = useState([])
 
-    const getFullLog = () => {
+    const getLastEntry = () => {
         // First, get all entries for the user
-        DatabaseManager.getByUser("entries", props.retrieveUser())
+        DatabaseManager.getByUser("entries", sessionStorage.getItem("credentials"))
         .then(entriesFromAPI => {
             // Then, pull the master list of activities
             DatabaseManager.getAll("activities")
@@ -21,29 +22,22 @@ const TaskLog = (props) => {
                         return activitiesList.find(activity => uniqueActivity === activity.id)
                     })}
                 })
-                setEntries(entriesWithActivities)
+                setLastEntry(entriesWithActivities[entriesWithActivities.length - 1])
             })
         })
     }
 
     useEffect(() => {
-        getFullLog()
+        getLastEntry()
     }, [])
 
     return (
         <>
-            <div className="log--top">
-                <Link to="/">&lt; Back to Dashboard</Link>
-                <button type="button" className="button" onClick={() => props.history.push("/log/new")}>+ New Entry</button>
-            </div>
-            <div className="log--filters">
-                Search functions go here
-            </div>
-            <div className="logList">
-                {entries.map(entry => <LogCard key={entry.id} entry={entry} {...props} /> )}
-            </div>
+        <h3>Latest Log Entry</h3>
+        <LogCard entry={lastEntry} {...props} />
         </>
     )
 }
 
-export default TaskLog
+export default LastEntry
+

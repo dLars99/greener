@@ -153,7 +153,7 @@ const EditEntry = props => {
                 <label htmlFor="notes">Notes</label>
                 <textarea id="notes" name="notes" rows="4" cols="40" onChange={handleFieldChange} value={entry.notes} />
             </fieldset>
-            <button type="button" onClick={submitEditedEvent}>Update Entry</button>
+            <button type="button" disabled={isLoading} onClick={submitEditedEvent}>Update Entry</button>
         </form>
 
     </section>

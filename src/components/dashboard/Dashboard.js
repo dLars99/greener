@@ -1,4 +1,5 @@
 import React from "react"
+import LastEntry from "../tasklog/LastEntry"
 import "./Dashboard.css"
 
 const Dashboard = (props) => {
@@ -11,6 +12,7 @@ const Dashboard = (props) => {
             <div className="main-actions">
                 <div className="addNew">
                     Record a new log entry
+                    <button type="button" className="button" onClick={() => props.history.push("/log/new")}>+ New Entry</button>
                 </div>
                 <div className="currentWeather">
                     Current Weather
@@ -21,7 +23,7 @@ const Dashboard = (props) => {
             </div>
             <div className="logEntries">
                 <div className="lastEntry">
-                    Last log entry
+                    <LastEntry {...props} />
                 </div>
                 <div className="nextSchedule">
                     Next scheduled item
