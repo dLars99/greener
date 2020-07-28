@@ -21,7 +21,6 @@ const TaskLog = (props) => {
                         return activitiesList.find(activity => uniqueActivity === activity.id)
                     })}
                 })
-                console.log(entriesWithActivities)
                 setEntries(entriesWithActivities)
             })
         })

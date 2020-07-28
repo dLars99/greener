@@ -19,16 +19,16 @@ const NewTask = (props) => {
         // Toggle additional fields for "mow"
         if (evt.target.value === "1") {
             setMow(!mow)
-            entry.length=""
-            entry.direction=""
+            updatedState.length=""
+            updatedState.direction=""
         }
         // Toggle additional fields for "water"
         if (evt.target.value === "3") {
             setWater(!water)
-            entry.amount=""
+            updatedState.amount=""
         }
         const checkedActivity = evt.target.value
-        const activityList = entry.logActivities
+        const activityList = updatedState.logActivities
         if (evt.target.checked) {
             // If the box was checked, add activity to the array in state
             activityList.push(parseInt(checkedActivity))
@@ -39,7 +39,7 @@ const NewTask = (props) => {
                 activityList.splice(index, 1)
             }
         }
-        setNewActivities(activityList)
+        setNewActivities(entry)
     }
 
     const handleFieldChange = evt => {
