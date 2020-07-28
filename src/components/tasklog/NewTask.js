@@ -7,7 +7,7 @@ import DatabaseManager from "../../modules/DatabaseManager"
 
 const NewTask = (props) => {
 
-    const [entry, setEntry] = useState({ date: "", length: "", direction: "", amount: "", notes: "", logActivities: [] })
+    const [entry, setEntry] = useState({ date: "", length: "", direction: "", amount: "", notes: "", activities: [] })
     const [newActivities, setNewActivities] = useState([])
     const [activities, setActivities] = useState([])
     const [mow, setMow] = useState(false)
@@ -40,6 +40,8 @@ const NewTask = (props) => {
             }
         }
         setNewActivities(activityList)
+        setEntry(updatedState)
+
     }
 
     const handleFieldChange = evt => {
@@ -59,7 +61,7 @@ const NewTask = (props) => {
             date: entry.date,
             length: entry.length,
             direction: entry.direction,
-            amount: entry.amount,
+            water: entry.water,
             notes: entry.notes
         }
         DatabaseManager.addNew("entries", newEntry)
