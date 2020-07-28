@@ -1,5 +1,6 @@
 /* This component allows the user to edit
-an individual entry from the log */
+an individual entry from the log 
+Parent: LogCard */
 
 import React, { useState, useEffect } from "react"
 import DatabaseManager from "../../modules/DatabaseManager"
@@ -8,6 +9,7 @@ const EditEntry = props => {
 
     const [entry, setEntry] = useState({})
     const [activities, setActivities] = useState([])
+    const [newActivities, setNewActivities] = useState([])
     const [mow, setMow] = useState(false)
     const [water, setWater] = useState(false)
     const [isLoading, setIsLoading] = useState(true)
@@ -26,18 +28,18 @@ const EditEntry = props => {
             updatedState.amount=""
         }
         const checkedActivity = evt.target.value
-        const activityList = updatedState.logActivities
+        const activityList = newActivities
         if (evt.target.checked) {
-            // If the box was checked, add activity to the array in state
+            // If the box was checked, add activity ID to the array in state
             activityList.push(parseInt(checkedActivity))
         } else {
-            // If the box was unchecked, remove the activity from the array in state
+            // If the box was unchecked, remove the activity ID from the array in state
             const index = activityList.indexOf(parseInt(checkedActivity))
             if (index > -1) {
                 activityList.splice(index, 1)
             }
         }
-        updatedState.logActivities = activityList
+        setNewActivities(activityList)
         setEntry(updatedState)
     }
 
@@ -49,16 +51,21 @@ const EditEntry = props => {
 
     useEffect(() => {
         // First, retrieve the relevant entry
-        DatabaseManager.getById("entries", props.match.params.entryId)
+        DatabaseManager.getById("entries", props.match.params.entryId, "activities")
         .then(entryFromAPI => {
+            // Get array of IDs for the edited entry
+            const currentActivityIds = entryFromAPI.activities.map(activity => activity.id)
             // Check for "Mow"
-            if (entryFromAPI.logActivities.includes(1)) {setMow(true)}
+            if (currentActivityIds.includes(1)) {setMow(true)}
             // Check for "Water"
-            if (entryFromAPI.logActivities.includes(3)) {setWater(true)}
+            if (currentActivityIds.includes(3)) {setWater(true)}
+            setNewActivities(currentActivityIds)
             setEntry(entryFromAPI)
             // Then, pull the master list of activities
             DatabaseManager.getAll("activities")
-            .then(activitiesList => setActivities(activitiesList))
+            .then(activitiesList => {
+                setActivities(activitiesList)
+                setIsLoading(false)})
         })
     }, [])
     
@@ -70,14 +77,39 @@ const EditEntry = props => {
             id: entry.id,
             userId: entry.userId,
             date: entry.date,
-            logActivities: entry.logActivities,
             length: entry.length,
             direction: entry.direction,
-            amount: entry.amount,
+            water: entry.water,
             notes: entry.notes
         }
         DatabaseManager.updateObject("entries", entry.id, newEntry)
-        .then(savedEntry => props.history.push("/log"))
+        .then(savedEntry => {
+            // Find the differences between the old entry's activities and the updated entry's activities
+            // By default, if both sets contain the same id, no change is made to that join table
+            const entriesToAdd = newActivities.filter(item => !entry.activities.some(activity => activity.id === item))
+            const entriesToDelete = entry.activities.filter(item => !newActivities.includes(item.id))
+            let promisedLogActivities = []
+            entriesToAdd.forEach(activity => {
+                // If the entry did not exist on the old entry, create a new join table
+                const newLogActivity = {
+                    entryId: entry.id,
+                    activityId: parseInt(activity)
+                }
+                promisedLogActivities.push(DatabaseManager.addNew("entries_activities", newLogActivity)) 
+            })
+            entriesToDelete.forEach(activity => {
+                // If the entry was present before but not on the updated entry, delete its join table
+                promisedLogActivities.push(DatabaseManager.getJoinTable("entries_activities", entry.id, activity.id)
+                .then(joinTables => {
+                    joinTables.forEach(joinTable => {
+                        console.log(joinTable)
+                        DatabaseManager.deleteObject("entries_activities", joinTable.id)
+                    })
+                }))
+            })
+            Promise.all(promisedLogActivities)
+            .then(() => props.history.push("/log"))
+        })
     }
 
     return (
@@ -91,11 +123,11 @@ const EditEntry = props => {
             <fieldset>
                 <h3>Activity</h3>
                 <p>Check all that apply</p>
-                {/* Populate activities list from database */}
+                {/* Populate activities list from database, checking activities that are part of the current entry */}
                 {activities.map(activity => {
                     return <span key={activity.id}>
                         <input type="checkbox" id="activity" 
-                        name={activity.name} value={activity.id}  checked={entry.logActivities.includes(activity.id)}
+                        name={activity.name} value={activity.id} checked={newActivities.includes(activity.id)}
                         onChange={handleActivityChange} />
                         <label htmlFor={activity.name}>{activity.name}</label>
                     </span>
@@ -130,11 +162,11 @@ const EditEntry = props => {
                     <input type="radio" id="other" name="direction" value="other" checked={entry.direction === "other"} onChange={handleFieldChange} />
                 </fieldset>
             }
-            {/* These fields only appear if the user selects the "water" activity */}
+            {/* These fields only appear if the user checks the "water" activity */}
             {water &&
                 <fieldset className="waterProperties hidden">
                     <label htmlFor="water">Amount of water added</label>
-                    <select name="water" id="water" name="water" onChange={handleFieldChange} value={entry.amount}>
+                    <select name="water" id="water" name="water" onChange={handleFieldChange} value={entry.water}>
                         <option value=""></option>
                         <option value=".25">.25"</option>
                         <option value=".5">.5"</option>

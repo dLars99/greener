@@ -1,5 +1,6 @@
 /* This component renders the details for an
-individual entry from the log selected by the user */
+individual entry from the log selected by the user
+Parent: LogCard */
 
 import React, { useState, useEffect } from "react"
 import DatabaseManager from "../../modules/DatabaseManager"
@@ -20,9 +21,9 @@ const TaskLog = (props) => {
     }
 
     useEffect(() => {
-        const mowExists = currentEntry.logActivities.some(activity => activity.name === "Mow")
+        const mowExists = currentEntry.activities.some(activity => activity.name === "Mow")
         setMow(mowExists)
-        const waterExists = currentEntry.logActivities.some(activity => activity.name === "Water")
+        const waterExists = currentEntry.activities.some(activity => activity.name === "Water")
         setWater(waterExists)
         setIsLoading(false)
     }, [])
@@ -38,7 +39,7 @@ const TaskLog = (props) => {
                 <h3>Date</h3>
                 <p>{currentEntry.date}</p>
                 <h3>Activities</h3>
-                {currentEntry.logActivities.map(activity => {
+                {currentEntry.activities.map(activity => {
                     // Conditional eliminates key error before data is pulled
                     return (activity.id) ? <p key={activity.id}>{activity.name}</p> : null })
                 }

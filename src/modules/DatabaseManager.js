@@ -10,11 +10,14 @@ export default {
     getAll(table) {
         return fetch(`${url}/${table}`).then(response => response.json())
     },
-    getByUser(table, id, embed) {
-        return fetch(`${url}/${table}?userId=${id}&_embed=${embed}`).then(response => response.json())
+    getByUser(table, id, include) {
+        return fetch(`${url}/${table}?userId=${id}&include=${include}`).then(response => response.json())
     },
-    getById(table, itemId) {
-        return fetch(`${url}/${table}/${itemId}`).then(response => response.json())
+    getById(table, itemId, include) {
+        return fetch(`${url}/${table}/${itemId}?include=${include}`).then(response => response.json())
+    },
+    getJoinTable(table, entryId, activityId) {
+        return fetch(`${url}/${table}?entryId=${entryId}&activityId=${activityId}`).then(response => response.json())
     },
     addNew(table, newObject) {
         return fetch(`${url}/${table}`, {
