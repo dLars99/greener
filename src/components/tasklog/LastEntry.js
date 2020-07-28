@@ -1,5 +1,6 @@
 /* This component will render the most
-log entry on the dashboard */
+log entry on the dashboard 
+Parent: Dashboard */
 
 import React, { useState, useEffect } from "react"
 import DatabaseManager from "../../modules/DatabaseManager"

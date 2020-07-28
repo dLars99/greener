@@ -1,5 +1,6 @@
 /* This component renders the summary details
-for an individual log entry */
+for an individual log entry
+Parent: TaskLog */
 
 import React from "react"
 

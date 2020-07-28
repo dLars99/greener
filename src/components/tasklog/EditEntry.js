@@ -1,5 +1,6 @@
 /* This component allows the user to edit
-an individual entry from the log */
+an individual entry from the log 
+Parent: LogCard */
 
 import React, { useState, useEffect } from "react"
 import DatabaseManager from "../../modules/DatabaseManager"
