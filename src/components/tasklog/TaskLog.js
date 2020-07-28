@@ -16,21 +16,9 @@ const TaskLog = (props) => {
     const [searchFilter, setSearchFilter] = useState([])
 
     const getFullLog = () => {
-        // First, get all entries for the user
-        DatabaseManager.getByUser("entries", props.retrieveUser())
-        .then(entriesFromAPI => {
-            // Then, pull the master list of activities
-            DatabaseManager.getAll("activities")
-            .then(activitiesList => {
-                // Now, integrate the two lists, replacing the activity IDs in the entry with activity details
-                const entriesWithActivities = entriesFromAPI.map(entry => {
-                    return {...entry, logActivities: entry.logActivities.map(uniqueActivity => {
-                        return activitiesList.find(activity => uniqueActivity === activity.id)
-                    })}
-                })
-                setEntries(entriesWithActivities)
-            })
-        })
+        // Retrieve all entries for user with activities
+        DatabaseManager.getByUser("entries", props.retrieveUser(), "activities")
+        .then(entriesFromAPI => setEntries(entriesFromAPI))
     }
 
     useEffect(() => {

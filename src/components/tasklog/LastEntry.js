@@ -11,21 +11,9 @@ const LastEntry = (props) => {
     const [lastEntry, setLastEntry] = useState([])
 
     const getLastEntry = () => {
-        // First, get all entries for the user
-        DatabaseManager.getByUser("entries", sessionStorage.getItem("credentials"))
-        .then(entriesFromAPI => {
-            // Then, pull the master list of activities
-            DatabaseManager.getAll("activities")
-            .then(activitiesList => {
-                // Now, integrate the two lists, replacing the activity IDs in the entry with activity details
-                const entriesWithActivities = entriesFromAPI.map(entry => {
-                    return {...entry, logActivities: entry.logActivities.map(uniqueActivity => {
-                        return activitiesList.find(activity => uniqueActivity === activity.id)
-                    })}
-                })
-                setLastEntry(entriesWithActivities[entriesWithActivities.length - 1])
-            })
-        })
+        // Get all the entries, then set state to the most recent entry
+        DatabaseManager.getByUser("entries", sessionStorage.getItem("credentials"), "activities")
+        .then(entriesFromAPI => setLastEntry(entriesFromAPI[entriesFromAPI.length - 1]))
     }
 
     useEffect(() => {
