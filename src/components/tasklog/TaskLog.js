@@ -7,22 +7,40 @@ import React, { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
 import DatabaseManager from "../../modules/DatabaseManager"
 import LogCard from "./LogCard"
-import LogSearch from "../search/LogSearch"
+import SearchBox from "../search/SearchBox"
+import { BuildSearchArray, filterByActivity } from "../search/SearchFilter"
 import "./TaskLog.css"
 
 const TaskLog = (props) => {
 
     const [entries, setEntries] = useState([])
-    const [searchFilter, setSearchFilter] = useState([])
+    const [activities, setActivities] = useState([])
+    const [filterActivities, setFilterActivities] = useState([])
+    const [filteredEntries, setFilteredEntries] = useState([])
 
     const getFullLog = () => {
         // Retrieve all entries for user with activities
         DatabaseManager.getByUser("entries", props.retrieveUser(), "activities")
-        .then(entriesFromAPI => setEntries(entriesFromAPI))
+        .then(entriesFromAPI => {
+            setEntries(entriesFromAPI)
+            setFilteredEntries(entriesFromAPI)
+        })
+    }
+
+    const getActivities = () => {
+        // Retrive activities list for filter options
+        DatabaseManager.getAll("activities")
+        .then(activitiesFromAPI => setActivities(activitiesFromAPI))
+    }
+
+    const filterEntries = evt => {
+        setFilterActivities(BuildSearchArray(filterActivities, evt))
+        setFilteredEntries(filterByActivity(entries, filterActivities))
     }
 
     useEffect(() => {
         getFullLog()
+        getActivities()
     }, [])
 
     return (
@@ -32,10 +50,10 @@ const TaskLog = (props) => {
                 <button type="button" className="button" onClick={() => props.history.push("/log/new")}>+ New Entry</button>
             </div>
             <div className="log--filters">
-                <LogSearch />
+                <SearchBox activities={activities} filterEntries={filterEntries} {...props}/>
             </div>
             <div className="logList">
-                {entries.map(entry => <LogCard key={entry.id} entry={entry} {...props} /> )}
+                {filteredEntries.map(entry => <LogCard key={entry.id} entry={entry} {...props} /> )}
             </div>
         </>
     )
