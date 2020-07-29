@@ -120,7 +120,7 @@ const NewTask = (props) => {
                 {mow &&
                     <fieldset className="mowProperties hidden">
                         <label htmlFor="length">Grass length before mowing</label>
-                        <select name="length" id="length" name="length" onChange={handleFieldChange}>
+                        <select name="length" id="length" onChange={handleFieldChange}>
                             <option defaultValue=""></option>
                             <option value="2.5">2.5"</option>
                             <option value="3">3"</option>
