@@ -7,6 +7,7 @@ import React, { useState } from "react"
 import Header from "./components/Header"
 import Footer from "./components/Footer"
 import WindowViews from "./components/WindowViews"
+import Login from "./components/login/Login"
 import "./Greener.css"
 
 const Greener = () => {
@@ -33,13 +34,14 @@ const Greener = () => {
 
     return (
             <div className="content-window">
-            {hasUser &&  
+            {hasUser ?  
                 <>
                     <Header clearUser={clearUser} />
                     <WindowViews hasUser={hasUser} retrieveUser={retrieveUser} />
                     <Footer />
                 </>
-            }
+            : <Login setUser={setUser} />
+        }
         </div>
     )
 
