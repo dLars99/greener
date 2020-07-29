@@ -4,10 +4,11 @@ to the database */
 
 import React, { useState, useEffect } from "react"
 import DatabaseManager from "../../modules/DatabaseManager"
+import { Validate } from "../../modules/Validate"
 
 const NewTask = (props) => {
 
-    const [entry, setEntry] = useState({ date: "", length: "", direction: "", amount: "", notes: "", activities: [] })
+    const [entry, setEntry] = useState({ date: "", length: "", direction: "", water: "", notes: "", activities: [] })
     const [newActivities, setNewActivities] = useState([])
     const [activities, setActivities] = useState([])
     const [mow, setMow] = useState(false)
@@ -64,7 +65,12 @@ const NewTask = (props) => {
             water: entry.water,
             notes: entry.notes
         }
-        DatabaseManager.addNew("entries", newEntry)
+        const errorCheck = Validate(newEntry, newActivities)
+        if (errorCheck !== "") {
+            alert(errorCheck)
+            setIsLoading(false)
+        } else {
+            DatabaseManager.addNew("entries", newEntry)
             .then(savedEntry => {
                 //  Iterate through the entry's activities and post each to its own join table
                 let promisedLogActivities = []
@@ -78,6 +84,7 @@ const NewTask = (props) => {
                 Promise.all(promisedLogActivities)
                 .then(() => props.history.push("/log"))
             })
+        }
     }
 
     // Populate list of activities
