@@ -13,12 +13,15 @@ const SearchBox = props => {
         {props.activities ? props.activities.map(activity => {
             return <span key={activity.id}>
             <input type="checkbox" id="activity" 
-            name={activity.name} value={activity.id}
+            name={activity.name} value={activity.id} checked={activity.checked}
             onChange={props.filterEntries} />
             <label htmlFor={activity.name}>{activity.name}</label>
         </span>
         })
         : null}
+        <label htmlFor="date">Search by Date</label>
+        <input type="date" id="date" onChange={props.filterEntries}/>
+        <div onClick={props.clearSearch}>Clear All Filters</div>
         </>
     )
 }

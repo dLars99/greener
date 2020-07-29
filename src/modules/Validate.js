@@ -1,5 +1,5 @@
 export function Validate(object, activities) {
-    let error = ""
+    
     // 1. Check that a task is selected
     if (activities.length === 0) {
         return "Please select at least one Activity"
