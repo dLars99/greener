@@ -15,9 +15,12 @@ const TaskLog = (props) => {
     const currentEntry = props.location.state
 
     const handleDelete = id => {
-        setIsLoading(true)
-        DatabaseManager.deleteObject("entries", id)
-        .then(() => props.history.push("/log"))
+        
+        if (window.confirm("This will permanently delete this entry")) {
+            setIsLoading(true)
+            DatabaseManager.deleteObject("entries", id)
+            .then(() => props.history.push("/log"))
+        }
     }
 
     useEffect(() => {
