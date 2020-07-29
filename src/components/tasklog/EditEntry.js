@@ -4,6 +4,7 @@ Parent: LogCard */
 
 import React, { useState, useEffect } from "react"
 import DatabaseManager from "../../modules/DatabaseManager"
+import { Validate } from "../../modules/Validate"
 
 const EditEntry = props => {
 
@@ -82,34 +83,40 @@ const EditEntry = props => {
             water: entry.water,
             notes: entry.notes
         }
-        DatabaseManager.updateObject("entries", entry.id, newEntry)
-        .then(savedEntry => {
-            // Find the differences between the old entry's activities and the updated entry's activities
-            // By default, if both sets contain the same id, no change is made to that join table
-            const entriesToAdd = newActivities.filter(item => !entry.activities.some(activity => activity.id === item))
-            const entriesToDelete = entry.activities.filter(item => !newActivities.includes(item.id))
-            let promisedLogActivities = []
-            entriesToAdd.forEach(activity => {
-                // If the entry did not exist on the old entry, create a new join table
-                const newLogActivity = {
-                    entryId: entry.id,
-                    activityId: parseInt(activity)
-                }
-                promisedLogActivities.push(DatabaseManager.addNew("entries_activities", newLogActivity)) 
+        const errorCheck = Validate(newEntry, newActivities)
+        if (errorCheck !== "") {
+            alert(errorCheck)
+            setIsLoading(false)
+        } else {
+            DatabaseManager.updateObject("entries", entry.id, newEntry)
+            .then(savedEntry => {
+                // Find the differences between the old entry's activities and the updated entry's activities
+                // By default, if both sets contain the same id, no change is made to that join table
+                const entriesToAdd = newActivities.filter(item => !entry.activities.some(activity => activity.id === item))
+                const entriesToDelete = entry.activities.filter(item => !newActivities.includes(item.id))
+                let promisedLogActivities = []
+                entriesToAdd.forEach(activity => {
+                    // If the entry did not exist on the old entry, create a new join table
+                    const newLogActivity = {
+                        entryId: entry.id,
+                        activityId: parseInt(activity)
+                    }
+                    promisedLogActivities.push(DatabaseManager.addNew("entries_activities", newLogActivity)) 
+                })
+                entriesToDelete.forEach(activity => {
+                    // If the entry was present before but not on the updated entry, delete its join table
+                    promisedLogActivities.push(DatabaseManager.getJoinTable("entries_activities", entry.id, activity.id)
+                    .then(joinTables => {
+                        joinTables.forEach(joinTable => {
+                            console.log(joinTable)
+                            DatabaseManager.deleteObject("entries_activities", joinTable.id)
+                        })
+                    }))
+                })
+                Promise.all(promisedLogActivities)
+                .then(() => props.history.push("/log"))
             })
-            entriesToDelete.forEach(activity => {
-                // If the entry was present before but not on the updated entry, delete its join table
-                promisedLogActivities.push(DatabaseManager.getJoinTable("entries_activities", entry.id, activity.id)
-                .then(joinTables => {
-                    joinTables.forEach(joinTable => {
-                        console.log(joinTable)
-                        DatabaseManager.deleteObject("entries_activities", joinTable.id)
-                    })
-                }))
-            })
-            Promise.all(promisedLogActivities)
-            .then(() => props.history.push("/log"))
-        })
+        }
     }
 
     return (
