@@ -61,9 +61,10 @@ const TaskLog = (props) => {
         return !refresh
     }
     const clearSearch = evt => {
-        // setSearchDate("")
-        // setFilterActivities([])
-        // setFilteredEntries(performFilter(entries, filterActivities, searchDate))
+        setSearchDate("")
+        setFilterActivities([])
+        setFilteredEntries(performFilter(entries, filterActivities, searchDate))
+        console.log("Test")
     }
 
     useEffect(() => {
