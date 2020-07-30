@@ -27,7 +27,17 @@ export function Validate(object, activities) {
 
 }
 
-export function VerifySignin(creds) {
-    let verify = false
+export function VerifyUser(loginUser, existingUsers) {
+    
+    // 1. Verify that all signin fields are complete; return an error if not
+    if (loginUser.email === "" || loginUser.password === "") {
+        return "Please provide your registered email address and password"
+    }
 
+    // 2. See if user data is correct in database, and return the user if present
+    let verified = existingUsers.find(user => user.email === loginUser.email && user.password === loginUser.password)
+    console.log(verified)
+    
+    return verified
+    
 }

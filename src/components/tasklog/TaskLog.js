@@ -21,7 +21,8 @@ const TaskLog = (props) => {
 
     const getFullLog = () => {
         // Retrieve all entries for user with activities
-        DatabaseManager.getByUser("entries", props.retrieveUser(), "activities")
+        const currentUser = sessionStorage.getItem("credentials")
+        DatabaseManager.getByUser("entries", currentUser, "activities")
         .then(entriesFromAPI => {
             setEntries(entriesFromAPI)
             setFilteredEntries(entriesFromAPI)
