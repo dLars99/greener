@@ -29,7 +29,7 @@ const NewTask = (props) => {
             updatedState.amount=""
         }
         const checkedActivity = evt.target.value
-        const activityList = newActivities
+        const activityList = [...newActivities]
         if (evt.target.checked) {
             // If the box was checked, add activity to the array in state
             activityList.push(parseInt(checkedActivity))

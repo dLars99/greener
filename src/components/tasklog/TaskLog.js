@@ -18,7 +18,6 @@ const TaskLog = (props) => {
     const [filterActivities, setFilterActivities] = useState([])
     const [searchDate, setSearchDate] = useState("")
     const [filteredEntries, setFilteredEntries] = useState([])
-    const [refresh, setRefresh] = useState(true)
 
     const getFullLog = () => {
         // Retrieve all entries for user with activities
@@ -41,14 +40,15 @@ const TaskLog = (props) => {
     }
 
     const filterEntries = evt => {
+
         if (evt.target.id === "activity") {
-            const stateToUpdate = activities
+            const stateToUpdate = [...activities]
+            console.log(stateToUpdate)
             const activityToUpdate = stateToUpdate.indexOf(stateToUpdate.find(activity => activity.id === parseInt(evt.target.value)))
             stateToUpdate[activityToUpdate].checked = !stateToUpdate[activityToUpdate].checked
-            console.log(stateToUpdate)
             setActivities(stateToUpdate)
-            setRefresh(test(evt))
-            
+            setFilterActivities(BuildSearchArray([...filterActivities], evt))
+
         } else {
             // Date field has been altered
             setSearchDate(evt.target.value)
@@ -56,15 +56,15 @@ const TaskLog = (props) => {
         
     }
 
-    const test = (evt) => {
-        setFilterActivities(BuildSearchArray(filterActivities, evt))
-        return !refresh
-    }
     const clearSearch = evt => {
         setSearchDate("")
         setFilterActivities([])
+        let updateActivities = [...activities]
+        updateActivities = updateActivities.map(activity => {
+            return {...activity, checked: false}
+        })
+        setActivities(updateActivities)
         setFilteredEntries(performFilter(entries, filterActivities, searchDate))
-        console.log("Test")
     }
 
     useEffect(() => {
@@ -73,9 +73,8 @@ const TaskLog = (props) => {
     }, [])
 
     useEffect(() => {
-        console.log(filterActivities, searchDate)
         setFilteredEntries(performFilter(entries, filterActivities, searchDate))
-    }, [searchDate, filterActivities, refresh])
+    }, [searchDate, filterActivities])
 
     return (
         <>
