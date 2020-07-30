@@ -4,8 +4,11 @@ Parent: Greener */
 
 import { Route, Redirect } from "react-router-dom"
 import React from "react"
-import Dashboard from "./dashboard/Dashboard"
 
+import Dashboard from "./dashboard/Dashboard"
+import Login from "./login/Login"
+import Header from "./Header"
+import Footer from "./Footer"
 import TaskLog from "./tasklog/TaskLog"
 import NewTask from "./tasklog/NewTask"
 import EntryDetail from "./tasklog/EntryDetail"
@@ -15,15 +18,31 @@ const WindowViews = (props) => {
 
     // Pass parent functions to child components
     const hasUser = props.hasUser
-    const retrieveUser = props.retrieveUser
+    const clearUser=props.clearUser
+    const setUser=props.setUser
 
     return (
         <>
+            <Header clearUser={clearUser} />
+
             <Route 
                 exact path="/"
                 render={props => {
                     if (hasUser) {
                         return <Dashboard {...props} />
+                    } else {
+                        return <Redirect to="/login" />
+                    }
+                }}
+            />
+
+            <Route
+                path="/login"
+                render={props => {
+                    if (!hasUser) {
+                        return <Login setUser={setUser} {...props} />
+                    } else {
+                        return <Redirect to="/" />
                     }
                 }}
             />
@@ -32,7 +51,9 @@ const WindowViews = (props) => {
                 exact path="/log"
                 render={props => {
                     if (hasUser) {
-                        return <TaskLog retrieveUser={retrieveUser} {...props} />
+                        return <TaskLog {...props} />
+                    } else {
+                        return <Redirect to="/login" />
                     }
                 }}
             />
@@ -41,7 +62,9 @@ const WindowViews = (props) => {
                 path="/log/new"
                 render={props => {
                     if (hasUser) {
-                        return <NewTask retrieveUser={retrieveUser} {...props} />
+                        return <NewTask {...props} />
+                    } else {
+                        return <Redirect to="/login" />
                     }
                 }}
             />
@@ -51,6 +74,8 @@ const WindowViews = (props) => {
                 render={props => {
                     if (hasUser) {
                         return <EntryDetail {...props} />
+                    } else {
+                        return <Redirect to="/login" />
                     }
                 }}
             />
@@ -60,9 +85,14 @@ const WindowViews = (props) => {
                 render={props => {
                     if (hasUser) {
                         return <EditEntry {...props} />
+                    } else {
+                        return <Redirect to="/login" />
                     }
                 }}
             />
+
+            <Footer />
+
         </>
     )
 }

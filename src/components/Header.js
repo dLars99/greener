@@ -18,6 +18,7 @@ const Header = (props) => {
                 </div>
                 <div className="userLogo">
                     User Logo Goes Here
+                    <div onClick={props.clearUser}>Logout</div>
                 </div>
             </header>
         </>

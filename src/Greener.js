@@ -4,15 +4,10 @@ If the user is logged in, they will be taken to the Dashboard.
 Parent: index */
 
 import React, { useState } from "react"
-import Header from "./components/Header"
-import Footer from "./components/Footer"
 import WindowViews from "./components/WindowViews"
 import "./Greener.css"
 
 const Greener = () => {
-
-    // TEMPORARY CREDS -- DELETE ONCE REGISTRATION/LOGIN IS FUNCTIONAL
-    sessionStorage.setItem("credentials", 1)
 
     const isAuthenticated = () => sessionStorage.getItem("credentials") !== null;
     
@@ -20,10 +15,7 @@ const Greener = () => {
 
     const setUser = user => {
         sessionStorage.setItem("credentials", user.id)
-    }
-
-    const retrieveUser = () => {
-        return sessionStorage.getItem("credentials")
+        setHasUser(isAuthenticated())
     }
 
     const clearUser = () => {
@@ -32,14 +24,8 @@ const Greener = () => {
     }
 
     return (
-            <div className="content-window">
-            {hasUser &&  
-                <>
-                    <Header clearUser={clearUser} />
-                    <WindowViews hasUser={hasUser} retrieveUser={retrieveUser} />
-                    <Footer />
-                </>
-            }
+        <div className="content-window">    
+            <WindowViews hasUser={hasUser} clearUser={clearUser} setUser={setUser}/>        
         </div>
     )
 

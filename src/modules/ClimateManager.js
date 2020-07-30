@@ -2,13 +2,13 @@
 to the Frostline API to look up USDA Plant Hardiness Zone data */
 
 // Frostline API URL
-const climateURL = "http://phzmapi.org"
+const climateURL = "https://thingproxy.freeboard.io/fetch/http://phzmapi.org"
 
 // Fetch call
 export default {
 
-    getClimateZone = (zip) => {
-        return fetch(`${url}/${zip}.json`).then(response => response.json)
+    getClimateZone (zip) {
+        return fetch(`${climateURL}/${zip}.json`).then(response => response.json())
     }
     
 }
