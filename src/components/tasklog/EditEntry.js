@@ -68,7 +68,7 @@ const EditEntry = props => {
                 setActivities(activitiesList)
                 setIsLoading(false)})
         })
-    }, [])
+    }, [props.match.params.entryId])
     
     const submitEditedEvent = evt => {
         evt.preventDefault()
@@ -96,7 +96,7 @@ const EditEntry = props => {
                 const entriesToDelete = entry.activities.filter(item => !newActivities.includes(item.id))
                 let promisedLogActivities = []
                 entriesToAdd.forEach(activity => {
-                    // If the entry did not exist on the old entry, create a new join table
+                    // If the activity did not exist on the old entry, create a new join table
                     const newLogActivity = {
                         entryId: entry.id,
                         activityId: parseInt(activity)
@@ -104,7 +104,7 @@ const EditEntry = props => {
                     promisedLogActivities.push(DatabaseManager.addNew("entries_activities", newLogActivity)) 
                 })
                 entriesToDelete.forEach(activity => {
-                    // If the entry was present before but not on the updated entry, delete its join table
+                    // If the activity was present before but not on the updated entry, delete its join table
                     promisedLogActivities.push(DatabaseManager.getJoinTable("entries_activities", entry.id, activity.id)
                     .then(joinTables => {
                         joinTables.forEach(joinTable => {
