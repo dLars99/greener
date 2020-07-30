@@ -3,7 +3,7 @@ in summary form and presents the full list to the virtual
 DOM.
 Parent: Dashboard */
 
-import React, { useState, useEffect, forceUpdate } from "react"
+import React, { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
 import DatabaseManager from "../../modules/DatabaseManager"
 import LogCard from "./LogCard"
@@ -43,7 +43,6 @@ const TaskLog = (props) => {
 
         if (evt.target.id === "activity") {
             const stateToUpdate = [...activities]
-            console.log(stateToUpdate)
             const activityToUpdate = stateToUpdate.indexOf(stateToUpdate.find(activity => activity.id === parseInt(evt.target.value)))
             stateToUpdate[activityToUpdate].checked = !stateToUpdate[activityToUpdate].checked
             setActivities(stateToUpdate)

@@ -68,7 +68,7 @@ const EditEntry = props => {
                 setActivities(activitiesList)
                 setIsLoading(false)})
         })
-    }, [])
+    }, [props.match.params.entryId])
     
     const submitEditedEvent = evt => {
         evt.preventDefault()
