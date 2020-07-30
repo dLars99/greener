@@ -1,0 +1,30 @@
+.front--window {
+    height: 100vh;
+    overflow: hidden;
+}
+
+.login {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.login h1 {
+    margin: 17vh 0;
+}
+
+.login--form {
+    display: flex;
+    flex-direction: row;
+}
+
+.login--fields {
+    flex: 5;
+    display: flex;
+    flex-direction: column;
+}
+
+#registration1, #registration2 {
+    height: 100vh;
+}
