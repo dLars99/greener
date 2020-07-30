@@ -26,3 +26,8 @@ export function Validate(object, activities) {
     return ""
 
 }
+
+export function VerifySignin(creds) {
+    let verify = false
+
+}

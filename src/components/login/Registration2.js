@@ -12,6 +12,7 @@ const Login = props => {
            <input type="text" id="RegisterAddress" placeholder="Address" />
            <label htmlFor="registerAddress">Address</label>
            <select id="state">
+                <option defaultValue=""></option>
                 {States.map(state => {
                     return <option key={state.abbreviation} value={state.abbreviation}>
                         {state.name}

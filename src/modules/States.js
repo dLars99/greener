@@ -1,3 +1,9 @@
+/* This module contains an array of all 50 states
+to populate the State dropdown in Registration2.
+Assembled by Michael Shafrir,
+distributed open-source at https://gist.github.com/mshafrir/2646763
+Modified to remove territories. */
+
 export default [
     {
         "name": "Alabama",
@@ -6,10 +12,6 @@ export default [
     {
         "name": "Alaska",
         "abbreviation": "AK"
-    },
-    {
-        "name": "American Samoa",
-        "abbreviation": "AS"
     },
     {
         "name": "Arizona",
@@ -40,20 +42,12 @@ export default [
         "abbreviation": "DC"
     },
     {
-        "name": "Federated States Of Micronesia",
-        "abbreviation": "FM"
-    },
-    {
         "name": "Florida",
         "abbreviation": "FL"
     },
     {
         "name": "Georgia",
         "abbreviation": "GA"
-    },
-    {
-        "name": "Guam",
-        "abbreviation": "GU"
     },
     {
         "name": "Hawaii",
@@ -90,10 +84,6 @@ export default [
     {
         "name": "Maine",
         "abbreviation": "ME"
-    },
-    {
-        "name": "Marshall Islands",
-        "abbreviation": "MH"
     },
     {
         "name": "Maryland",
@@ -156,10 +146,6 @@ export default [
         "abbreviation": "ND"
     },
     {
-        "name": "Northern Mariana Islands",
-        "abbreviation": "MP"
-    },
-    {
         "name": "Ohio",
         "abbreviation": "OH"
     },
@@ -172,16 +158,8 @@ export default [
         "abbreviation": "OR"
     },
     {
-        "name": "Palau",
-        "abbreviation": "PW"
-    },
-    {
         "name": "Pennsylvania",
         "abbreviation": "PA"
-    },
-    {
-        "name": "Puerto Rico",
-        "abbreviation": "PR"
     },
     {
         "name": "Rhode Island",
@@ -210,10 +188,6 @@ export default [
     {
         "name": "Vermont",
         "abbreviation": "VT"
-    },
-    {
-        "name": "Virgin Islands",
-        "abbreviation": "VI"
     },
     {
         "name": "Virginia",
