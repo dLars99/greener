@@ -12,7 +12,6 @@ const Login = props => {
            <p>Zip Code: {props.userLogin.zip}</p>
            <p>Climate Zone: {props.userLogin.zone}</p>
            <p>Lawn Size: {props.userLogin.lotSize}</p>
-           <button type="button" onClick={props.registerNewUser}>Finish</button>
         </>
     )
 }

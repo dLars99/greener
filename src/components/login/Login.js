@@ -18,6 +18,7 @@ const Login = props => {
     const [userLogin, setUserLogin] = useState({})
     const [regForm, setRegForm] = useState({One: false, Two: false, Three: false, Four: false, Five: false})
     const [dbUsers, setDbUsers] = useState([])
+    const [isLoading, setIsLoading] = useState(true)
 
     const handleFieldChange = (evt) => {
         const stateToChange = {...userLogin}
@@ -84,12 +85,32 @@ const Login = props => {
     }
 
     const registerNewUser = evt => {
-        console.log("Tada!!!")
+        evt.preventDefault()
+        setIsLoading(true)
+        const newUser = {
+            name: userLogin.name,
+            email: userLogin.newEmail,
+            password: userLogin.newPassword,
+            address: userLogin.address,
+            city: userLogin.city,
+            state: userLogin.state,
+            zip: userLogin.zip,
+            zone: userLogin.zone,
+            lotSize: userLogin.lotSize
+        }
+        DatabaseManager.addNew("users", newUser)
+        .then((savedUser) => {
+            props.setUser(savedUser)
+            props.history.push("/")
+        })
     }
 
     useEffect(() => {
         DatabaseManager.getAll("users")
-        .then(usersFromAPI => setDbUsers(usersFromAPI))
+        .then(usersFromAPI => {
+            setDbUsers(usersFromAPI)
+            setIsLoading(false)
+        })
     }, [])
 
     return (
@@ -104,7 +125,7 @@ const Login = props => {
                         <input type="email" id="email" autoComplete="username" placeholder="Email" onChange={handleFieldChange} />
                         <input type="password" id="password" autoComplete="password" placeholder="Password" onChange={handleFieldChange} />
                     </div>
-                    <button type="button" name="login" onClick={signIn}>-&gt;</button>
+                    <button type="button" disabled={isLoading} name="login" onClick={signIn}>-&gt;</button>
                 </form>
             </section>
         <form name="registration">
@@ -130,7 +151,10 @@ const Login = props => {
             </section>
             <section id="registrationFive">
                 {regForm.Five ?
+                <>
                     <Registration5 userLogin={userLogin} registerNewUser={registerNewUser} />
+                    <button type="button" disabled={isLoading} onClick={registerNewUser}>Finish</button>
+                </>
                 : null}
             </section>
 
