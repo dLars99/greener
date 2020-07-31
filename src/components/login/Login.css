@@ -1,13 +1,13 @@
 .front--window {
     height: 100vh;
     overflow: hidden;
+    text-align: center;
 }
 
 .login {
     height: 100vh;
     display: flex;
     flex-direction: column;
-    text-align: center;
 }
 
 .login h1 {
@@ -25,6 +25,54 @@
     flex-direction: column;
 }
 
-#registrationOne, #registrationTwo, #registrationThree, #registrationFour, #registrationFive {
+fieldset {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     height: 100vh;
+}
+
+.form--page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+}
+
+label {
+    display: inline-block;
+    flex: 0 1 20%;
+    padding: .3rem .5rem;
+    text-align: right;
+}
+
+fieldset input {
+    flex: 0 0 60%;
+    margin: 0rem 1rem;
+    height: 22px;
+}
+
+fieldset select {
+    height: 25px;
+    margin: 0 1rem;
+}
+
+/* Reclass this div */
+.form--page div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: .5rem 0;
+}
+
+.lotSize {
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.form--info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
