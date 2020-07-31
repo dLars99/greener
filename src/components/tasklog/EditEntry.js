@@ -146,7 +146,7 @@ const EditEntry = props => {
             {mow &&
                 <fieldset className="mowProperties hidden">
                     <label htmlFor="length">Grass length before mowing</label>
-                    <select name="length" id="length" name="length" onChange={handleFieldChange} value={entry.length}>
+                    <select name="length" id="length" onChange={handleFieldChange} value={entry.length}>
                         <option defaultValue=""></option>
                         <option value="2.5">2.5"</option>
                         <option value="3">3"</option>
@@ -173,7 +173,7 @@ const EditEntry = props => {
             {water &&
                 <fieldset className="waterProperties hidden">
                     <label htmlFor="water">Amount of water added</label>
-                    <select name="water" id="water" name="water" onChange={handleFieldChange} value={entry.water}>
+                    <select name="water" id="water" onChange={handleFieldChange} value={entry.water}>
                         <option value=""></option>
                         <option value=".25">.25"</option>
                         <option value=".5">.5"</option>

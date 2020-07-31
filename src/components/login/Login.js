@@ -1,7 +1,12 @@
+/* This component handles the login and registration
+functions for the website. The user must be registered
+before accessing any other pages.
+Parent: WindowViews.js */
+
 import React, { useState, useEffect } from "react"
 import "./Login.css"
 import DatabaseManager from "../../modules/DatabaseManager"
-import { VerifyUser } from "../../modules/Validate"
+import { VerifyUser, VerifyReg1, VerifyReg2, VerifyReg4 } from "../../modules/Validate"
 import Registration1 from "./Registration1"
 import Registration2 from "./Registration2"
 import Registration3 from "./Registration3"
@@ -10,9 +15,8 @@ import Registration5 from "./Registration5"
 
 const Login = props => {
 
-    const [userLogin, setUserLogin] = useState({email: "", password: ""})
-    // const [newUser, setNewUser] = useState({name: "", email: "", password: "", address: "", city: "", state: "", zip: "", zone: "", lawnSize: -1})
-    const [regForm, setRegForm] = useState({one: false, two: false, three: false, four: false, five: false})
+    const [userLogin, setUserLogin] = useState({})
+    const [regForm, setRegForm] = useState({One: false, Two: false, Three: false, Four: false, Five: false})
     const [dbUsers, setDbUsers] = useState([])
 
     const handleFieldChange = (evt) => {
@@ -25,7 +29,6 @@ const Login = props => {
         evt.preventDefault()
         const loginInfo = {...userLogin}
         const verifiedUser = VerifyUser(loginInfo, dbUsers)
-        console.log(typeof verifiedUser)
         if (typeof verifiedUser === "string") {
             alert(verifiedUser)
         } else if (typeof verifiedUser === "undefined") {
@@ -37,15 +40,50 @@ const Login = props => {
         }
     }
 
-    const beginRegistration = () => {
+    const revealMoreForm = (formSection) => {
         const updateForm = {...regForm}
-        updateForm.one = true
+        updateForm[formSection] = true
         setRegForm(updateForm)
-        const element = document.getElementById("registration1")
+        const element = document.getElementById(`registration${formSection}`)
         element.scrollIntoView({behavior: "smooth"})
     }
 
-    const registerNewUser = () => {
+    const toPartTwo = () => {
+        const verified = VerifyReg1(userLogin, dbUsers)
+        console.log(verified)
+        if (verified === "") {
+            revealMoreForm("Two")
+        } else {
+            alert(verified)
+        }
+    }
+
+    const toPartThree = () => {
+        const verified = VerifyReg2(userLogin)
+        if (verified === "") {
+            revealMoreForm("Three")
+        } else {
+            alert(verified)
+        }
+    }
+
+    const toPartFour = (phz) => {
+        let updatePHZ = {...userLogin, zone: phz}
+        setUserLogin(updatePHZ)
+        revealMoreForm("Four")
+    }
+
+    const toPartFive = () => {
+        const verified = VerifyReg4(userLogin)
+        console.log(verified)
+        if (verified === "") {
+            revealMoreForm("Five")
+        } else {
+            alert(verified)
+        }
+    }
+
+    const registerNewUser = evt => {
         console.log("Tada!!!")
     }
 
@@ -57,43 +95,42 @@ const Login = props => {
     return (
         <>
         <main className="front--window">
-
-        <section className="login">
-            <h1>Grass is<br/>
-                Greener</h1>
-            <button type="button" onClick={beginRegistration}>Create New Account</button>
-            <form className="login--form" name="login">
-                <div className="login--fields">
-                    <input type="email" id="email" autoComplete="username" placeholder="Email" onChange={handleFieldChange} />
-                    <input type="password" id="password" autoComplete="password" placeholder="Password" onChange={handleFieldChange} />
-                </div>
-                <button type="button" name="login" onClick={signIn}>-&gt;</button>
-            </form>
-        </section>
+            <section className="login">
+                <h1>Grass is<br/>
+                    Greener</h1>
+                <button type="button" onClick={() => revealMoreForm("One")}>Create New Account</button>
+                <form className="login--form" name="login">
+                    <div className="login--fields">
+                        <input type="email" id="email" autoComplete="username" placeholder="Email" onChange={handleFieldChange} />
+                        <input type="password" id="password" autoComplete="password" placeholder="Password" onChange={handleFieldChange} />
+                    </div>
+                    <button type="button" name="login" onClick={signIn}>-&gt;</button>
+                </form>
+            </section>
         <form name="registration">
-            <section id="registration1">
-                {regForm.one ?
-                    <Registration1 />
+            <section id="registrationOne">
+                {regForm.One ?
+                    <Registration1 dbUsers={dbUsers} handleFieldChange={handleFieldChange} toPartTwo={toPartTwo} />
                 : null}
             </section>
-            <section id="registration2">
-                {regForm.two ?
-                    <Registration2 />
+            <section id="registrationTwo">
+                {regForm.Two ?
+                    <Registration2 handleFieldChange={handleFieldChange} toPartThree={toPartThree} />
                 : null}
             </section>
-            <section id="registration3">
-                {regForm.three ?
-                    <Registration3 />
+            <section id="registrationThree">
+                {regForm.Three ?
+                    <Registration3 revealMoreForm={revealMoreForm} toPartFour={toPartFour} zip={userLogin.zip} />
                 : null}
             </section>
-            <section id="registration4">
-                {regForm.four ?
-                    <Registration4 />
+            <section id="registrationFour">
+                {regForm.Four ?
+                    <Registration4 handleFieldChange={handleFieldChange} toPartFive={toPartFive} />
                 : null}
             </section>
-            <section id="registration5">
-                {regForm.five ?
-                    <Registration5 registerNewUser={registerNewUser} />
+            <section id="registrationFive">
+                {regForm.Five ?
+                    <Registration5 userLogin={userLogin} registerNewUser={registerNewUser} />
                 : null}
             </section>
 
