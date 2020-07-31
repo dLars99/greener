@@ -30,10 +30,12 @@ const Dashboard = (props) => {
                     <button type="button" className="button" onClick={() => props.history.push("/log/new")}>+ New Entry</button>
                 </div>
                 <div className="currentWeather">
-                    <CurrentWeather logEntries={logEntries} />
+                    <CurrentWeather />
                 </div>
                 <div className="water">
-                    <Precipitation logEntries={logEntries} />
+                    {logEntries 
+                    ? <Precipitation logEntries={logEntries} />
+                    : null}
                 </div>
             </div>
             <div className="logEntries">

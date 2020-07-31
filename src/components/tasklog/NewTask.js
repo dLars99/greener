@@ -5,6 +5,7 @@ to the database */
 import React, { useState, useEffect } from "react"
 import DatabaseManager from "../../modules/DatabaseManager"
 import { Validate } from "../../modules/Validate"
+import "./NewTask.css"
 
 const NewTask = (props) => {
 
