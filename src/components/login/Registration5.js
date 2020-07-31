@@ -1,3 +1,8 @@
+/* This component registers the fifth 
+user registration page, confirming all
+the user registration data.
+Parent: Login */
+
 import React from "react"
 
 const Login = props => {

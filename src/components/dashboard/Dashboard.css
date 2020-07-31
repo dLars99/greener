@@ -19,8 +19,40 @@
 }
 
 .currentWeather {
-    flex: 2;
+    flex: 3;
     border: 1px dashed black;
+    display: flex;
+    flex-direction: column;
+}
+
+.currentWeather h3 {
+    margin: 0;
+    text-align: center;
+}
+
+.currentWeather--desc h4 {
+    margin: 0 .4rem;
+}
+
+.currentWeather--stats {
+    display: flex;
+    align-items: center;
+    margin: .4rem;
+}
+
+.currentWeather--temp {
+    padding-left: .2rem;
+    text-align: right;
+}
+
+.currentWeather--temp h3 {
+    margin: 0;
+    font-size: 2rem;
+    text-align: right;
+}
+
+.currentWeather--temp p {
+    margin: 0;
 }
 
 .water {

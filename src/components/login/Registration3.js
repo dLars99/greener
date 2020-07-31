@@ -1,3 +1,8 @@
+/* This component registers the third 
+user registration page, using the phzmap API to
+pull the user's USDA Plant Hardiness Zone by zip code.
+Parent: Login */
+
 import React, { useState, useEffect } from "react"
 import ClimateManager from "../../modules/ClimateManager"
 

@@ -15,6 +15,10 @@ const Greener = () => {
 
     const setUser = user => {
         sessionStorage.setItem("credentials", user.id)
+        sessionStorage.setItem("userName", user.name)
+        sessionStorage.setItem("city", user.city)
+        sessionStorage.setItem("state", user.state)
+        sessionStorage.setItem("zip", user.zip)
         setHasUser(isAuthenticated())
     }
 
@@ -24,7 +28,7 @@ const Greener = () => {
     }
 
     return (
-        <div className="content-window">    
+        <div className="content-window">
             <WindowViews hasUser={hasUser} clearUser={clearUser} setUser={setUser}/>        
         </div>
     )
