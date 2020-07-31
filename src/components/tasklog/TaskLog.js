@@ -30,7 +30,7 @@ const TaskLog = (props) => {
     }
 
     const getActivities = () => {
-        // Retrive activities list for filter options
+        // Retrieve activities list for filter options
         DatabaseManager.getAll("activities")
         .then(activitiesFromAPI => {
             // Add checkbox boolean to object for search filters

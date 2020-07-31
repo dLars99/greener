@@ -23,7 +23,10 @@ const WindowViews = (props) => {
 
     return (
         <>
-            <Header clearUser={clearUser} />
+            {hasUser
+            ? <Header clearUser={clearUser} />
+            : null
+            }
 
             <Route 
                 exact path="/"
@@ -91,7 +94,10 @@ const WindowViews = (props) => {
                 }}
             />
 
-            <Footer />
+            {hasUser
+            ? <Footer />
+            : null
+            }
 
         </>
     )
