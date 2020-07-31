@@ -128,35 +128,35 @@ const Login = props => {
                     <button type="button" disabled={isLoading} name="login" onClick={signIn}>-&gt;</button>
                 </form>
             </section>
-        <form name="registration">
-            <section id="registrationOne">
+        <form className="registration--form" name="registration">
+            <fieldset id="registrationOne">
                 {regForm.One ?
                     <Registration1 dbUsers={dbUsers} handleFieldChange={handleFieldChange} toPartTwo={toPartTwo} />
                 : null}
-            </section>
-            <section id="registrationTwo">
+            </fieldset>
+            <fieldset id="registrationTwo">
                 {regForm.Two ?
                     <Registration2 handleFieldChange={handleFieldChange} toPartThree={toPartThree} />
                 : null}
-            </section>
-            <section id="registrationThree">
+            </fieldset>
+            <fieldset id="registrationThree">
                 {regForm.Three ?
                     <Registration3 revealMoreForm={revealMoreForm} toPartFour={toPartFour} zip={userLogin.zip} />
                 : null}
-            </section>
-            <section id="registrationFour">
+            </fieldset>
+            <fieldset id="registrationFour">
                 {regForm.Four ?
                     <Registration4 handleFieldChange={handleFieldChange} toPartFive={toPartFive} />
                 : null}
-            </section>
-            <section id="registrationFive">
+            </fieldset>
+            <fieldset id="registrationFive">
                 {regForm.Five ?
                 <>
                     <Registration5 userLogin={userLogin} registerNewUser={registerNewUser} />
                     <button type="button" disabled={isLoading} onClick={registerNewUser}>Finish</button>
                 </>
                 : null}
-            </section>
+            </fieldset>
 
         </form>
 
