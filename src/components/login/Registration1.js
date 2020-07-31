@@ -1,3 +1,8 @@
+/* This component registers the first 
+user registration page, for the user's
+name and login information.
+Parent: Login */
+
 import React from "react"
 
 const Login = props => {

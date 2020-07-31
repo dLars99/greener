@@ -1,3 +1,8 @@
+/* This component registers the second 
+user registration page, for the user's
+address information.
+Parent: Login */
+
 import React from "react"
 import States from "../../modules/States"
 

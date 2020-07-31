@@ -1,4 +1,5 @@
 import React from "react"
+import CurrentWeather from "../weather/CurrentWeather"
 import LastEntry from "../tasklog/LastEntry"
 import "./Dashboard.css"
 
@@ -15,7 +16,7 @@ const Dashboard = (props) => {
                     <button type="button" className="button" onClick={() => props.history.push("/log/new")}>+ New Entry</button>
                 </div>
                 <div className="currentWeather">
-                    Current Weather
+                    <CurrentWeather />
                 </div>
                 <div className="water">
                     Precipitation
