@@ -23,7 +23,10 @@ const LastEntry = (props) => {
     return (
         <>
         <h3>Latest Log Entry</h3>
-        <LogCard entry={lastEntry} {...props} />
+        {lastEntry
+        ? <LogCard entry={lastEntry} {...props} />
+        : <p>Create your first log entry now!</p>
+        }
         </>
     )
 }
