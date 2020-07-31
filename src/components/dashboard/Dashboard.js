@@ -1,9 +1,23 @@
-import React from "react"
+import React, { useState, useEffect } from "react"
+import DatabaseManager from "../../modules/DatabaseManager"
 import CurrentWeather from "../weather/CurrentWeather"
+import Precipitation from "../weather/Precipitation"
 import LastEntry from "../tasklog/LastEntry"
 import "./Dashboard.css"
 
 const Dashboard = (props) => {
+
+    const [logEntries, setLogEntries] = useState([])
+
+    // Retrieve log entries for use by the LastEntry and Precipitation components
+    const getLogEntries = () => {
+        DatabaseManager.getByUser("entries", sessionStorage.getItem("credentials"), "activities")
+        .then(entriesFromAPI => setLogEntries(entriesFromAPI))
+    }
+
+    useEffect(() => {
+        getLogEntries()
+    }, [])
 
     return (
         <main className="dashboard">
@@ -16,15 +30,15 @@ const Dashboard = (props) => {
                     <button type="button" className="button" onClick={() => props.history.push("/log/new")}>+ New Entry</button>
                 </div>
                 <div className="currentWeather">
-                    <CurrentWeather />
+                    <CurrentWeather logEntries={logEntries} />
                 </div>
                 <div className="water">
-                    Precipitation
+                    <Precipitation logEntries={logEntries} />
                 </div>
             </div>
             <div className="logEntries">
                 <div className="lastEntry">
-                    <LastEntry {...props} />
+                    <LastEntry logEntries={logEntries} />
                 </div>
                 <div className="nextSchedule">
                     Next scheduled item
