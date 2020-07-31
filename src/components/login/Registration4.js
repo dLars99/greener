@@ -1,3 +1,7 @@
+/* This component registers the fourth 
+user registration page, for the user's lot size
+Parent: Login */
+
 import React from "react"
 
 const Login = props => {

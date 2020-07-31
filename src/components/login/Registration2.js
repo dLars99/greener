@@ -6,16 +6,16 @@ const Login = props => {
     return (
         <>
             <div className="form--page">            
-                <div>
+                <div className="form--row">
                     <label htmlFor="address">Address</label>
                     <input type="text" id="address" placeholder="Address" onChange={props.handleFieldChange} />
                 </div>
-                <div>
+                <div className="form--row">
                     <label htmlFor="city">City</label>
                     <input type="text" id="city" placeholder="City" onChange={props.handleFieldChange} />
                 </div>
 
-                <div>
+                <div className="form--row">
                     <label htmlFor="state">State</label>
                     <select id="state" onChange={props.handleFieldChange}>
                         <option defaultValue=""></option>
@@ -26,7 +26,7 @@ const Login = props => {
                         })}
                     </select>
                 </div>
-                <div>
+                <div className="form--row">
                     <label htmlFor="zip">Zip</label>
                     <input type="text" id="zip" placeholder="00000" onChange={props.handleFieldChange} />
                 </div>
