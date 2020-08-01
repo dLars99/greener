@@ -3,22 +3,15 @@ log entry on the dashboard
 Parent: Dashboard */
 
 import React, { useState, useEffect } from "react"
-import DatabaseManager from "../../modules/DatabaseManager"
 import LogCard from "./LogCard"
 
 const LastEntry = (props) => {
 
     const [lastEntry, setLastEntry] = useState([])
 
-    const getLastEntry = () => {
-        // Get all the entries, then set state to the most recent entry
-        DatabaseManager.getByUser("entries", sessionStorage.getItem("credentials"), "activities")
-        .then(entriesFromAPI => setLastEntry(entriesFromAPI[entriesFromAPI.length - 1]))
-    }
-
     useEffect(() => {
-        getLastEntry()
-    }, [])
+        setLastEntry(props.logEntries[props.logEntries.length - 1])
+    }, [props.logEntries])
 
     return (
         <>

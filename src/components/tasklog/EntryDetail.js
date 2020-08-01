@@ -57,7 +57,7 @@ const TaskLog = (props) => {
                 {water &&
                 <>
                     <h3>Water Amount</h3>
-                    <p>{currentEntry.amount}</p>
+                    <p>{currentEntry.water}</p>
                 </>
                 }
                 <h3>Notes</h3>
