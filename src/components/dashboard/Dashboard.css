@@ -46,7 +46,8 @@
 
 .currentWeather--stats {
     display: flex;
-    align-items: center;
+    /* align-items: center; */
+    width: 100%;
     margin: .2rem;
 }
 
@@ -57,19 +58,23 @@
 }
 
 .currentWeather--icon img {
-    object-fit: contain;
+    height: 100%; 
+    object-fit: cover;
+    margin: 0;
 }
 
 .currentWeather--temp {
+    font-family: 'Mulish', sans-serif;
+    font-weight: bold;
+    padding-left: 1rem;
+    text-align: left;
     flex: 1;
-    padding-left: .2rem;
-    text-align: right;
 }
 
 .currentWeather--temp h3 {
     margin: 0;
     font-size: 3rem;
-    text-align: right;
+    text-align: left;
 }
 
 .currentWeather--temp p {
