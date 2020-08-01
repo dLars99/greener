@@ -1,3 +1,15 @@
+:root {
+    --light-green: #72A83D;
+    --green: #3E7C07;
+    --blue: #126C64;
+    --grey: #C3C9A6;
+    --bluegreen: #2A7C30;
+}
+
+body {
+    background-color: var(--grey);
+}
+
 .content-window {
     position: relative;
     min-height: 100vh;

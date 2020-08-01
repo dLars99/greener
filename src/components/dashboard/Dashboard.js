@@ -25,28 +25,28 @@ const Dashboard = (props) => {
                 Reminders and alerts
             </div>
             <div className="main-actions">
-                <div className="addNew">
+                <div className="dashboard--block addNew">
                     Record a new log entry
                     <button type="button" className="button" onClick={() => props.history.push("/log/new")}>+ New Entry</button>
                 </div>
-                <div className="currentWeather">
+                <div className="dashboard--block currentWeather">
                     <CurrentWeather />
                 </div>
-                <div className="water">
+                <div className="dashboard--block water">
                     {logEntries 
                     ? <Precipitation logEntries={logEntries} />
                     : null}
                 </div>
             </div>
             <div className="logEntries">
-                <div className="lastEntry">
+                <div className="dashboard--block lastEntry">
                     <LastEntry logEntries={logEntries} />
                 </div>
-                <div className="nextSchedule">
+                <div className="dashboard--block nextSchedule">
                     Next scheduled item
                 </div>
             </div>
-            <div className="randomTip">
+            <div className="dashboard--block randomTip">
                 Random tip from database
             </div>
         </main>

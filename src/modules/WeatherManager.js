@@ -13,6 +13,9 @@ export default {
     getPrecipitation(zip, weekAgoDate, todayDate) {
         return fetch(`${url}/historical?access_key=${key}&query=${zip}&historical_date_start=${weekAgoDate}&historical_date_end=${todayDate}&units=f&hourly=1&interval=24`)
         .then(response => response.json())
+    },
+    getForecast(zip) {
+        return fetch(`${url}/forecast?access_key=${key}&query=${zip}$forecast_days=5`.then(response => response.json()))
     }
 }
 
