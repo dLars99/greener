@@ -80,7 +80,7 @@ const EditEntry = props => {
             date: entry.date,
             length: entry.length,
             direction: entry.direction,
-            water: entry.water,
+            water: parseInt(entry.water),
             notes: entry.notes
         }
         const errorCheck = Validate(newEntry, newActivities)
@@ -156,7 +156,7 @@ const EditEntry = props => {
                         <option value="5">5"</option>
                         <option value="5.5">5.5"</option>
                         <option value="6">6"</option>
-                        <option value="10">&gt; 6"</option>
+                        <option value="7">&gt; 6"</option>
                     </select>
 
                     <label htmlFor="horizontal">Horizontal</label>
@@ -183,7 +183,7 @@ const EditEntry = props => {
                         <option value="1.5">1.5"</option>
                         <option value="1.75">1.75"</option>
                         <option value="2">2"</option>
-                        <option value="10">&gt; 2"</option>
+                        <option value="2.5">&gt; 2"</option>
                     </select>
                 </fieldset>
             }
