@@ -17,7 +17,7 @@ const Header = (props) => {
                     </Link>
                 </div>
                 <div className="userLogo">
-                    User Logo Goes Here
+                    {sessionStorage.userName}
                     <div onClick={props.clearUser}>Logout</div>
                 </div>
             </header>

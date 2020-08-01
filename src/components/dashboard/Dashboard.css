@@ -2,6 +2,8 @@
     display: flex;
     flex-direction: column;
     width: 100%;
+    padding: .2rem;
+    box-sizing: border-box;
 }
 
 .reminders {
@@ -13,14 +15,22 @@
     width: 100%;
 }
 
+.dashboard--block {
+    background-color: white;
+    margin: .4rem;
+    border-radius: 15px;
+    padding: .4rem;
+}
+
 .addNew {
-    flex: 2;
-    border: 1px dashed black;
+    /* box-shadow: -3px 10px 18px #888888; */
+    position: fixed;
+    bottom: 3em;
+    right: 20px;
 }
 
 .currentWeather {
     flex: 3;
-    border: 1px dashed black;
     display: flex;
     flex-direction: column;
 }
@@ -57,7 +67,9 @@
 
 .water {
     flex: 1;
-    border: 1px dashed black;
+    background-color: var(--blue);
+    color: white;
+    text-align: center;
 }
 
 .logEntries {
