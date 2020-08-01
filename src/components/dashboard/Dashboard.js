@@ -3,6 +3,7 @@ import DatabaseManager from "../../modules/DatabaseManager"
 import CurrentWeather from "../weather/CurrentWeather"
 import Precipitation from "../weather/Precipitation"
 import LastEntry from "../tasklog/LastEntry"
+import { PlusCircle } from "react-feather"
 import "./Dashboard.css"
 
 const Dashboard = (props) => {
@@ -27,7 +28,7 @@ const Dashboard = (props) => {
             <div className="main-actions">
                 <div className="dashboard--block addNew">
                     Record a new log entry
-                    <button type="button" className="button" onClick={() => props.history.push("/log/new")}>+ New Entry</button>
+                    <PlusCircle fill="green" color="white" size={48} onClick={() => props.history.push("/log/new")} />
                 </div>
                 <div className="dashboard--block currentWeather">
                     <CurrentWeather />
