@@ -6,17 +6,21 @@ import React from "react"
 
 const LogCard = props => {
 
+    // Consolidate activity list for display
+    const activities = (props.entry.activities) ? props.entry.activities.map(activity => activity.name) : []
+    const activityString = activities.join(", ")
+    
     return (
         <div className="card">
-            <h3>Date</h3>
-            <p>{props.entry.date}</p>
-            <h3>Activities</h3>
-            {props.entry.activities &&
-            props.entry.activities.map(activity => {
-                // Conditional eliminates key error before data is pulled
-                return (activity.id) ? <p key={activity.id}>{activity.name}</p> : null })
-            }
-            <h3>Notes</h3>
+            <div className="card--date">
+                <p>{props.entry.date}</p>
+            </div>
+            <div className="card--activities">
+                {activityString
+                ? activityString
+                : null}
+            </div>
+            <h3>Notes:</h3>
             <p>{props.entry.notes}</p>
             <p onClick={() => props.history.push(`/log/${props.entry.id}/details`, props.entry)}>View &gt;&gt;</p>
         </div>

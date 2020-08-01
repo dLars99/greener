@@ -10,6 +10,7 @@
     width: 100%;
     border: 1px dashed black;
 }
+
 .main-actions {
     display: flex;
     width: 100%;
@@ -46,7 +47,6 @@
 
 .currentWeather--stats {
     display: flex;
-    /* align-items: center; */
     width: 100%;
     margin: .2rem;
 }
@@ -85,7 +85,23 @@
     flex: 1;
     background-color: var(--blue);
     color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     text-align: center;
+}
+
+.water h3 {
+    margin: 0;
+}
+
+.water p {
+    margin: .4rem;
+}
+
+.water--total {
+    font-family: 'Mulish', sans-serif;
+    font-size: 2rem;
 }
 
 .logEntries {
@@ -95,7 +111,7 @@
 
 .lastEntry {
     flex: 1;
-    border: 1px dashed black;
+    box-shadow: 5px 5px 15px #888888;
 }
 
 .nextSchedule {

@@ -78,7 +78,7 @@ const TaskLog = (props) => {
     }, [searchDate, filterActivities])
 
     return (
-        <>
+        <div className="log">
             <div className="log--top">
                 <Link to="/">&lt; Back to Dashboard</Link>
                 <PlusCircle className="addNew" fill="#3E7C07" color="white" strokeWidth={1.5} size={72} onClick={() => props.history.push("/log/new")} />
@@ -89,7 +89,7 @@ const TaskLog = (props) => {
             <div className="logList">
                 {filteredEntries.map(entry => <LogCard key={entry.id} entry={entry} {...props} /> )}
             </div>
-        </>
+        </div>
     )
 }
 
