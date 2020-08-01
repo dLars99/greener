@@ -9,6 +9,7 @@ import DatabaseManager from "../../modules/DatabaseManager"
 import LogCard from "./LogCard"
 import SearchBox from "../search/SearchBox"
 import { BuildSearchArray, performFilter } from "../search/SearchFilter"
+import { PlusCircle } from "react-feather"
 import "./TaskLog.css"
 
 const TaskLog = (props) => {
@@ -80,7 +81,7 @@ const TaskLog = (props) => {
         <>
             <div className="log--top">
                 <Link to="/">&lt; Back to Dashboard</Link>
-                <button type="button" className="button" onClick={() => props.history.push("/log/new")}>+ New Entry</button>
+                <PlusCircle className="addNew" fill="#3E7C07" color="white" strokeWidth={1.5} size={72} onClick={() => props.history.push("/log/new")} />
             </div>
             <div className="log--filters">
                 <SearchBox activities={activities} filterEntries={filterEntries} clearSearch={clearSearch} {...props}/>
