@@ -1,8 +1,74 @@
+.form {
+    position: relative;
+    background-color: white;
+    margin: .4rem;
+    padding: .2rem;
+    box-sizing: border-box;
+    border-radius: 15px;
+    text-align: left;
+}
+
+.form--header {
+    border-bottom: 1px dashed black;
+    width: 90%;
+    margin: 0 auto;
+}
+.form h3 {
+    font-size: 1.6rem;
+    color: var(--green);
+    margin: .5rem 0 0;
+    text-align: center;
+}
+
+.form h4 {
+    font-size: 1.2rem;
+    color: var(--green);
+    margin: 0;
+}
+
+.form p {
+    margin: .1rem;
+}
+
+.close {
+    position: absolute;
+    top: .5rem;
+    right: 1rem;
+}
+
 fieldset {
     display: flex;
-    flex-direction: row;
-    align-items: flex-start;
+    flex-direction: column;
     height: auto;
+    border: none;
+    border-bottom: 1px dashed black;
+    padding: 2%;
+    width: 90%;
+    margin: 0 auto;
+}
+
+.activity--checkboxes {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+    font-size: 1.1rem;
+    padding: .5rem;
+}
+
+.activity--checkboxes input {
+    transform: scale(1.5);
+    vertical-align: middle;
+    margin: 0;
+}
+
+.activity--checkboxes label {
+    text-align: left;
+    margin: 0;
+    margin-right: .4rem;
+}
+
+.form--date input {
+    margin: .8rem;
 }
 
 .form--mowDirection {
@@ -11,12 +77,12 @@ fieldset {
     width: 100%;
 }
 
-/* .directions--mainRow [type=radio] { 
+.directions--mainRow [type=radio] { 
     position: absolute;
     opacity: 0;
     width: 0;
     height: 0;
-} */
+}
 
 /* IMAGE STYLES */
 [type=radio] + img {
@@ -60,4 +126,54 @@ fieldset {
 .form--radioOther input {
     margin: 0;
     vertical-align: middle;
+}
+
+.form--notes {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.mow--length select {
+    min-width: 4rem;
+    min-height: 2rem;
+}
+
+.water--amount select {
+    min-width: 4rem;
+    min-height: 2rem;
+}
+
+.form--notes {
+    box-sizing: border-box;
+}
+
+.form--notes label {
+    padding: 0;
+    margin: 0 2.5%;
+}
+
+.form--notes textarea {
+    width: 95%;
+    margin: 1rem auto;
+}
+
+input, select, textarea {
+    border: 1px solid var(--green);
+    border-radius: 5%;
+    padding: .2rem;
+    font-family: 'Mulish', sans-serif;
+    font-size: 1rem;
+}
+
+.form--button {
+    display: block;
+    font-family: 'Catamaran', sans-serif;
+    font-size: 1.4rem;
+    background-color: var(--green);
+    color: white;
+    border: none;
+    border-radius: 15px;
+    margin: .7rem auto;
+    padding: .4rem .8rem;
 }

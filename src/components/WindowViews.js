@@ -94,11 +94,6 @@ const WindowViews = (props) => {
                 }}
             />
 
-            {hasUser
-            ? <Footer />
-            : null
-            }
-
         </>
     )
 }
