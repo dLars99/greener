@@ -18,7 +18,7 @@ const Header = (props) => {
                 </div>
                 <div className="header--right">
                     <div className="userLogo">
-                        {sessionStorage.userName.charAt(0).toUpperCase()}
+                        <span className="userLogo--initial">{sessionStorage.userName.charAt(0).toUpperCase()}</span>
                     </div>
                     <div onClick={props.clearUser}>Logout</div>
                 </div>
