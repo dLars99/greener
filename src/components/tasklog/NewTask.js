@@ -119,7 +119,7 @@ const NewTask = (props) => {
                 </fieldset>
                 {/* These fields only appear if the user checks the "mow" activity */}
                 {mow &&
-                    <fieldset className="mowProperties hidden">
+                    <fieldset className="mowProperties">
                         <label htmlFor="length">Grass length before mowing</label>
                         <select name="length" id="length" onChange={handleFieldChange}>
                             <option defaultValue=""></option>
@@ -134,19 +134,38 @@ const NewTask = (props) => {
                             <option value="7">&gt; 6"</option>
                         </select>
 
-                        <label htmlFor="horizontal">Horizontal</label>
-                        <input type="radio" id="horizontal" name="direction" value="horizontal" checked={entry.direction === "horizontal"} onChange={handleFieldChange}/>
-                        <label htmlFor="vertical">Vertical</label>
-                        <input type="radio" id="vertical" name="direction" value="vertical" checked={entry.direction === "vertical"} onChange={handleFieldChange} />
-                        <label htmlFor="diagonal">Diagonal</label>
-                        <input type="radio" id="diagonal" name="direction" value="diagonal" checked={entry.direction === "diagonal"} onChange={handleFieldChange} />
-                        <label htmlFor="other">Other</label>
-                        <input type="radio" id="other" name="direction" value="other" checked={entry.direction === "other"} onChange={handleFieldChange} />
+                        <div className="form--mowDirection">
+                            <div className="directions--mainRow">
+                                <div className="form--directionRadio">
+                                    <label htmlFor="horizontal">
+                                        <input type="radio" id="horizontal" name="direction" value="horizontal" checked={entry.direction === "horizontal"} onChange={handleFieldChange}/>
+                                        Horizontal <img src={require("../../images/horizontal.jpg")} alt="Horizontal mow" ></img>
+                                    </label>
+                                </div>
+                                <div className="form--directionRadio">
+                                    <label htmlFor="vertical">
+                                        <input type="radio" id="vertical" name="direction" value="vertical" checked={entry.direction === "vertical"} onChange={handleFieldChange} />
+                                        Vertical <img src={require("../../images/vertical.jpg")} alt="Vertical mow" ></img> 
+                                     </label>
+                                </div>
+                                <div className="form--directionRadio">
+                                    <label htmlFor="diagonal">
+                                        <input type="radio" id="diagonal" name="direction" value="diagonal" checked={entry.direction === "diagonal"} onChange={handleFieldChange} />
+                                        Diagonal
+                                        <img src={require("../../images/diagonal.jpg")} alt="Diagonal mow" ></img>
+                                    </label>
+                                </div>
+                            </div>
+                            <div className="form--radioOther">
+                                <input type="radio" id="other" name="direction" value="other" checked={entry.direction === "other"} onChange={handleFieldChange} />
+                                <label htmlFor="other">Other</label>
+                            </div>
+                        </div>
                     </fieldset>
                 }
                 {/* These fields only appear if the user selects the "water" activity */}
                 {water &&
-                    <fieldset className="waterProperties hidden">
+                    <fieldset className="waterProperties">
                         <label htmlFor="water">Amount of water added</label>
                         <select name="water" id="water" onChange={handleFieldChange}>
                             <option defaultValue=""></option>

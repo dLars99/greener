@@ -81,6 +81,12 @@
     margin: 0;
 }
 
+.currentWeather--link {
+    display: flex;
+    justify-content: flex-end;
+    padding: 0 .5rem;  
+}
+
 .water {
     flex: 1;
     background-color: var(--blue);

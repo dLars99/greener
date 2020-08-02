@@ -61,7 +61,7 @@
     justify-content: space-evenly;
 }
 
-.card {
+.logList .card {
     flex: 1;
     padding: .5rem;
     margin: .5rem;

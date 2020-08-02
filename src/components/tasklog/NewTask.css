@@ -4,3 +4,60 @@ fieldset {
     align-items: flex-start;
     height: auto;
 }
+
+.form--mowDirection {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+/* .directions--mainRow [type=radio] { 
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+} */
+
+/* IMAGE STYLES */
+[type=radio] + img {
+    cursor: pointer;
+}
+
+/* CHECKED STYLES */
+[type=radio]:checked + img {
+    outline: 4px solid var(--blue);
+}
+
+.directions--mainRow {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.form--directionRadio img {
+    width: 25vw;
+    display: block;
+}
+
+.form--directionRadio input {
+    margin: 0;
+}
+
+.form--directionRadio label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.form--radioOther label {
+    vertical-align: middle;
+}
+
+.form--radioOther {
+    margin: 0 auto;
+}
+
+.form--radioOther input {
+    margin: 0;
+    vertical-align: middle;
+}

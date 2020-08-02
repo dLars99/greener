@@ -1,6 +1,6 @@
 /* This component renders the summary details
 for an individual log entry
-Parent: TaskLog */
+Parent: TaskLog, LastEntry */
 
 import React from "react"
 
