@@ -17,12 +17,9 @@ body {
     background-color: black;
 }
 .content-window {
+    position: relative;
+    min-height: 100vh;
     background-color: var(--grey);
     font-family: 'Catamaran', sans-serif;
     border-radius: 10px;
-}
-
-.content-window {
-    position: relative;
-    min-height: 100vh;
 }

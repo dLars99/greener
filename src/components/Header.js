@@ -16,8 +16,10 @@ const Header = (props) => {
                         View Log
                     </Link>
                 </div>
-                <div className="userLogo">
-                    {sessionStorage.userName}
+                <div className="header--right">
+                    <div className="userLogo">
+                        {sessionStorage.userName.charAt(0).toUpperCase()}
+                    </div>
                     <div onClick={props.clearUser}>Logout</div>
                 </div>
             </header>
