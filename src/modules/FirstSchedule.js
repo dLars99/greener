@@ -1,7 +1,7 @@
 /* This component is called when a user first registers an account.
 It will set up a schedule for common seasonal lawn care tasks. */
 
-import DatabaseManager from "../modules/DatabaseManager"
+import DatabaseManager from "./DatabaseManager"
 
 export function FirstSchedule() {
 
