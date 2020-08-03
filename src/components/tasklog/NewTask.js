@@ -5,6 +5,7 @@ to the database */
 import React, { useState, useEffect } from "react"
 import DatabaseManager from "../../modules/DatabaseManager"
 import { Validate } from "../../modules/Validate"
+import { XCircle } from "react-feather"
 import "./NewTask.css"
 
 const NewTask = (props) => {
@@ -97,9 +98,7 @@ const NewTask = (props) => {
     return (
         <section className="form">
 
-            <div className="close" onClick={() => {props.history.goBack()}}>
-                &times;
-            </div>
+        <XCircle className="close" color="#72A83D" strokeWidth={1} size={24} onClick={() => {props.history.goBack()}} />
 
             <form>
                 <div className="form--header">

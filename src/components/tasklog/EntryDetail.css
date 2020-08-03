@@ -11,7 +11,7 @@
 
 .close {
     position: absolute;
-    top: .5rem;
+    top: 1rem;
     right: 1rem;
 }
 
@@ -27,15 +27,5 @@
 .detail--buttonList {
     display: flex;
     justify-content: space-evenly;
-}
-
-.detail--button {
-    font-family: 'Catamaran', sans-serif;
-    font-size: 1.4rem;
-    background-color: var(--green);
-    color: white;
-    border: none;
-    margin: .5rem;
-    border-radius: 15px;
-    padding: .4rem .8rem;
+    margin: 2rem 0 .5rem;
 }

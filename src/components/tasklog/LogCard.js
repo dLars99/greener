@@ -3,6 +3,7 @@ for an individual log entry
 Parent: TaskLog, LastEntry */
 
 import React from "react"
+import { ChevronsRight } from "react-feather"
 
 const LogCard = props => {
 
@@ -25,7 +26,10 @@ const LogCard = props => {
             ? <p>{props.entry.notes}</p>
             : <p>None</p>
             }
-            <p onClick={() => props.history.push(`/log/${props.entry.id}/details`, props.entry)}>View &gt;&gt;</p>
+            <div className="log--link" onClick={() => props.history.push(`/log/${props.entry.id}/details`, props.entry)}>
+                View 
+                <ChevronsRight color="#72A83D" strokeWidth={1} size={20}/>
+            </div>
         </div>
     )
 }

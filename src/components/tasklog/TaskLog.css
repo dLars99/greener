@@ -6,11 +6,28 @@
     box-sizing: border-box;
 }
 
+.log--top {
+    background-color: white;
+    margin: .4rem .2rem 0;
+    padding: .2rem .4rem;
+}
+
+.log--link {
+    display: flex;
+    align-items: center;
+    color: var(--light-green)
+}
+
+.log--link:link, .log--link:visited {
+    text-decoration: none;
+    color: var(--light-green);
+}
+
 .log--filters {
     background-color: white;
     text-align: center;
     margin: 0 .2rem;
-    box-sizing: border-box;
+    padding: .2rem 0 0;
 }
 
 .log--filters h4 {

@@ -9,7 +9,7 @@ import DatabaseManager from "../../modules/DatabaseManager"
 import LogCard from "./LogCard"
 import SearchBox from "../search/SearchBox"
 import { BuildSearchArray, performFilter } from "../search/SearchFilter"
-import { PlusCircle } from "react-feather"
+import { ChevronsLeft, PlusCircle } from "react-feather"
 import "./TaskLog.css"
 
 const TaskLog = (props) => {
@@ -80,7 +80,10 @@ const TaskLog = (props) => {
     return (
         <div className="log">
             <div className="log--top">
-                <Link to="/">&lt; Back to Dashboard</Link>
+                <Link to="/" className="log--link">
+                <ChevronsLeft color="#72A83D" strokeWidth={1} size={20}/>
+                Back to Dashboard
+                </Link>
                 <PlusCircle className="addNew" fill="#3E7C07" color="white" strokeWidth={1.5} size={72} onClick={() => props.history.push("/log/new")} />
             </div>
             <div className="log--filters">
