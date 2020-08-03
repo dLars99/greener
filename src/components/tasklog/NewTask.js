@@ -5,6 +5,7 @@ to the database */
 import React, { useState, useEffect } from "react"
 import DatabaseManager from "../../modules/DatabaseManager"
 import { Validate } from "../../modules/Validate"
+import { XCircle } from "react-feather"
 import "./NewTask.css"
 
 const NewTask = (props) => {
@@ -95,79 +96,109 @@ const NewTask = (props) => {
     }, [])
 
     return (
-        <section>
+        <section className="form">
 
-            <div onClick={() => {props.history.goBack()}}>
-                X
-            </div>
+        <XCircle className="close" color="#72A83D" strokeWidth={1} size={24} onClick={() => {props.history.goBack()}} />
 
             <form>
+                <div className="form--header">
+                    <h3>New Log Entry</h3>
+                </div>
                 <fieldset>
-                    <h3>Activity</h3>
+                    <h4>Activity</h4>
                     <p>Check all that apply</p>
                     {/* Populate activities list from database */}
-                    {activities.map(activity => {
-                        return <span key={activity.id}>
-                            <input type="checkbox" id="activity" 
-                            name={activity.name} value={activity.id}
-                            onChange={handleActivityChange} />
-                            <label htmlFor={activity.name}>{activity.name}</label>
-                        </span>
-                    })}
-                    <input type="date" id="date" name="date" onChange={handleFieldChange}/>
-                    <label htmlFor="date">Date Completed</label>
+                    <div className="activity--checkboxes">
+                        {activities.map(activity => {
+                            return <div className="activity--selection" key={activity.id}>
+                                <input type="checkbox" id="activity" 
+                                name={activity.name} value={activity.id}
+                                onChange={handleActivityChange} />
+                                <label htmlFor={activity.name}>{activity.name}</label>
+                            </div>
+                        })}
+                    </div>
+                    <div className="form--date"> 
+                        <label htmlFor="date">Date Completed</label>
+                        <input type="date" id="date" name="date" onChange={handleFieldChange}/>
+                    </div>
                 </fieldset>
                 {/* These fields only appear if the user checks the "mow" activity */}
                 {mow &&
-                    <fieldset className="mowProperties hidden">
-                        <label htmlFor="length">Grass length before mowing</label>
-                        <select name="length" id="length" onChange={handleFieldChange}>
-                            <option defaultValue=""></option>
-                            <option value="2.5">2.5"</option>
-                            <option value="3">3"</option>
-                            <option value="3.5">3.5"</option>
-                            <option value="4">4"</option>
-                            <option value="4.5">4.5"</option>
-                            <option value="5">5"</option>
-                            <option value="5.5">5.5"</option>
-                            <option value="6">6"</option>
-                            <option value="7">&gt; 6"</option>
-                        </select>
+                    <fieldset className="mowProperties">
+                        <div className="mow--length">
+                            <label htmlFor="length">Grass length before mowing</label>
+                            <select name="length" id="length" onChange={handleFieldChange}>
+                                <option defaultValue=""></option>
+                                <option value="2.5">2.5"</option>
+                                <option value="3">3"</option>
+                                <option value="3.5">3.5"</option>
+                                <option value="4">4"</option>
+                                <option value="4.5">4.5"</option>
+                                <option value="5">5"</option>
+                                <option value="5.5">5.5"</option>
+                                <option value="6">6"</option>
+                                <option value="7">&gt; 6"</option>
+                            </select>
+                        </div>
 
-                        <label htmlFor="horizontal">Horizontal</label>
-                        <input type="radio" id="horizontal" name="direction" value="horizontal" checked={entry.direction === "horizontal"} onChange={handleFieldChange}/>
-                        <label htmlFor="vertical">Vertical</label>
-                        <input type="radio" id="vertical" name="direction" value="vertical" checked={entry.direction === "vertical"} onChange={handleFieldChange} />
-                        <label htmlFor="diagonal">Diagonal</label>
-                        <input type="radio" id="diagonal" name="direction" value="diagonal" checked={entry.direction === "diagonal"} onChange={handleFieldChange} />
-                        <label htmlFor="other">Other</label>
-                        <input type="radio" id="other" name="direction" value="other" checked={entry.direction === "other"} onChange={handleFieldChange} />
+                        <div className="form--mowDirection">
+                            <div className="directions--mainRow">
+                                <div className="form--directionRadio">
+                                    <label htmlFor="horizontal">
+                                        <input type="radio" id="horizontal" name="direction" value="horizontal" checked={entry.direction === "horizontal"} onChange={handleFieldChange}/>
+                                        Horizontal <img src={require("../../images/horizontal.jpg")} alt="Horizontal mow" ></img>
+                                    </label>
+                                </div>
+                                <div className="form--directionRadio">
+                                    <label htmlFor="vertical">
+                                        <input type="radio" id="vertical" name="direction" value="vertical" checked={entry.direction === "vertical"} onChange={handleFieldChange} />
+                                        Vertical <img src={require("../../images/vertical.jpg")} alt="Vertical mow" ></img> 
+                                     </label>
+                                </div>
+                                <div className="form--directionRadio">
+                                    <label htmlFor="diagonal">
+                                        <input type="radio" id="diagonal" name="direction" value="diagonal" checked={entry.direction === "diagonal"} onChange={handleFieldChange} />
+                                        Diagonal
+                                        <img src={require("../../images/diagonal.jpg")} alt="Diagonal mow" ></img>
+                                    </label>
+                                </div>
+                            </div>
+                            <div className="form--radioOther">
+                                <input type="radio" id="other" name="direction" value="other" checked={entry.direction === "other"} onChange={handleFieldChange} />
+                                <label htmlFor="other">Other</label>
+                            </div>
+                        </div>
                     </fieldset>
                 }
                 {/* These fields only appear if the user selects the "water" activity */}
                 {water &&
-                    <fieldset className="waterProperties hidden">
-                        <label htmlFor="water">Amount of water added</label>
-                        <select name="water" id="water" onChange={handleFieldChange}>
-                            <option defaultValue=""></option>
-                            <option value=".25">.25"</option>
-                            <option value=".5">.5"</option>
-                            <option value=".75">.75"</option>
-                            <option value="1">1.0"</option>
-                            <option value="1.25">1.25"</option>
-                            <option value="1.5">1.5"</option>
-                            <option value="1.75">1.75"</option>
-                            <option value="2">2"</option>
-                            <option value="2.5">&gt; 2"</option>
-                        </select>
+                    <fieldset className="waterProperties">
+                        <div className="water--amount">
+                            <label htmlFor="water">Amount of water added</label>
+                            <select name="water" id="water" onChange={handleFieldChange}>
+                                <option defaultValue=""></option>
+                                <option value=".25">.25"</option>
+                                <option value=".5">.5"</option>
+                                <option value=".75">.75"</option>
+                                <option value="1">1.0"</option>
+                                <option value="1.25">1.25"</option>
+                                <option value="1.5">1.5"</option>
+                                <option value="1.75">1.75"</option>
+                                <option value="2">2"</option>
+                                <option value="2.5">&gt; 2"</option>
+                            </select>
+                        </div>
                     </fieldset>
                 }
                 {/* The remaining fields are default */}
                 <fieldset>
-                    <label htmlFor="notes">Notes</label>
-                    <textarea id="notes" name="notes" rows="4" cols="40" onChange={handleFieldChange} placeholder="Found rabbit hole" />
+                    <div className="form--notes">
+                        <label htmlFor="notes">Notes</label>
+                        <textarea id="notes" name="notes" rows="4" cols="40" onChange={handleFieldChange} placeholder="Found rabbit hole" />
+                    </div>
                 </fieldset>
-                <button type="button" onClick={submitNewEvent} disabled={isLoading}>Complete Entry</button>
+                <button type="button" className="form--button" onClick={submitNewEvent} disabled={isLoading}>Complete Entry</button>
             </form>
 
         </section>

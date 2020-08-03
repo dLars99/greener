@@ -4,6 +4,9 @@ Parent: LogCard */
 
 import React, { useState, useEffect } from "react"
 import DatabaseManager from "../../modules/DatabaseManager"
+import { XCircle, Edit, Trash2 } from "react-feather"
+
+import "./EntryDetail.css"
 
 const TaskLog = (props) => {
     
@@ -13,6 +16,11 @@ const TaskLog = (props) => {
 
     // Entry information from LocationCard in the log
     const currentEntry = props.location.state
+
+    // Consolidate activity list for display
+    const activities = (currentEntry.activities) ? currentEntry.activities.map(activity => activity.name) : []
+    const activityString = activities.join(", ")
+    
 
     const handleDelete = id => {
         
@@ -32,24 +40,21 @@ const TaskLog = (props) => {
     }, [])
 
     return (
-        <article>
+        <article className="detail">
 
-            <div onClick={() => props.history.goBack()}>
-                X
-            </div>
+            <XCircle className="close" color="#72A83D" strokeWidth={1} size={24} onClick={() => {props.history.goBack()}} />
 
             <div className="card--detail">
-                <h3>Date</h3>
+                <h3 className="detail--date">Date</h3>
                 <p>{currentEntry.date}</p>
                 <h3>Activities</h3>
-                {currentEntry.activities.map(activity => {
-                    // Conditional eliminates key error before data is pulled
-                    return (activity.id) ? <p key={activity.id}>{activity.name}</p> : null })
-                }
+                <div className="card--activities">
+                    <p>{activityString}</p>
+                </div>
                 {mow &&
                 <>
                     <h3>Grass Length before Mow</h3>
-                    <p>{currentEntry.length}</p>
+                    <p>{currentEntry.length}"</p>
                     <h3>Mow Direction</h3>
                     <p>{currentEntry.direction}</p>
                 </>
@@ -61,11 +66,16 @@ const TaskLog = (props) => {
                 </>
                 }
                 <h3>Notes</h3>
-                <p>{currentEntry.notes}</p>
+                {currentEntry.notes !== ""
+                ? <p>{currentEntry.notes}</p>
+                : <p>None</p>
+            }   
             </div>
 
-            <button type="button" disabled={isLoading} onClick={() => props.history.push(`/log/${currentEntry.id}/edit`)}>Edit Entry</button>
-            <button type="button" disabled={isLoading} onClick={() => handleDelete(currentEntry.id)}>Delete Entry</button>
+            <div className="detail--buttonList">
+                <Edit color="#72A83D" strokeWidth={1} size={36} onClick={() => props.history.push(`/log/${currentEntry.id}/edit`)} />
+                <Trash2 color="#72A83D" strokeWidth={1} size={36} onClick={() => handleDelete(currentEntry.id)} />
+            </div>
 
         </article>
     )

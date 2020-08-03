@@ -25,7 +25,7 @@ const Dashboard = (props) => {
             <div className="reminders">
                 Reminders and alerts
             </div>
-            <PlusCircle className="addNew" fill="#3E7C07" color="white" size={72} onClick={() => props.history.push("/log/new")} />
+            <PlusCircle className="addNew" fill="#3E7C07" color="white" strokeWidth={1.5} size={72} onClick={() => props.history.push("/log/new")} />
 
             <div className="main-actions">
                 <div className="dashboard--block currentWeather">

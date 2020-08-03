@@ -9,7 +9,7 @@ import WeatherManager from "../../modules/WeatherManager"
 
 const Precipitation = (props) => {
 
-    const [totalWater, setTotalWater] = useState({rain: 0, added: 0, total: 0})
+    const [totalWater, setTotalWater] = useState({rain: 0, added: 0, total: -1})
 
     const getWeather = () => {
 
@@ -59,8 +59,14 @@ const Precipitation = (props) => {
 
     return (
         <>
-            <h4>{totalWater.total}"</h4>
-            <p>Total water for the past 7 days: </p>
+            <h3>Past 7 Days</h3>
+            <div className="water--total">
+                {totalWater.total !== -1
+                ?<p>{totalWater.total}"</p>
+                : <p className="loading">Loading...</p>
+                }
+            </div>
+            <p>Total water</p>
             {totalWater.total < 1.5
             ? <p>Water needed</p>
         : null}

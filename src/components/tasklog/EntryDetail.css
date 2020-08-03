@@ -1,0 +1,31 @@
+.detail {
+    position: relative;
+    background-color: white;
+    margin: .4rem;
+    padding: 1rem;
+    box-sizing: border-box;
+    border-radius: 15px;
+    text-align: left;
+    font-size: 1.3rem;
+}
+
+.close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+}
+
+.detail  h3 {
+    margin: 1rem .2rem .2rem .2rem;
+    color: var(--bluegreen)
+}
+
+.detail p {
+    margin: .2rem;
+}
+
+.detail--buttonList {
+    display: flex;
+    justify-content: space-evenly;
+    margin: 2rem 0 .5rem;
+}

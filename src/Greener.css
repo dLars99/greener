@@ -1,3 +1,4 @@
+/* Color palette */
 :root {
     --light-green: #72A83D;
     --green: #3E7C07;
@@ -6,11 +7,19 @@
     --bluegreen: #2A7C30;
 }
 
-body {
-    background-color: var(--grey);
-}
+/* Main font "Catamaran" */
+/* @import url('https://fonts.googleapis.com/css2?family=Varta:wght@300;400;500;600;700&display=swap'); */
 
+@import url('https://fonts.googleapis.com/css2?family=Catamaran:wght@100;200;300;400;500;600;700;800;900&family=Mulish:wght@400;500;600;700;800&display=swap');
+
+
+body {
+    background-color: white;
+}
 .content-window {
     position: relative;
     min-height: 100vh;
+    background-color: var(--grey);
+    font-family: 'Catamaran', sans-serif;
+    border-radius: 10px;
 }

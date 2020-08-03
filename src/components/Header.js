@@ -11,13 +11,17 @@ const Header = (props) => {
         <>
             <header>
                 <div className="title">
+                <Link className="header--link" to="/">
                     <h1>Grass is Greener</h1>
-                    <Link to="/log">
-                        View Log
+                </Link>
+                    <Link className="header--link" to="/log">
+                        <p>View Log</p>
                     </Link>
                 </div>
-                <div className="userLogo">
-                    {sessionStorage.userName}
+                <div className="header--right">
+                    <div className="userLogo">
+                        <span className="userLogo--initial">{sessionStorage.userName.charAt(0).toUpperCase()}</span>
+                    </div>
                     <div onClick={props.clearUser}>Logout</div>
                 </div>
             </header>
