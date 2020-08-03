@@ -1,0 +1,41 @@
+.detail {
+    position: relative;
+    background-color: white;
+    margin: .4rem;
+    padding: 1rem;
+    box-sizing: border-box;
+    border-radius: 15px;
+    text-align: left;
+    font-size: 1.3rem;
+}
+
+.close {
+    position: absolute;
+    top: .5rem;
+    right: 1rem;
+}
+
+.detail  h3 {
+    margin: 1rem .2rem .2rem .2rem;
+    color: var(--bluegreen)
+}
+
+.detail p {
+    margin: .2rem;
+}
+
+.detail--buttonList {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.detail--button {
+    font-family: 'Catamaran', sans-serif;
+    font-size: 1.4rem;
+    background-color: var(--green);
+    color: white;
+    border: none;
+    margin: .5rem;
+    border-radius: 15px;
+    padding: .4rem .8rem;
+}
