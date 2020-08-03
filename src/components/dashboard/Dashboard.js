@@ -39,7 +39,7 @@ const Dashboard = (props) => {
             </div>
             <div className="logEntries">
                 <div className="dashboard--block lastEntry">
-                    <LastEntry logEntries={logEntries} />
+                    <LastEntry logEntries={logEntries} {...props} />
                 </div>
                 <div className="dashboard--block nextSchedule">
                     Next scheduled item
