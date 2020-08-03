@@ -8,11 +8,11 @@ import React from "react"
 import Dashboard from "./dashboard/Dashboard"
 import Login from "./login/Login"
 import Header from "./Header"
-import Footer from "./Footer"
 import TaskLog from "./tasklog/TaskLog"
 import NewTask from "./tasklog/NewTask"
 import EntryDetail from "./tasklog/EntryDetail"
 import EditEntry from "./tasklog/EditEntry"
+import Forecast from "./weather/Forecast"
 
 const WindowViews = (props) => {
 
@@ -88,6 +88,17 @@ const WindowViews = (props) => {
                 render={props => {
                     if (hasUser) {
                         return <EditEntry {...props} />
+                    } else {
+                        return <Redirect to="/login" />
+                    }
+                }}
+            />
+
+            <Route
+                path="/forecast"
+                render={props => {
+                    if (hasUser) {
+                        return <Forecast {...props} />
                     } else {
                         return <Redirect to="/login" />
                     }
