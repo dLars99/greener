@@ -8,9 +8,24 @@ header {
     border-radius: 10px 10px 0 0;
 }
 
+
 .title {
     flex: 3;
     padding: 0 .5rem;
+}
+
+.title h1 {
+    margin: .2rem 0 0 .5rem;
+}
+
+.header--link p {
+    font-size: 1.2rem;
+    margin: 0 0 .2rem .5rem;
+}
+
+.header--link:link, .header--link:visited {
+    color: white;
+    text-decoration: none;
 }
 
 .header--right {
