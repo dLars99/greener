@@ -70,7 +70,7 @@ const Precipitation = (props) => {
                 }
             </div>
             <p>Total water</p>
-            {totalWater.total < 1.5
+            {totalWater.total < 1
             ? <Link to="/log/new">Add Water</Link>
         : null}
         </>
