@@ -1,0 +1,63 @@
+.forecast {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+}
+
+.forecast h3 {
+    margin: 0;
+    text-align: center;
+}
+
+.forecast--desc {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.forecast--desc h4 {
+    margin: 0;
+}
+
+.forecast--stats {
+    display: flex;
+    width: 100%;
+    margin: .2rem;
+}
+
+.forecast--icon {
+    display: flex;
+    justify-content: center;
+}
+
+.forecast--icon img {
+    height: 100%; 
+    object-fit: cover;
+    margin: 0;
+}
+
+.forecast--temp {
+    font-family: 'Mulish', sans-serif;
+    font-weight: bold;
+    padding-left: 1rem;
+    text-align: left;
+    flex: 1;
+}
+
+.forecast--temp h3 {
+    margin: 0;
+    font-size: 3rem;
+    text-align: left;
+}
+
+.forecast--temp p {
+    margin: 0;
+}
+
+.forecast--link {
+    display: flex;
+    justify-content: flex-end;
+    padding: 0 .5rem;  
+}

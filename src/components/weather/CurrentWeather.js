@@ -25,12 +25,12 @@ const CurrentWeather = () => {
         {Object.keys(weather).length !== 0
         ? <>
             <h3>Right Now</h3>
-            <div className="currentWeather--desc">
-                <h4>{weather.weather_descriptions}</h4>
-            </div>
             <div className="currentWeather--stats">
-                <div className="currentWeather--icon">
-                    <img src={`${weather.weather_icons}`} alt={weather.weather_descriptions} />
+                <div className="currentWeather--desc">
+                    <div className="currentWeather--icon">
+                        <img src={`${weather.weather_icons}`} alt={weather.weather_descriptions} />
+                    </div>
+                    <h4>{weather.weather_descriptions}</h4>
                 </div>
                 <div className="currentWeather--temp">
                     <h3>{weather.temperature}&#176;</h3>
