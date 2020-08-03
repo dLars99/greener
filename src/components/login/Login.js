@@ -12,6 +12,7 @@ import Registration2 from "./Registration2"
 import Registration3 from "./Registration3"
 import Registration4 from "./Registration4"
 import Registration5 from "./Registration5"
+import { FirstSchedule } from "../FirstSchedule"
 
 const Login = props => {
 
@@ -35,7 +36,6 @@ const Login = props => {
         } else if (typeof verifiedUser === "undefined") {
             alert("No match found. Please check your email and password or register")
         } else {
-            console.log(verifiedUser)
             props.setUser(verifiedUser)
             props.history.push("/")
         }
@@ -101,7 +101,8 @@ const Login = props => {
         DatabaseManager.addNew("users", newUser)
         .then((savedUser) => {
             props.setUser(savedUser)
-            props.history.push("/")
+            FirstSchedule().then((props.history.push("/")))
+            
         })
     }
 
