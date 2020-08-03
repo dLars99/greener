@@ -131,7 +131,7 @@ const EditEntry = props => {
                 <h3>Edit Log Entry</h3>
             </div>
 
-            <fieldset>
+            <fieldset className="form--section">
                 <h4>Activity</h4>
                 <p>Check all that apply</p>
                 {/* Populate activities list from database, checking activities that are part of the current entry */}
@@ -152,7 +152,7 @@ const EditEntry = props => {
             </fieldset>
             {/* These fields only appear if the user checks the "mow" activity */}
             {mow &&
-                <fieldset className="mowProperties">
+                <fieldset className="form--section" className="mowProperties">
                     <div className="mow--length">
                         <label htmlFor="length">Grass length before mowing</label>
                         <select name="length" id="length" onChange={handleFieldChange} value={entry.length}>
@@ -200,7 +200,7 @@ const EditEntry = props => {
             }
             {/* These fields only appear if the user checks the "water" activity */}
             {water &&
-                <fieldset className="waterProperties hidden">
+                <fieldset className="form--section" className="waterProperties hidden">
                     <div className="water--amount">
                         <label htmlFor="water">Amount of water added</label>
                         <select name="water" id="water" onChange={handleFieldChange} value={entry.water}>
@@ -219,7 +219,7 @@ const EditEntry = props => {
                 </fieldset>
             }
             {/* The remaining fields are default */}
-            <fieldset>
+            <fieldset className="form--section">
                 <div className="form--notes">
                     <label htmlFor="notes">Notes</label>
                     <textarea id="notes" name="notes" rows="4" cols="40" onChange={handleFieldChange} value={entry.notes} />

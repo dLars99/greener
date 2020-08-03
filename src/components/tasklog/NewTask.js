@@ -104,7 +104,7 @@ const NewTask = (props) => {
                 <div className="form--header">
                     <h3>New Log Entry</h3>
                 </div>
-                <fieldset>
+                <fieldset className="form--section">
                     <h4>Activity</h4>
                     <p>Check all that apply</p>
                     {/* Populate activities list from database */}
@@ -125,7 +125,7 @@ const NewTask = (props) => {
                 </fieldset>
                 {/* These fields only appear if the user checks the "mow" activity */}
                 {mow &&
-                    <fieldset className="mowProperties">
+                    <fieldset className="form--section" className="mowProperties">
                         <div className="mow--length">
                             <label htmlFor="length">Grass length before mowing</label>
                             <select name="length" id="length" onChange={handleFieldChange}>
@@ -173,7 +173,7 @@ const NewTask = (props) => {
                 }
                 {/* These fields only appear if the user selects the "water" activity */}
                 {water &&
-                    <fieldset className="waterProperties">
+                    <fieldset className="form--section" className="waterProperties">
                         <div className="water--amount">
                             <label htmlFor="water">Amount of water added</label>
                             <select name="water" id="water" onChange={handleFieldChange}>
@@ -192,7 +192,7 @@ const NewTask = (props) => {
                     </fieldset>
                 }
                 {/* The remaining fields are default */}
-                <fieldset>
+                <fieldset className="form--section">
                     <div className="form--notes">
                         <label htmlFor="notes">Notes</label>
                         <textarea id="notes" name="notes" rows="4" cols="40" onChange={handleFieldChange} placeholder="Found rabbit hole" />

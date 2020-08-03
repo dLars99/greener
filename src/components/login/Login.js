@@ -130,27 +130,27 @@ const Login = props => {
                 </form>
             </section>
         <form className="registration--form" name="registration">
-            <fieldset id="registrationOne">
+            <fieldset className="registration" id="registrationOne">
                 {regForm.One ?
                     <Registration1 dbUsers={dbUsers} handleFieldChange={handleFieldChange} toPartTwo={toPartTwo} />
                 : null}
             </fieldset>
-            <fieldset id="registrationTwo">
+            <fieldset className="registration" id="registrationTwo">
                 {regForm.Two ?
                     <Registration2 handleFieldChange={handleFieldChange} toPartThree={toPartThree} />
                 : null}
             </fieldset>
-            <fieldset id="registrationThree">
+            <fieldset className="registration" id="registrationThree">
                 {regForm.Three ?
                     <Registration3 revealMoreForm={revealMoreForm} toPartFour={toPartFour} zip={userLogin.zip} />
                 : null}
             </fieldset>
-            <fieldset id="registrationFour">
+            <fieldset className="registration" id="registrationFour">
                 {regForm.Four ?
                     <Registration4 handleFieldChange={handleFieldChange} toPartFive={toPartFive} />
                 : null}
             </fieldset>
-            <fieldset id="registrationFive">
+            <fieldset className="registration" id="registrationFive">
                 {regForm.Five ?
                 <>
                     <Registration5 userLogin={userLogin} registerNewUser={registerNewUser} />
