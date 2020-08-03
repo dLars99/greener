@@ -13,6 +13,11 @@
 .forecast--card {
     background-color: white;
     margin: .2rem;
+    border-radius: 15px;
+    padding: .4rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .forecast h3 {
@@ -20,9 +25,15 @@
     text-align: center;
 }
 
+.forecast--stats {
+    display: flex;
+    width: 100%;
+    margin: .2rem;
+    justify-content: center;
+}
+
 .forecast--desc {
     flex: 1;
-    max-width: 33%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -31,12 +42,6 @@
 
 .forecast--desc h4 {
     margin: 0;
-}
-
-.forecast--stats {
-    display: flex;
-    width: 100%;
-    margin: .2rem;
 }
 
 .forecast--icon {
@@ -53,14 +58,13 @@
 .forecast--temp {
     font-family: 'Mulish', sans-serif;
     font-weight: bold;
-    padding-left: 1rem;
     text-align: left;
     flex: 1;
 }
 
 .forecast--temp h3 {
     margin: 0;
-    font-size: 3rem;
+    font-size: 1.7rem;
     text-align: left;
 }
 
@@ -68,8 +72,14 @@
     margin: 0;
 }
 
-.forecast--link {
+.forecast--health {
     display: flex;
-    justify-content: flex-end;
-    padding: 0 .5rem;  
+    width: 100%;
+    justify-content: space-between;
+}
+
+.forecast--sun {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
 }
