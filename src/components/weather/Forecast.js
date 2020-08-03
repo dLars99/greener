@@ -7,18 +7,20 @@ import { Link } from "react-router-dom"
 import WeatherManager from "../../modules/WeatherManager"
 import ForecastCard from "./ForecastCard"
 import { ChevronsLeft, PlusCircle } from "react-feather"
+import "./Forecast.css"
 
 const Forecast = (props) => {
 
-    const [weather, setWeather] = useState({})
+    const [forecast, setForecast] = useState([])
 
     const getWeather = () => {
-        WeatherManager.getForecast()
+        WeatherManager.getForecast(sessionStorage.zip)
+        .then(forecastFromAPI => setForecast(forecastFromAPI.forecast.forecastday))
     }
     
-    // useEffect(() => {
-    //     getWeather()
-    // }, [])
+    useEffect(() => {
+        getWeather()
+    }, [])
 
     return (
         <>
@@ -35,7 +37,9 @@ const Forecast = (props) => {
                     <h3>Weather Forecast</h3>
                 </div>
                 <div className="forecast--list">
-                    <ForecastCard weather={weather} {...props} />
+                    {forecast 
+                    ? forecast.map(day => <ForecastCard key={day.date} weather={day} {...props} /> )
+                    : null}
                 </div>
             </section>
         </>

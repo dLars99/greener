@@ -16,7 +16,7 @@ const Precipitation = (props) => {
         const userZip = sessionStorage.zip
 
         const today = Date.now()
-        // Subtract (7 * 24 * 60 * 60 * 1000 = 604800000) to get 7 days ago
+        // Subtract (7 * 24 * 60 * 60 * 1000 = 604800000) to get last week's date
         const lastWeek = today - 604800000
         const startDate = convertDate(lastWeek)
         const endDate = convertDate(today)
@@ -37,10 +37,12 @@ const Precipitation = (props) => {
 
     const addWater = (weatherData, today, lastWeek) => {
 
+        const weatherHistory = weatherData.forecast.forecastday
+        console.log(weatherHistory)
+
         // Convert API objects to an iterable array and total precipitation
-        const historicalWeatherData = Object.values(weatherData.historical)
-        const rainfall = historicalWeatherData.reduce((acc, cur) => acc + cur.hourly[0].precip, 0)
-        
+        const rainfall = weatherHistory.reduce((acc, cur) => acc + cur.day.totalprecip_in, 0)
+        console.log(rainfall)
         // Find all recent log entries which add water and total water amounts
         const recentEntries = props.logEntries.filter(entry => new Date(entry.date).getTime() < today && new Date(entry.date).getTime() > lastWeek )
         const addedWater = parseInt(recentEntries.reduce((acc, cur) => acc + cur.water, 0))
