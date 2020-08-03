@@ -66,7 +66,10 @@ const TaskLog = (props) => {
                 </>
                 }
                 <h3>Notes</h3>
-                <p>{currentEntry.notes}</p>
+                {currentEntry.notes !== ""
+                ? <p>{currentEntry.notes}</p>
+                : <p>None</p>
+            }   
             </div>
 
             <div className="detail--buttonList">

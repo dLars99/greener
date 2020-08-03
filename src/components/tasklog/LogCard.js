@@ -21,7 +21,10 @@ const LogCard = props => {
                 : null}
             </div>
             <h3>Notes:</h3>
-            <p>{props.entry.notes}</p>
+            {props.entry.notes !== ""
+            ? <p>{props.entry.notes}</p>
+            : <p>None</p>
+            }
             <p onClick={() => props.history.push(`/log/${props.entry.id}/details`, props.entry)}>View &gt;&gt;</p>
         </div>
     )
