@@ -110,6 +110,10 @@
     font-size: 2rem;
 }
 
+.loading {
+    font-size: .9rem;
+}
+
 .logEntries {
     display: flex;
     width: 100%;
