@@ -6,6 +6,7 @@ Parent: Dashboard */
 
 import React, { useState, useEffect } from "react"
 import WeatherManager from "../../modules/WeatherManager"
+import { Link } from "react-router-dom"
 
 const Precipitation = (props) => {
 
@@ -69,8 +70,8 @@ const Precipitation = (props) => {
                 }
             </div>
             <p>Total water</p>
-            {totalWater.total < 1.5
-            ? <p>Water needed</p>
+            {totalWater.total < 1
+            ? <Link to="/log/new">Add Water</Link>
         : null}
         </>
     )
