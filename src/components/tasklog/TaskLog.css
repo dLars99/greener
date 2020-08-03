@@ -42,17 +42,24 @@
 }
 
 .search--clear {
-    color: var(--green);
-    text-align: center;
+    flex: 1;
+    color: var(--bluegreen);
+    text-align: left;
 }
 
 .search--date input {
     height: 1.2rem;
-    margin: .5rem .6rem .5rem .4rem;
+    margin: 0 .6rem .5rem 0;
+}
+
+.search--date {
+    flex: 2
 }
 
 .search--date label {
     margin: 0;
+    font-weight: 600;
+    color: var(--bluegreen);
 }
 
 .logList {
