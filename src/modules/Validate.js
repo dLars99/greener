@@ -41,7 +41,6 @@ export function VerifyUser(loginUser, existingUsers) {
 
     // 2. See if user data is correct in database, and return the user if present
     let verified = existingUsers.find(user => user.email === loginUser.email && user.password === loginUser.password)
-    console.log(verified)
     
     return verified
     

@@ -39,11 +39,9 @@ const Precipitation = (props) => {
     const addWater = (weatherData, today, lastWeek) => {
 
         const weatherHistory = weatherData.forecast.forecastday
-        console.log(weatherHistory)
 
         // Convert API objects to an iterable array and total precipitation
         const rainfall = weatherHistory.reduce((acc, cur) => acc + cur.day.totalprecip_in, 0)
-        console.log(rainfall)
         // Find all recent log entries which add water and total water amounts
         const recentEntries = props.logEntries.filter(entry => new Date(entry.date).getTime() < today && new Date(entry.date).getTime() > lastWeek )
         const addedWater = parseInt(recentEntries.reduce((acc, cur) => acc + cur.water, 0))
