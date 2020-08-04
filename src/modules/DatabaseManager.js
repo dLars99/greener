@@ -16,6 +16,9 @@ export default {
     getById(table, itemId, include) {
         return fetch(`${url}/${table}/${itemId}?include=${include}`).then(response => response.json())
     },
+    getAndExpand(table, id, expand) {
+        return fetch(`${url}/${table}?userId=${id}&expand=${expand}`).then(response => response.json())
+    },
     getJoinTable(table, entryId, activityId) {
         return fetch(`${url}/${table}?entryId=${entryId}&activityId=${activityId}`).then(response => response.json())
     },

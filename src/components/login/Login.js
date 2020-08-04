@@ -12,7 +12,7 @@ import Registration2 from "./Registration2"
 import Registration3 from "./Registration3"
 import Registration4 from "./Registration4"
 import Registration5 from "./Registration5"
-import { FirstSchedule } from "../FirstSchedule"
+import { FirstSchedule } from "../../modules/FirstSchedule"
 
 const Login = props => {
 

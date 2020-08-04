@@ -6,7 +6,7 @@
     box-sizing: border-box;
 }
 
-.reminders {
+.alerts {
     width: 100%;
     border: 1px dashed black;
 }

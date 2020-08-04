@@ -16,7 +16,8 @@ const Precipitation = (props) => {
 
         const userZip = sessionStorage.zip
 
-        const today = Date.now()
+        const todayUTC = new Date()
+        const today = new Date(todayUTC.getTime() + todayUTC.getTimezoneOffset() * 60000)
         // Subtract (7 * 24 * 60 * 60 * 1000 = 604800000) to get last week's date
         const lastWeek = today - 604800000
         const startDate = convertDate(lastWeek)

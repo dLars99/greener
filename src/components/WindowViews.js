@@ -13,6 +13,7 @@ import NewTask from "./tasklog/NewTask"
 import EntryDetail from "./tasklog/EntryDetail"
 import EditEntry from "./tasklog/EditEntry"
 import Forecast from "./weather/Forecast"
+import Reminders from "./reminders/Reminders"
 
 const WindowViews = (props) => {
 
@@ -105,6 +106,16 @@ const WindowViews = (props) => {
                 }}
             />
 
+            <Route
+                path="/reminders"
+                render={props => {
+                    if (hasUser) {
+                        return <Reminders {...props} />
+                    } else {
+                        return <Redirect to="/login" />
+                    }
+                }}
+            />
         </>
     )
 }
