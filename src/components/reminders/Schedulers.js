@@ -60,9 +60,11 @@ export function CheckElapsed(reminders) {
 }
 
 export function CheckForRecentEntry(reminders, entries) {
+    console.log("Reminders", reminders)
+    console.log("Entries", entries)
     let isRecent = false
     const recent = reminders.filter(reminder => 
-        entries.some(entry => new Date(entry.date) > new Date(reminder.startDate))
+        entries.some(entry => new Date(entry.date) >= new Date(reminder.startDate) && entry.activities.some(activity => activity.id === reminder.activityId))
     )
     console.log(recent)
     let remindersToDelete = []

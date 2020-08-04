@@ -16,6 +16,7 @@ const NextReminder = (props) => {
     const getReminders = () => {
         DatabaseManager.getAndExpand("reminders", parseInt(sessionStorage.credentials), "activity")
         .then(remindersFromAPI => {
+            console.log(props.logEntries)
             const scheduleChecks = [CheckFullYear(remindersFromAPI, props.logEntries), CheckElapsed(remindersFromAPI), CheckForRecentEntry(remindersFromAPI, props.logEntries)]
             Promise.all(scheduleChecks).then(checkArray => {
                 if (checkArray.some(scheduler => scheduler === true)) {
@@ -30,7 +31,7 @@ const NextReminder = (props) => {
 
     useEffect(() => {
         getReminders()    
-    }, [])
+    }, [props.logEntries])
 
     return (
         <>
