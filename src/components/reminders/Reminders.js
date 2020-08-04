@@ -16,7 +16,7 @@ const Reminders = (props) => {
     const [entries, setEntries] = useState([])
 
     const getReminders = () => {
-        DatabaseManager.getByUser("entries", parseInt(sessionStorage.credentials))
+        DatabaseManager.getByUser("entries", parseInt(sessionStorage.credentials), "activities")
         .then((entriesFromAPI) => {
             DatabaseManager.getAndExpand("reminders", parseInt(sessionStorage.credentials), "activity")
             .then(remindersFromAPI => {
