@@ -1,3 +1,15 @@
+.reminders--top {
+    background-color: white;
+    margin: .4rem .2rem 0;
+    padding: .2rem .4rem;
+}
+
+.reminders--link {
+    display: flex;
+    align-items: center;
+    color: var(--light-green)
+}
+
 .reminders--list {
     display: flex;
     flex-direction: column;

@@ -3,8 +3,10 @@ a users reminders for scheduled tasks.
 Parent: WindowViews */
 
 import React, { useState, useEffect } from "react"
+import { Link } from "react-router-dom"
 import DatabaseManager from "../../modules/DatabaseManager"
 import ReminderCard from "./ReminderCard"
+import { ChevronsLeft } from "react-feather"
 import "./Reminders.css"
 
 const Reminders = (props) => {
@@ -25,6 +27,13 @@ const Reminders = (props) => {
 
     return (
         <section className="reminders">
+            <div className="reminders--top">
+                <Link to="/" className="reminders--link">
+                <ChevronsLeft color="#72A83D" strokeWidth={1} size={20}/>
+                Back to Dashboard
+                </Link>
+            </div>
+
             <div className="reminders--header">
                 <h3>Lawn Care Schedule</h3>
                 <p>Scheduled based on recommended lawn care practices</p>
