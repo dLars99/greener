@@ -12,12 +12,17 @@ import "./Reminders.css"
 const Reminders = (props) => {
 
     const [reminders, setReminders] = useState([])
+    const [entries, setEntries] = useState([])
 
     const getReminders = () => {
-        DatabaseManager.getAndExpand("reminders", parseInt(sessionStorage.credentials), "activity")
-        .then(remindersFromAPI => {
-            const sortedReminders = remindersFromAPI.sort((a, b) => new Date (a.startDate) - new Date(b.startDate))
-            setReminders(sortedReminders)
+        DatabaseManager.getByUser("entries", parseInt(sessionStorage.credentials))
+        .then((entriesFromAPI) => {
+            DatabaseManager.getAndExpand("reminders", parseInt(sessionStorage.credentials), "activity")
+            .then(remindersFromAPI => {
+                const sortedReminders = remindersFromAPI.sort((a, b) => new Date (a.startDate) - new Date(b.startDate))
+                setReminders(sortedReminders)
+                setEntries(entriesFromAPI)
+            })
         })
     }
 
@@ -39,7 +44,10 @@ const Reminders = (props) => {
                 <p>Scheduled based on recommended lawn care practices</p>
             </div>
             <div className="reminders--list">
-                {reminders.map(reminder => <ReminderCard key={reminder.id} reminder={reminder} {...props} /> )}
+                {reminders.map(reminder => {
+                    const current = entries.some(entry => entry.activityId = reminder.activityId && new Date() > new Date(reminder.startDate))
+                    return <ReminderCard key={reminder.id} reminder={reminder} current={current} {...props} />
+                })}        
             </div>
         </section>
     )

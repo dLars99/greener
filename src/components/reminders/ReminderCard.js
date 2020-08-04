@@ -18,6 +18,12 @@ const ReminderCard = (props) => {
         <div className="reminders--card">
             <div className="reminderCard--header">
                 <h4>{props.reminder.activity.name}</h4>
+                {props.current
+                ? <div className="reminder--button">
+                        <button type="button" className="reminder--addNew">Add to Log</button>
+                    </div>
+                : null
+                }
             </div>
             <div className="reminderCard--date">
                 <p>{parseDate(props.reminder.startDate)}</p>
