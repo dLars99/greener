@@ -3,6 +3,7 @@ upcoming task in the dashboard.
 Parent: Dashboard */
 
 import React, { useState, useEffect } from "react"
+import { Link } from "react-router-dom"
 import DatabaseManager from "../../modules/DatabaseManager"
 import ReminderCard from "./ReminderCard"
 import "./Reminders.css"
@@ -30,6 +31,10 @@ const NextReminder = (props) => {
                 ? <ReminderCard reminder={nextReminder} {...props} />
                 : null
             }
+            <div className="currentWeather--link">
+                <Link to="/reminders">View full schedule &gt;</Link>
+            </div>
+
         </>
     )
 
