@@ -43,7 +43,7 @@ const Dashboard = (props) => {
                     <LastEntry logEntries={logEntries} {...props} />
                 </div>
                 <div className="dashboard--block nextSchedule">
-                    <NextReminder {...props} />
+                    <NextReminder logEntries={logEntries} {...props} />
                 </div>
             </div>
             <div className="dashboard--block randomTip">

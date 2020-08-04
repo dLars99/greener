@@ -5,6 +5,7 @@ Parent: Dashboard */
 import React, { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
 import DatabaseManager from "../../modules/DatabaseManager"
+import { CheckFullYear, CheckElapsed, CheckForRecentEntry } from "../reminders/Schedulers"
 import ReminderCard from "./ReminderCard"
 import "./Reminders.css"
 
@@ -15,8 +16,16 @@ const NextReminder = (props) => {
     const getReminders = () => {
         DatabaseManager.getAndExpand("reminders", parseInt(sessionStorage.credentials), "activity")
         .then(remindersFromAPI => {
-            const sortedReminders = remindersFromAPI.sort((a, b) => new Date (a.startDate) - new Date(b.startDate))
-            setNextReminder(sortedReminders[0])
+            const scheduleChecks = [CheckFullYear(remindersFromAPI, props.logEntries), CheckElapsed(remindersFromAPI), CheckForRecentEntry(remindersFromAPI, props.logEntries)]
+            Promise.all(scheduleChecks).then(checkArray => {
+                console.log(checkArray)
+                if (checkArray.some(scheduler => scheduler === true)) {
+                    getReminders()
+                } else {
+                    const sortedReminders = remindersFromAPI.sort((a, b) => new Date (a.startDate) - new Date(b.startDate))
+                    setNextReminder(sortedReminders[0])        
+                }
+            })
         })
     }
 
