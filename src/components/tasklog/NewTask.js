@@ -125,7 +125,7 @@ const NewTask = (props) => {
                 </fieldset>
                 {/* These fields only appear if the user checks the "mow" activity */}
                 {mow &&
-                    <fieldset className="form--section" className="mowProperties">
+                    <fieldset className="form--section mowProperties">
                         <div className="mow--length">
                             <label htmlFor="length">Grass length before mowing</label>
                             <select name="length" id="length" onChange={handleFieldChange}>
@@ -173,7 +173,7 @@ const NewTask = (props) => {
                 }
                 {/* These fields only appear if the user selects the "water" activity */}
                 {water &&
-                    <fieldset className="form--section" className="waterProperties">
+                    <fieldset className="form--section waterProperties">
                         <div className="water--amount">
                             <label htmlFor="water">Amount of water added</label>
                             <select name="water" id="water" onChange={handleFieldChange}>

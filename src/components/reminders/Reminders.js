@@ -5,6 +5,7 @@ Parent: WindowViews */
 import React, { useState, useEffect } from "react"
 import DatabaseManager from "../../modules/DatabaseManager"
 import ReminderCard from "./ReminderCard"
+import "./Reminders.css"
 
 const Reminders = (props) => {
 
@@ -12,7 +13,10 @@ const Reminders = (props) => {
 
     const getReminders = () => {
         DatabaseManager.getAndExpand("reminders", parseInt(sessionStorage.credentials), "activity")
-        .then(remindersFromAPI => setReminders(remindersFromAPI))
+        .then(remindersFromAPI => {
+            const sortedReminders = remindersFromAPI.sort((a, b) => new Date (a.startDate) - new Date(b.startDate))
+            setReminders(sortedReminders)
+        })
     }
 
     useEffect(() => {
