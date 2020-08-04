@@ -25,7 +25,7 @@ export function CheckFullYear(reminders, entries) {
         let dateString = convertDate(newDate)
         const thisYear = new Date().getFullYear()
         if (newDate > new Date(`11/01/${parseInt(thisYear)}`).getTime() && newDate < (`03/15/${parseInt(thisYear + 1)}`).getTime()) {
-            dateString = `${activity.firstAnnualDate}/${parseInt(thisYear + 1)}`
+            dateString = `${parseInt(thisYear + 1)}-${activity.firstAnnualDate}`
         } else {
             dateString = convertDate(newDate)
         }

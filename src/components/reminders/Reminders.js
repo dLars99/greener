@@ -5,6 +5,7 @@ Parent: WindowViews */
 import React, { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
 import DatabaseManager from "../../modules/DatabaseManager"
+import { CheckFullYear, CheckElapsed, CheckForRecentEntry } from "../reminders/Schedulers"
 import ReminderCard from "./ReminderCard"
 import { ChevronsLeft } from "react-feather"
 import "./Reminders.css"
@@ -19,9 +20,16 @@ const Reminders = (props) => {
         .then((entriesFromAPI) => {
             DatabaseManager.getAndExpand("reminders", parseInt(sessionStorage.credentials), "activity")
             .then(remindersFromAPI => {
-                const sortedReminders = remindersFromAPI.sort((a, b) => new Date (a.startDate) - new Date(b.startDate))
-                setReminders(sortedReminders)
-                setEntries(entriesFromAPI)
+                const scheduleChecks = [CheckFullYear(remindersFromAPI, entriesFromAPI), CheckElapsed(remindersFromAPI), CheckForRecentEntry(remindersFromAPI, entriesFromAPI)]
+                Promise.all(scheduleChecks).then(checkArray => {
+                    if (checkArray.some(scheduler => scheduler === true)) {
+                        getReminders()
+                    } else {
+                        const sortedReminders = remindersFromAPI.sort((a, b) => new Date (a.startDate) - new Date(b.startDate))
+                        setReminders(sortedReminders)
+                        setEntries(entriesFromAPI)
+                    }
+                })
             })
         })
     }

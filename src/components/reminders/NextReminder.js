@@ -18,12 +18,11 @@ const NextReminder = (props) => {
         .then(remindersFromAPI => {
             const scheduleChecks = [CheckFullYear(remindersFromAPI, props.logEntries), CheckElapsed(remindersFromAPI), CheckForRecentEntry(remindersFromAPI, props.logEntries)]
             Promise.all(scheduleChecks).then(checkArray => {
-                console.log(checkArray)
                 if (checkArray.some(scheduler => scheduler === true)) {
                     getReminders()
                 } else {
                     const sortedReminders = remindersFromAPI.sort((a, b) => new Date (a.startDate) - new Date(b.startDate))
-                    setNextReminder(sortedReminders[0])        
+                    setNextReminder(sortedReminders[0])     
                 }
             })
         })
