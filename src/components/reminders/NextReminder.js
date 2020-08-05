@@ -16,12 +16,15 @@ const NextReminder = (props) => {
     const getReminders = () => {
         DatabaseManager.getAndExpand("reminders", parseInt(sessionStorage.credentials), "activity")
         .then(remindersFromAPI => {
-            checkSchedule(remindersFromAPI, props.logEntries)
+            DatabaseManager.getByUser("entries", parseInt(sessionStorage.credentials), "activities")
+            .then((entriesFromAPI) => { 
+                checkSchedule(remindersFromAPI, entriesFromAPI)
+            })
         })
     }
 
-    async function checkSchedule(remindersFromAPI, logEntries) {
-        const scheduleUpdated = await CheckForRecentEntry(remindersFromAPI, logEntries)
+    async function checkSchedule(remindersFromAPI, entriesFromAPI) {
+        const scheduleUpdated = await CheckForRecentEntry(remindersFromAPI, entriesFromAPI)
         if (scheduleUpdated) {getReminders()}
 
         const scheduleOverdue = await CheckElapsed(remindersFromAPI)
@@ -33,7 +36,7 @@ const NextReminder = (props) => {
 
     useEffect(() => {
         getReminders()    
-    }, [props.logEntries])
+    }, [])
 
     return (
         <>

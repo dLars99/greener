@@ -39,7 +39,6 @@ export function CheckFullYear(reminders) {
             isUpdated = true
         })
         
-        console.log("Checked for full year", isUpdated)
         return Promise.all(savedActivities).then(() => isUpdated)
     })
 
@@ -57,7 +56,6 @@ export function CheckElapsed(reminders) {
             deleted = true
         }
     })
-    console.log("Checked for elapsed", deleted)
     return Promise.all(remindersToDelete).then(() => deleted)
 
 }
@@ -76,7 +74,6 @@ export function CheckForRecentEntry(reminders, entries) {
         isRecent = true
     }
 
-    console.log("Checked for log entries", isRecent)
     return Promise.all(remindersToDelete).then(() => isRecent)
     
 }
