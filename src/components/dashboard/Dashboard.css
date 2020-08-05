@@ -135,3 +135,11 @@
     flex: 1;
     border: 1px dashed black;
 }
+
+.randomTip p {
+    margin: 0;
+}
+
+.randomTip h3 {
+    margin: .4rem 1rem;
+}
