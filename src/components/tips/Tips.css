@@ -5,6 +5,10 @@
     margin: .2rem;
 }
 
+.tips--top {
+    width: 100%;
+}
+
 .tips--header {
     background-color: white;
     width: 90%;
