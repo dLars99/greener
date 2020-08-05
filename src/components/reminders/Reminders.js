@@ -20,6 +20,7 @@ const Reminders = (props) => {
         .then((entriesFromAPI) => {
             DatabaseManager.getAndExpand("reminders", parseInt(sessionStorage.credentials), "activity")
             .then(remindersFromAPI => {
+                console.log(remindersFromAPI)
                 const scheduleChecks = [CheckFullYear(remindersFromAPI, entriesFromAPI), CheckElapsed(remindersFromAPI), CheckForRecentEntry(remindersFromAPI, entriesFromAPI)]
                 Promise.all(scheduleChecks).then(checkArray => {
                     if (checkArray.some(scheduler => scheduler === true)) {

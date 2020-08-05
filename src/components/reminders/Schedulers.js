@@ -3,31 +3,32 @@ import { convertDate } from "../../modules/Helpers"
 
 // Check activity categories one-by-one to make sure the correct number of reminders exists for the full year
 export function CheckFullYear(reminders) {
-    console.log(reminders)
     DatabaseManager.getAll("activities").then(activitiesList => {
-
-            const activitiesToAdd = activitiesList.filter(activity => {
-                const reminderCount = reminders.reduce((count, cur) => {
-                    if (cur.activityId === activity.id) {
+        console.log(reminders)
+        const activitiesToAdd = activitiesList.filter(activity => {
+            const reminderCount = reminders.reduce((count, cur) => {
+                if (cur.activityId === activity.id) {
                     count++
-                    }
-                    return count
-                }, 0)
-            console.log(reminderCount, activity.repeat)
-            return reminderCount < activity.repeat
-            })
-        
+                }
+                return count
+            }, 0)
+        return reminderCount < activity.repeat
+        })
+        console.log(reminders)
         console.log(activitiesToAdd)
         // Sort by date, newest on top
-        const sortedReminders = reminders.sort((a, b) => new Date(a.date) - new Date(b.date))
+        const sortedReminders = reminders.sort((a, b) => new Date(b.date) - new Date(a.date))
         let isUpdated = false
         let savedActivities = []
         // Set date for next occurrence of needed activities and save to database
         activitiesToAdd.forEach(activity => {
+            console.log(activity)
             const lastReminder = sortedReminders.find(reminder => reminder.activityId = activity.id)
+            console.log(lastReminder)
             // Add the interval number of days to the last occurrence to get the new date
             let newDate = new Date(`${lastReminder.startDate}T00:00:00`).getTime() + (86400000 * activity.interval)
             let dateString = convertDate(newDate)
+            console.log(dateString)
             const thisYear = new Date().getFullYear()
             if (newDate > new Date(`11/01/${parseInt(thisYear)}`).getTime() && newDate < new Date(`03/15/${parseInt(thisYear + 1)}`).getTime()) {
                 dateString = `${parseInt(thisYear + 1)}-${activity.firstAnnualDate}`
