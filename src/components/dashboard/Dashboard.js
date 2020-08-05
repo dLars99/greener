@@ -11,11 +11,18 @@ import "./Dashboard.css"
 const Dashboard = (props) => {
 
     const [logEntries, setLogEntries] = useState([])
+    const [alerts, setAlerts] = useState([])
 
     // Retrieve log entries for use by the LastEntry and Precipitation components
     const getLogEntries = () => {
         DatabaseManager.getByUser("entries", sessionStorage.getItem("credentials"), "activities")
         .then(entriesFromAPI => setLogEntries(entriesFromAPI))
+    }
+
+    const addAlert = (componentAlert) => {
+        let updatedAlerts = [...alerts]
+        updatedAlerts.push(componentAlert)
+        setAlerts(updatedAlerts)
     }
 
     useEffect(() => {
@@ -25,13 +32,16 @@ const Dashboard = (props) => {
     return (
         <main className="dashboard">
             <div className="alerts">
-                Reminders and alerts
+                {alerts.length !== 0
+                 ? <p>Reminders and Alerts</p>
+                : null
+                }
             </div>
             <PlusCircle className="addNew" fill="#3E7C07" color="white" strokeWidth={1.5} size={72} onClick={() => props.history.push("/log/new")} />
 
             <div className="main-actions">
                 <div className="dashboard--block currentWeather">
-                    <CurrentWeather />
+                    <CurrentWeather addAlert={addAlert} />
                 </div>
                 <div className="dashboard--block water">
                     {logEntries 
@@ -45,7 +55,7 @@ const Dashboard = (props) => {
                 </div>
                 <div className="dashboard--block nextSchedule">
                     {logEntries
-                    ? <NextReminder logEntries={logEntries} {...props} />
+                    ? <NextReminder logEntries={logEntries} addAlert={addAlert} {...props} />
                     : null}
                 </div>
             </div>

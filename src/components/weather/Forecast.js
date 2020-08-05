@@ -14,7 +14,7 @@ const Forecast = (props) => {
     const [forecast, setForecast] = useState([])
 
     const getWeather = () => {
-        WeatherManager.getForecast(sessionStorage.zip)
+        WeatherManager.getForecast(sessionStorage.zip, 6)
         .then(forecastFromAPI => setForecast(forecastFromAPI.forecast.forecastday))
     }
     

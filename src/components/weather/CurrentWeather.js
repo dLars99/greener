@@ -6,14 +6,37 @@ import React, { useState, useEffect } from "react"
 import WeatherManager from "../../modules/WeatherManager"
 import { Link } from "react-router-dom"
 
-const CurrentWeather = () => {
+const CurrentWeather = (props) => {
 
     const [weather, setWeather] = useState({})
     
     const getCurrentWeather = () => {
-        const userZip = sessionStorage.zip
-        WeatherManager.getCurrent(userZip)
-        .then(weatherFromAPI => setWeather(weatherFromAPI.current))
+        WeatherManager.getForecast(sessionStorage.zip, 1)
+        .then(weatherFromAPI => {
+            setWeather(weatherFromAPI.current)
+            sendAlerts(weatherFromAPI)
+        })
+    }
+
+    const sendAlerts = (weatherData) => {
+        // Alert for high heat
+        console.log(weatherData)
+        if (weatherData.forecast.forecastday[0].day.maxtemp_f > 90 || weatherData.current.feelslike_f > 90) {
+            props.addAlert({type: "heat", condition: "red"})
+        }
+        
+        // Warning/alert for UV
+        if (weatherData.forecast.forecastday[0].day.uv >= 3 && weatherData.forecast.forecastday[0].day.uv < 6) {
+            props.addAlert({type: "uv", condition: "yellow"})
+        } else if (weatherData.forecast.forecastday[0].day.uv > 6) {
+            props.addAlert({type: "uv", condition: "red"})
+        }
+        // Alert for current weather conditions
+        props.addAlert({type: weatherData.current.condition.code, condition: "red"})
+
+        // Warning for predicted weather
+        props.addAlert({type: weatherData.forecast.forecastday[0].day.condition.code, condition: "yellow"})
+
     }
 
     useEffect(() => {

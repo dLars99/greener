@@ -7,14 +7,11 @@ const key = process.env.REACT_APP_WEATHERAPI_KEY
 
 // Fetch calls
 export default {
-    getCurrent(zip) {
-        return fetch(`${url}/current.json?key=${key}&q=${zip}`).then(response => response.json())
-    },
     getPrecipitation(zip, weekAgoDate, todayDate) {
     return fetch(`${url}/history.json?key=${key}&q=${zip}&dt=${weekAgoDate}&end_dt=${todayDate}`)
         .then(response => response.json())
     },
-    getForecast(zip) {
-        return fetch(`${url}/forecast.json?key=${key}&q=${zip}&days=5`).then(response => response.json())
+    getForecast(zip, days) {
+        return fetch(`${url}/forecast.json?key=${key}&q=${zip}&days=${days}`).then(response => response.json())
     }
 }

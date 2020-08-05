@@ -133,7 +133,7 @@
 
 .nextSchedule {
     flex: 1;
-    border: 1px dashed black;
+    box-shadow: 5px 5px 15px #888888;
 }
 
 .randomTip p {
