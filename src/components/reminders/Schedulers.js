@@ -4,7 +4,6 @@ import { convertDate } from "../../modules/Helpers"
 // Check activity categories one-by-one to make sure the correct number of reminders exists for the full year
 export function CheckFullYear(reminders) {
     DatabaseManager.getAll("activities").then(activitiesList => {
-        console.log(reminders)
         const activitiesToAdd = activitiesList.filter(activity => {
             const reminderCount = reminders.reduce((count, cur) => {
                 if (cur.activityId === activity.id) {
@@ -14,8 +13,6 @@ export function CheckFullYear(reminders) {
             }, 0)
         return reminderCount < activity.repeat
         })
-        console.log(reminders)
-        console.log(activitiesToAdd)
         // Sort by date, newest on top
         const sortedReminders = reminders.sort((a, b) => new Date(b.date) - new Date(a.date))
         let isUpdated = false
@@ -60,7 +57,6 @@ export function CheckElapsed(reminders) {
             deleted = true
         }
     })
-    console.log(remindersToDelete.length)
     console.log("Checked for elapsed", deleted)
     return Promise.all(remindersToDelete).then(() => deleted)
 
@@ -71,7 +67,6 @@ export function CheckForRecentEntry(reminders, entries) {
     const recent = reminders.filter(reminder => 
         entries.some(entry => new Date(entry.date) >= new Date(reminder.startDate) && entry.activities.some(activity => activity.id === reminder.activityId))
     )
-    console.log(recent)
     let remindersToDelete = []
 
     if (recent.length > 0) {

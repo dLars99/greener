@@ -30,14 +30,14 @@ const Reminders = (props) => {
         const scheduleLength = await CheckFullYear(remindersFromAPI, entriesFromAPI)
         if (scheduleLength) {getReminders()}
 
-        const scheduleOverdue = await CheckElapsed(remindersFromAPI)
-        if (scheduleOverdue) {getReminders()}
-
         const scheduleUpdated = await CheckForRecentEntry(remindersFromAPI, entriesFromAPI)
         if (scheduleUpdated) {getReminders()}
 
+        const scheduleOverdue = await CheckElapsed(remindersFromAPI)
         const sortedReminders = remindersFromAPI.sort((a, b) => new Date (a.startDate) - new Date(b.startDate))
         setReminders(sortedReminders)
+        if (scheduleOverdue) {getReminders()} else
+
         setEntries(entriesFromAPI)
     }
 
