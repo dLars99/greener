@@ -20,7 +20,7 @@ const ReminderCard = (props) => {
                 <h4>{props.reminder.activity.name}</h4>
                 {props.current
                 ? <div className="reminder--button">
-                        <button type="button" className="reminder--addNew">Add to Log</button>
+                        <button type="button" className="reminder--addNew" onClick={() => props.history.push("/log/new")}>Add to Log</button>
                     </div>
                 : null
                 }
