@@ -19,23 +19,25 @@ const CurrentWeather = (props) => {
     }
 
     const sendAlerts = (weatherData) => {
+        const alertsToSend = []
         // Alert for high heat
-        console.log(weatherData)
-        if (weatherData.forecast.forecastday[0].day.maxtemp_f > 90 || weatherData.current.feelslike_f > 90) {
-            props.addAlert({type: "heat", condition: "red"})
+        if (weatherData.forecast.forecastday[0].day.maxtemp_f > 90 || weatherData.current.feelslike_f > 92) {
+            alertsToSend.push({type: "heat", condition: "red"})
         }
         
         // Warning/alert for UV
         if (weatherData.forecast.forecastday[0].day.uv >= 3 && weatherData.forecast.forecastday[0].day.uv < 6) {
-            props.addAlert({type: "uv", condition: "yellow"})
+            alertsToSend.push({type: "uv", condition: "yellow", data: "yellow"})
         } else if (weatherData.forecast.forecastday[0].day.uv > 6) {
-            props.addAlert({type: "uv", condition: "red"})
+            alertsToSend.push({type: "uv", condition: "red", data: "red"})
         }
         // Alert for current weather conditions
-        props.addAlert({type: weatherData.current.condition.code, condition: "red"})
+        alertsToSend.push({type: "weather", condition: "red", data: weatherData.current.condition.code})
 
         // Warning for predicted weather
-        props.addAlert({type: weatherData.forecast.forecastday[0].day.condition.code, condition: "yellow"})
+        alertsToSend.push({type: "weather", condition: "yellow", data: weatherData.forecast.forecastday[0].day.condition.code})
+
+        props.addAlert(alertsToSend)
 
     }
 

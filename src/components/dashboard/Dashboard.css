@@ -143,3 +143,18 @@
 .randomTip h3 {
     margin: .4rem 1rem;
 }
+
+.redAlert {
+    background-color: red;
+    color: white;
+}
+
+.yellowAlert {
+    background-color: yellow;
+}
+
+.alert--box {
+    border: 2px solid white;
+    width: 100%;
+    box-sizing: border-box;
+}

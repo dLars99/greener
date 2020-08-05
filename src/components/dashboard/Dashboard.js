@@ -20,10 +20,12 @@ const Dashboard = (props) => {
         .then(entriesFromAPI => setLogEntries(entriesFromAPI))
     }
 
+    // Instantiate update array outside of function to work around asynchronous setState issues
+    const updatedAlerts = []
     const addAlert = (componentAlert) => {
-        let updatedAlerts = [...alerts]
-        updatedAlerts.push(componentAlert)
-        setAlerts(updatedAlerts)
+        const mergedAlerts = updatedAlerts.concat(componentAlert)
+        console.log(mergedAlerts)
+        setAlerts(mergedAlerts)
     }
 
     useEffect(() => {
@@ -34,7 +36,7 @@ const Dashboard = (props) => {
         <main className="dashboard">
             <div className="alerts">
                 {alerts.length !== 0
-                 ? alerts.map(warning => <Alerts key={alerts.indexOf(warning)} warning={warning} /> )
+                 ? <Alerts alerts={alerts} />
                 : null
                 }
             </div>

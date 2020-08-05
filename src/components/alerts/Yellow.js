@@ -3,11 +3,14 @@
 Parent: Alerts */
 
 import React from "react"
+import { AlertTriangle } from "react-feather"
 
 const Yellow = (props) => {
 
     return (
-        <p>Yellow</p>
+        <div className="yellowAlert alert--box">
+            <AlertTriangle color="orange" strokeWidth={1.5} />{props.warning}
+        </div>
     )
 }
 
