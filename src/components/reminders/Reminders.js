@@ -20,7 +20,6 @@ const Reminders = (props) => {
         .then((entriesFromAPI) => {
             DatabaseManager.getAndExpand("reminders", parseInt(sessionStorage.credentials), "activity")
             .then(remindersFromAPI => {
-                console.log(remindersFromAPI)
                 checkSchedule(remindersFromAPI, entriesFromAPI)
             })
         })
@@ -60,7 +59,7 @@ const Reminders = (props) => {
             </div>
             <div className="reminders--list">
                 {reminders.map(reminder => {
-                    const current = entries.some(entry => entry.activityId = reminder.activityId && new Date() > new Date(reminder.startDate))
+                    const current = new Date() > new Date(reminder.startDate)
                     return <ReminderCard key={reminder.id} reminder={reminder} current={current} {...props} />
                 })}        
             </div>

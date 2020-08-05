@@ -11,7 +11,7 @@ import "./Reminders.css"
 
 const NextReminder = (props) => {
 
-    const [nextReminder, setNextReminder] = useState([])
+    const [nextReminder, setNextReminder] = useState()
     
     const getReminders = () => {
         DatabaseManager.getAndExpand("reminders", parseInt(sessionStorage.credentials), "activity")
@@ -37,7 +37,16 @@ const NextReminder = (props) => {
                 props.addAlert(alert)
             })
         }
+
     }
+
+    useEffect(() => {
+        if (nextReminder) {
+            if (new Date() > new Date(nextReminder.startDate)) {
+                props.addAlert([{type: "current", data: nextReminder.activity.name}])
+            }
+        }
+    }, [nextReminder])
 
     useEffect(() => {
         getReminders()    
@@ -46,7 +55,7 @@ const NextReminder = (props) => {
     return (
         <>
             <h3>Coming Up</h3>
-            {nextReminder.length !== 0
+            {nextReminder
                 ? <ReminderCard reminder={nextReminder} {...props} />
                 : null
             }

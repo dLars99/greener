@@ -9,7 +9,7 @@ const Red = (props) => {
 
     return (
         <div className="redAlert alert--box">
-            <XOctagon color="white" strokeWidth={1.5} />{props.warning}
+            <XOctagon color="white" strokeWidth={1.5} />{props.warning.message}
         </div>
     )
 }

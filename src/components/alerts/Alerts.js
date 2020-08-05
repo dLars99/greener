@@ -13,7 +13,7 @@ const Alerts = (props) => {
     const [redAlerts, setRedAlerts] = useState([])
     const [yellowAlerts, setYellowAlerts] = useState([])
 
-    // Create an appropriate warning or alert based on the weather code
+    // Create an appropriate warning or alert based on the weather code. Red = current; yellow = forecast.
     const sortWeather = (warning) => {
         const updateRed = [...redAlerts]
         const updateYellow = [...yellowAlerts]
@@ -62,8 +62,6 @@ const Alerts = (props) => {
             default:
                 return
         }
-        // setRedAlerts(updateRed)
-        // setYellowAlerts(updateYellow)
     }
     
     const sortAlerts = () => {
@@ -72,17 +70,19 @@ const Alerts = (props) => {
         if (props.alerts.length > 0) {
             const updateRed = [...redAlerts]
             const updateYellow = [...yellowAlerts]
+            let counter = 0
             props.alerts.forEach(warning => {
+                counter++
                 console.log(warning)
                 switch (warning.type) {
                     case "heat":
-                        updateRed.push("Dangerous heat today! Do your work in the morning or evening hours if possible.")
+                        updateRed.push({key: counter, message: "Dangerous heat today! Do your work in the morning or evening hours if possible."})
                         break
                         case "uv":
                             if (warning.data === "yellow") {
-                                yellowAlerts.push("UV levels elevated. Take precautions and avoid peak hours if possible.")
+                                updateYellow.push({key: counter, message: "UV levels elevated. Take precautions and avoid peak hours if possible."})
                             } else if (warning.data === "red") {
-                                updateRed.push("UV levels are high! Wear protective clothing and sunscreen and avoid peak daytime hours.")
+                                updateRed.push({key: counter, message: "UV levels are high! Wear protective clothing and sunscreen and avoid peak daytime hours."})
                             }
                             break
                         case "weather":
@@ -90,15 +90,19 @@ const Alerts = (props) => {
                             console.log(weatherAlert)
                             if (weatherAlert) {
                                 if (weatherAlert.type = "yellow") {
-                                    updateYellow.push(weatherAlert.message)
+                                    updateYellow.push({key: counter, message: weatherAlert.message})
                                 }
                             }
                                 break
+                        case "current":
+                            updateYellow.push({key: counter, message: `It's time to ${warning.data}!`})
+                            break
                         case "elapsed":
-                            updateRed.push(`${warning.data} is past due.`)
+                            updateRed.push({key: counter, message: `${warning.data} is past due.`})
                             break                
                         }
             })
+            console.log(updateRed)
             setRedAlerts(updateRed)
             setYellowAlerts(updateYellow)
         }
@@ -110,8 +114,8 @@ const Alerts = (props) => {
 
     return (
         <>
-            {redAlerts.map(red => <Red key={redAlerts.indexOf(red) + 1} warning={red} {...props}/>)}
-            {yellowAlerts.map(yellow => <Yellow key={redAlerts.indexOf(yellow) + 1} warning={yellow} {...props}/>)}
+            {redAlerts.map(red => <Red key={red.key} warning={red} {...props}/>)}
+            {yellowAlerts.map(yellow => <Yellow key={yellow.key} warning={yellow} {...props}/>)}
         </>
     )
 }
