@@ -81,8 +81,8 @@ const TaskLog = (props) => {
         <div className="log">
             <div className="log--top">
                 <Link to="/" className="log--link">
-                <ChevronsLeft color="#72A83D" strokeWidth={1} size={20}/>
-                Back to Dashboard
+                    <ChevronsLeft color="#72A83D" strokeWidth={1} size={20}/>
+                    Back to Dashboard
                 </Link>
                 <PlusCircle className="addNew" fill="#3E7C07" color="white" strokeWidth={1.5} size={72} onClick={() => props.history.push("/log/new")} />
             </div>
