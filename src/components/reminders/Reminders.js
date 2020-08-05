@@ -21,18 +21,24 @@ const Reminders = (props) => {
             DatabaseManager.getAndExpand("reminders", parseInt(sessionStorage.credentials), "activity")
             .then(remindersFromAPI => {
                 console.log(remindersFromAPI)
-                const scheduleChecks = [CheckFullYear(remindersFromAPI, entriesFromAPI), CheckElapsed(remindersFromAPI), CheckForRecentEntry(remindersFromAPI, entriesFromAPI)]
-                Promise.all(scheduleChecks).then(checkArray => {
-                    if (checkArray.some(scheduler => scheduler === true)) {
-                        getReminders()
-                    } else {
-                        const sortedReminders = remindersFromAPI.sort((a, b) => new Date (a.startDate) - new Date(b.startDate))
-                        setReminders(sortedReminders)
-                        setEntries(entriesFromAPI)
-                    }
-                })
+                checkSchedule(remindersFromAPI, entriesFromAPI)
             })
         })
+    }
+
+    async function checkSchedule(remindersFromAPI, entriesFromAPI) {
+        const scheduleLength = await CheckFullYear(remindersFromAPI, entriesFromAPI)
+        if (scheduleLength) {getReminders()}
+
+        const scheduleOverdue = await CheckElapsed(remindersFromAPI)
+        if (scheduleOverdue) {getReminders()}
+
+        const scheduleUpdated = await CheckForRecentEntry(remindersFromAPI, entriesFromAPI)
+        if (scheduleUpdated) {getReminders()}
+
+        const sortedReminders = remindersFromAPI.sort((a, b) => new Date (a.startDate) - new Date(b.startDate))
+        setReminders(sortedReminders)
+        setEntries(entriesFromAPI)
     }
 
     useEffect(() => {

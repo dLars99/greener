@@ -60,7 +60,7 @@ export function CheckElapsed(reminders) {
             deleted = true
         }
     })
-
+    console.log(remindersToDelete.length)
     console.log("Checked for elapsed", deleted)
     return Promise.all(remindersToDelete).then(() => deleted)
 
