@@ -17,7 +17,7 @@ const Alerts = (props) => {
 
     return (
         <>
-            {yellowAlerts.map(yellow => <Yellow key={key} alert={yellow} {...props}/>)}
+            {yellowAlerts.map(yellow => <Yellow key={redAlerts.indexOf(yellow) + 1} alert={yellow} {...props}/>)}
             {redAlerts.map(red => <Red key={redAlerts.indexOf(red) + 1} alert={red} {...props}/>)}
         </>
     )

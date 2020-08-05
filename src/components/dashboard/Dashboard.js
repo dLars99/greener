@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react"
 import DatabaseManager from "../../modules/DatabaseManager"
+import Alerts from "../alerts/Alerts"
 import CurrentWeather from "../weather/CurrentWeather"
 import Precipitation from "../weather/Precipitation"
 import LastEntry from "../tasklog/LastEntry"
@@ -33,7 +34,7 @@ const Dashboard = (props) => {
         <main className="dashboard">
             <div className="alerts">
                 {alerts.length !== 0
-                 ? <p>Reminders and Alerts</p>
+                 ? alerts.map(warning => <Alerts key={alerts.indexOf(warning)} warning={warning} /> )
                 : null
                 }
             </div>

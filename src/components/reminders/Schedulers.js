@@ -48,12 +48,14 @@ export function CheckElapsed(reminders) {
 
     const elapsedReminders = reminders.filter(reminder => new Date() > new Date(reminder.endDate))
 
-    let deleted = []
+    let deleted = false
     let remindersToDelete = []
     elapsedReminders.forEach(reminder => {
         if (window.confirm(`The window to ${reminder.activity.name} has passed! Do you want to remove it from your list?`)) {
             remindersToDelete.push(DatabaseManager.deleteObject("reminders", reminder.id))
-            deleted.push(reminder)
+            deleted = true
+        } else {
+            deleted = [{type: reminder, condition: "red"}]
         }
     })
     return Promise.all(remindersToDelete).then(() => deleted)
