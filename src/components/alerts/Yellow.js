@@ -9,7 +9,10 @@ const Yellow = (props) => {
 
     return (
         <div className="yellowAlert alert--box">
-            <AlertTriangle color="orange" strokeWidth={1.5} />{props.warning.message}
+            <div className="alert--icon">
+                <AlertTriangle color="orange" strokeWidth={1.5} />
+            </div>
+            {props.warning.message}
         </div>
     )
 }

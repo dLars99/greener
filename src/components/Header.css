@@ -38,7 +38,7 @@ header {
 
 .userLogo {
     text-align: center;
-    border: 4px solid rgba(255, 255, 255, 0.8);
+    border: 4px solid rgba(255, 255, 255, 0.85);
     border-radius: 50%;
     width: 40px;
     height: 40px;
@@ -52,5 +52,5 @@ header {
     font-size: 30px;
     line-height: 30px;
     font-family: monospace;
-    color: rgba(255, 255, 255, 0.8);
+    color: rgba(255, 255, 255, 0.7);
 }

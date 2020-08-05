@@ -157,4 +157,11 @@
     border: 1px solid white;
     width: 100%;
     box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    font-size: .8rem;
+}
+
+.alert--icon {
+    margin: 0 .3rem;
 }
