@@ -44,5 +44,14 @@ export default {
             },
             body: JSON.stringify(updatedObject)
         })
+    },
+    getRandom(table) {
+        return fetch(`${url}/${table}`)
+        .then(result => result.json())
+        .then(items => {
+            const randomIndex = Math.floor(Math.random() * items.length);
+            const randomItem = items[randomIndex];
+            return randomItem         
+        });
     }
 } 

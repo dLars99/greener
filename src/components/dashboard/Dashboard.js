@@ -4,6 +4,7 @@ import CurrentWeather from "../weather/CurrentWeather"
 import Precipitation from "../weather/Precipitation"
 import LastEntry from "../tasklog/LastEntry"
 import NextReminder from "../reminders/NextReminder"
+import RandomTip from "../tips/RandomTip"
 import { PlusCircle } from "react-feather"
 import "./Dashboard.css"
 
@@ -49,7 +50,7 @@ const Dashboard = (props) => {
                 </div>
             </div>
             <div className="dashboard--block randomTip">
-                Random tip from database
+                <RandomTip {...props} />
             </div>
         </main>
     )
