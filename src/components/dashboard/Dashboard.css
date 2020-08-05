@@ -133,7 +133,7 @@
 
 .nextSchedule {
     flex: 1;
-    border: 1px dashed black;
+    box-shadow: 5px 5px 15px #888888;
 }
 
 .randomTip p {
@@ -142,4 +142,26 @@
 
 .randomTip h3 {
     margin: .4rem 1rem;
+}
+
+.redAlert {
+    background-color: red;
+    color: white;
+}
+
+.yellowAlert {
+    background-color: yellow;
+}
+
+.alert--box {
+    border: 1px solid white;
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    font-size: .8rem;
+}
+
+.alert--icon {
+    margin: 0 .3rem;
 }

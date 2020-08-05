@@ -54,6 +54,8 @@ export function CheckElapsed(reminders) {
         if (window.confirm(`The window to ${reminder.activity.name} has passed! Do you want to remove it from your list?`)) {
             remindersToDelete.push(DatabaseManager.deleteObject("reminders", reminder.id))
             deleted = true
+        } else {
+            deleted = [{type: "elapsed", condition: "red", data: reminder.activity.name}]
         }
     })
     return Promise.all(remindersToDelete).then(() => deleted)
