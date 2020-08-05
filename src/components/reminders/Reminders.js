@@ -5,6 +5,7 @@ Parent: WindowViews */
 import React, { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
 import DatabaseManager from "../../modules/DatabaseManager"
+import { CheckFullYear, CheckElapsed, CheckForRecentEntry } from "../reminders/Schedulers"
 import ReminderCard from "./ReminderCard"
 import { ChevronsLeft } from "react-feather"
 import "./Reminders.css"
@@ -12,13 +13,32 @@ import "./Reminders.css"
 const Reminders = (props) => {
 
     const [reminders, setReminders] = useState([])
+    const [entries, setEntries] = useState([])
 
     const getReminders = () => {
-        DatabaseManager.getAndExpand("reminders", parseInt(sessionStorage.credentials), "activity")
-        .then(remindersFromAPI => {
-            const sortedReminders = remindersFromAPI.sort((a, b) => new Date (a.startDate) - new Date(b.startDate))
-            setReminders(sortedReminders)
+        DatabaseManager.getByUser("entries", parseInt(sessionStorage.credentials), "activities")
+        .then((entriesFromAPI) => {
+            DatabaseManager.getAndExpand("reminders", parseInt(sessionStorage.credentials), "activity")
+            .then(remindersFromAPI => {
+                console.log(remindersFromAPI)
+                checkSchedule(remindersFromAPI, entriesFromAPI)
+            })
         })
+    }
+
+    async function checkSchedule(remindersFromAPI, entriesFromAPI) {
+        const scheduleLength = await CheckFullYear(remindersFromAPI, entriesFromAPI)
+        if (scheduleLength) {getReminders()}
+
+        const scheduleUpdated = await CheckForRecentEntry(remindersFromAPI, entriesFromAPI)
+        if (scheduleUpdated) {getReminders()}
+
+        const scheduleOverdue = await CheckElapsed(remindersFromAPI)
+        const sortedReminders = remindersFromAPI.sort((a, b) => new Date (a.startDate) - new Date(b.startDate))
+        setReminders(sortedReminders)
+        if (scheduleOverdue) {getReminders()} else
+
+        setEntries(entriesFromAPI)
     }
 
     useEffect(() => {
@@ -39,7 +59,10 @@ const Reminders = (props) => {
                 <p>Scheduled based on recommended lawn care practices</p>
             </div>
             <div className="reminders--list">
-                {reminders.map(reminder => <ReminderCard key={reminder.id} reminder={reminder} {...props} /> )}
+                {reminders.map(reminder => {
+                    const current = entries.some(entry => entry.activityId = reminder.activityId && new Date() > new Date(reminder.startDate))
+                    return <ReminderCard key={reminder.id} reminder={reminder} current={current} {...props} />
+                })}        
             </div>
         </section>
     )

@@ -12,7 +12,6 @@ const TaskLog = (props) => {
     
     const [mow, setMow] = useState(false)
     const [water, setWater] = useState(false)
-    const [isLoading, setIsLoading] = useState(true)
 
     // Entry information from LocationCard in the log
     const currentEntry = props.location.state
@@ -25,7 +24,6 @@ const TaskLog = (props) => {
     const handleDelete = id => {
         
         if (window.confirm("This will permanently delete this entry")) {
-            setIsLoading(true)
             DatabaseManager.deleteObject("entries", id)
             .then(() => props.history.push("/log"))
         }
@@ -36,7 +34,6 @@ const TaskLog = (props) => {
         setMow(mowExists)
         const waterExists = currentEntry.activities.some(activity => activity.name === "Water")
         setWater(waterExists)
-        setIsLoading(false)
     }, [])
 
     return (
