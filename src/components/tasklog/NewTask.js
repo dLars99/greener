@@ -55,12 +55,14 @@ const NewTask = (props) => {
     }
 
     const handleImage = async evt => {
+        setIsLoading(true)
         const updatedState = {...entry}
         const files = evt.target.files
         ImageManager.uploadImage(files[0])
         .then((imgURL) => {
             updatedState.picture = imgURL
             setEntry(updatedState)
+            setIsLoading(false)
         })
     }
 
