@@ -192,9 +192,9 @@ const NewTask = (props) => {
                             <label htmlFor="water">Amount of water added</label>
                             <select name="water" id="water" onChange={handleFieldChange}>
                                 <option defaultValue=""></option>
-                                <option value=".25">.25"</option>
-                                <option value=".5">.5"</option>
-                                <option value=".75">.75"</option>
+                                <option value="0.25">.25"</option>
+                                <option value="0.5">.5"</option>
+                                <option value="0.75">.75"</option>
                                 <option value="1">1.0"</option>
                                 <option value="1.25">1.25"</option>
                                 <option value="1.5">1.5"</option>

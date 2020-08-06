@@ -4,6 +4,7 @@ Parent: LogCard */
 
 import React, { useState, useEffect } from "react"
 import DatabaseManager from "../../modules/DatabaseManager"
+import ImageManager from "../../modules/ImageManager"
 import { Validate } from "../../modules/Validate"
 import { XCircle } from "react-feather"
 import "./NewTask.css"
@@ -52,6 +53,18 @@ const EditEntry = props => {
         setEntry(updatedState)
     }
 
+    const handleImage = async evt => {
+        setIsLoading(true)
+        const updatedState = {...entry}
+        const files = evt.target.files
+        ImageManager.uploadImage(files[0])
+        .then((imgURL) => {
+            updatedState.picture = imgURL
+            setEntry(updatedState)
+            setIsLoading(false)
+        })
+    }
+
     useEffect(() => {
         // First, retrieve the relevant entry
         DatabaseManager.getById("entries", props.match.params.entryId, "activities")
@@ -82,8 +95,9 @@ const EditEntry = props => {
             date: entry.date,
             length: entry.length,
             direction: entry.direction,
-            water: parseInt(entry.water),
-            notes: entry.notes
+            water: parseFloat(entry.water),
+            notes: entry.notes,
+            picture: entry.picture
         }
         const errorCheck = Validate(newEntry, newActivities)
         if (errorCheck !== "") {
@@ -205,9 +219,9 @@ const EditEntry = props => {
                         <label htmlFor="water">Amount of water added</label>
                         <select name="water" id="water" onChange={handleFieldChange} value={entry.water}>
                             <option value=""></option>
-                            <option value=".25">.25"</option>
-                            <option value=".5">.5"</option>
-                            <option value=".75">.75"</option>
+                            <option value="0.25">.25"</option>
+                            <option value="0.5">.5"</option>
+                            <option value="0.75">.75"</option>
                             <option value="1">1.0"</option>
                             <option value="1.25">1.25"</option>
                             <option value="1.5">1.5"</option>
@@ -218,12 +232,22 @@ const EditEntry = props => {
                     </div>
                 </fieldset>
             }
-            {/* The remaining fields are default */}
+            {/* The remaining fields are default and optional */}
             <fieldset className="form--section">
                 <div className="form--notes">
                     <label htmlFor="notes">Notes</label>
                     <textarea id="notes" name="notes" rows="4" cols="40" onChange={handleFieldChange} value={entry.notes} />
                 </div>
+                <div className="form--picture">
+                        <label htmlFor="file">Picture</label>
+                        <input type="file" id="file" placeholder="Image.jpg" onChange={handleImage}/>
+                    </div>
+                    <div className="form--imgPreview">
+                        {entry.picture
+                        ? <img src={entry.picture} alt="Image preview" className="picture--upload" />
+                        : null
+                        }
+                    </div>
             </fieldset>
             <button type="button" className="form--button" disabled={isLoading} onClick={submitEditedEvent}>Update Entry</button>
         </form>
