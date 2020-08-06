@@ -5,6 +5,7 @@ Parent: Login */
 
 import React, { useState, useEffect } from "react"
 import ClimateManager from "../../modules/ClimateManager"
+import { ArrowDownCircle } from "react-feather"
 
 const Login = props => {
 
@@ -27,7 +28,9 @@ const Login = props => {
                     <p>We're sorry.</p>
                     <p>We could not find the plant hardiness zone for your zip code.</p>
                 </> }
-                <button type="button" onClick={() => props.toPartFour(phz.zone)}>Continue</button>
+                <div className="buttonDiv">
+                    <ArrowDownCircle color="white" strokeWidth={1.5} size={36} onClick={() => props.toPartFour(phz.zone)} />
+                </div>
             </div>
         </>
     )

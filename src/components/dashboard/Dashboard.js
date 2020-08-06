@@ -23,9 +23,7 @@ const Dashboard = (props) => {
     // Instantiate update array outside of function to work around asynchronous setState issues
     const updatedAlerts = []
     const addAlert = (componentAlert) => {
-        console.log(componentAlert)
         const mergedAlerts = updatedAlerts.concat(componentAlert)
-        console.log(mergedAlerts)
         setAlerts(mergedAlerts)
     }
 

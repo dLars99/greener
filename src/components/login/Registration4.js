@@ -3,6 +3,7 @@ user registration page, for the user's lot size
 Parent: Login */
 
 import React from "react"
+import { ArrowDownCircle } from "react-feather"
 
 const Login = props => {
 
@@ -25,7 +26,9 @@ const Login = props => {
                         <li>Google Earth will give you the area. <strong>Default is in square meters.</strong> Make sure to change it to square feet.</li>
                         <li>Type the number you get into the box above. That's all!</li>
                     </ol>
-                    <button type="button" onClick={props.toPartFive}>Continue</button>
+                    <div className="buttonDiv">
+                        <ArrowDownCircle color="white" strokeWidth={1.5} size={36} onClick={props.toPartFive} />
+                    </div>
                 </div>
            </div>
         </>

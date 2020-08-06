@@ -13,6 +13,7 @@ import Registration3 from "./Registration3"
 import Registration4 from "./Registration4"
 import Registration5 from "./Registration5"
 import { FirstSchedule } from "../../modules/FirstSchedule"
+import { ArrowRightCircle } from "react-feather"
 
 const Login = props => {
 
@@ -126,7 +127,9 @@ const Login = props => {
                         <input type="email" id="email" autoComplete="username" placeholder="Email" onChange={handleFieldChange} />
                         <input type="password" id="password" autoComplete="password" placeholder="Password" onChange={handleFieldChange} />
                     </div>
-                    <button type="button" disabled={isLoading} name="login" onClick={signIn}>-&gt;</button>
+                    <div className="login--button">
+                        <ArrowRightCircle color="white" strokeWidth={1.5} size={36} onClick={signIn} />
+                    </div>
                 </form>
             </section>
         <form className="registration--form" name="registration">
@@ -154,7 +157,7 @@ const Login = props => {
                 {regForm.Five ?
                 <>
                     <Registration5 userLogin={userLogin} registerNewUser={registerNewUser} />
-                    <button type="button" disabled={isLoading} onClick={registerNewUser}>Finish</button>
+                    <button className="registration--button" type="button" disabled={isLoading} onClick={registerNewUser}>Finish</button>
                 </>
                 : null}
             </fieldset>

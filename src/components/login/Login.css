@@ -2,27 +2,61 @@
     height: 100vh;
     overflow: hidden;
     text-align: center;
+    background-color: var(--light-green);
+    color: white;
 }
 
 .login {
     height: 100vh;
     display: flex;
     flex-direction: column;
+    align-items: center;
+    margin: 0;
 }
 
 .login h1 {
-    margin: 17vh 0;
+    margin: 12vh 0 5vh;
+    font-size: 3rem;
+}
+
+.login button {
+    width: 40%;
+    margin: 1rem auto;
+    padding: .4rem;
+    border-radius: 10px;
+    background-color: var(--bluegreen);
+    color: white;
+    box-shadow: 5px 5px 12px #5f5f5f;
 }
 
 .login--form {
     display: flex;
     flex-direction: row;
+    align-items: center;
+    width: 90%;
 }
 
 .login--fields {
     flex: 5;
     display: flex;
     flex-direction: column;
+}
+
+.front--window input {
+    margin: .2rem;
+    border-radius: 10px;
+    padding: .4rem;
+}
+
+.front--window select {
+    margin: .2rem;
+    border-radius: 10px;
+    padding: .4rem;
+    height: 2.3rem;
+}
+
+.login--button {
+    flex: 1;
 }
 
 .registration {
@@ -83,4 +117,14 @@ fieldset select {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+}
+
+.registration--button {
+    width: 40%;
+    margin: 1rem auto;
+    padding: .4rem;
+    border-radius: 10px;
+    background-color: var(--bluegreen);
+    color: white;
+    box-shadow: 5px 5px 12px #5f5f5f;
 }

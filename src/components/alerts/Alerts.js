@@ -10,14 +10,12 @@ import Red from "./Red"
 import "./Alerts.js"
 
 const Alerts = (props) => {
+    
     const [redAlerts, setRedAlerts] = useState([])
     const [yellowAlerts, setYellowAlerts] = useState([])
 
     // Create an appropriate warning or alert based on the weather code. Red = current; yellow = forecast.
     const sortWeather = (warning) => {
-        const updateRed = [...redAlerts]
-        const updateYellow = [...yellowAlerts]
-        console.log(updateYellow)
         switch (warning.data) {
             case 1030:
             case 1063:
@@ -27,14 +25,12 @@ const Alerts = (props) => {
                 } else {
                     return {type: "red", message: "There is possible rain in your area."}
                 }
-                break
             case 1087:
                 if (warning.condition === "yellow") {
                     return {type: "yellow", message: "There is a possibility of storms today."}
                 } else {
                     return {type: "red", message: "There are possible thunderstorms in your area."}
                 }
-                break
             case 1180:
             case 1183:
             case 1189:
@@ -49,7 +45,6 @@ const Alerts = (props) => {
                 } else {
                     return {type: "red", message: "There is rain in your area."}
                 }
-                break
             case 1273:
             case 1276:
             case 1279:
@@ -58,7 +53,6 @@ const Alerts = (props) => {
                 } else {
                     return {type: "red", message: "There are thunderstorms in your area."}
                 }
-                break
             default:
                 return
         }
@@ -73,7 +67,6 @@ const Alerts = (props) => {
             let counter = 0
             props.alerts.forEach(warning => {
                 counter++
-                console.log(warning)
                 switch (warning.type) {
                     case "heat":
                         updateRed.push({key: counter, message: "Dangerous heat today! Do your work in the morning or evening hours if possible."})
@@ -87,7 +80,6 @@ const Alerts = (props) => {
                             break
                         case "weather":
                             const weatherAlert = sortWeather(warning)
-                            console.log(weatherAlert)
                             if (weatherAlert) {
                                 if (weatherAlert.type = "yellow") {
                                     updateYellow.push({key: counter, message: weatherAlert.message})
@@ -102,7 +94,6 @@ const Alerts = (props) => {
                             break                
                         }
             })
-            console.log(updateRed)
             setRedAlerts(updateRed)
             setYellowAlerts(updateYellow)
         }

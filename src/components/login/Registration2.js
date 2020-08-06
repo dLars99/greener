@@ -5,6 +5,7 @@ Parent: Login */
 
 import React from "react"
 import States from "../../modules/States"
+import { ArrowDownCircle } from "react-feather"
 
 const Login = props => {
 
@@ -36,7 +37,7 @@ const Login = props => {
                     <input type="text" id="zip" placeholder="00000" onChange={props.handleFieldChange} />
                 </div>
                 <div className="buttonDiv">
-                    <button type="button" onClick={props.toPartThree}>Continue</button>
+                    <ArrowDownCircle color="white" strokeWidth={1.5} size={36} onClick={props.toPartThree} />
                 </div>
             </div>
         </>
