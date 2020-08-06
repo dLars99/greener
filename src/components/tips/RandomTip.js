@@ -22,7 +22,7 @@ const RandomTip = (props) => {
 
     return (
         <>
-            <h3>Latest Log Entry</h3>
+            <h3>Random Tip</h3>
             <TipCard key={randomTip.id} tip={randomTip} />
             <div className="currentWeather--link">
                 <Link to="/tips">View all tips and tricks &gt;</Link>

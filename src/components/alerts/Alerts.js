@@ -93,7 +93,6 @@ const Alerts = (props) => {
                             break                
                         }
             })
-            console.log(updateRed)
             setRedAlerts(updateRed)
             setYellowAlerts(updateYellow)
         }
