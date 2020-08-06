@@ -10,14 +10,6 @@ const CurrentWeather = (props) => {
 
     const [weather, setWeather] = useState({})
     
-    const getCurrentWeather = () => {
-        WeatherManager.getForecast(sessionStorage.zip, 1)
-        .then(weatherFromAPI => {
-            setWeather(weatherFromAPI.current)
-            sendAlerts(weatherFromAPI)
-        })
-    }
-
     const sendAlerts = (weatherData) => {
         const alertsToSend = []
         // Alert for high heat
@@ -42,7 +34,17 @@ const CurrentWeather = (props) => {
     }
 
     useEffect(() => {
+
+        const getCurrentWeather = () => {
+            WeatherManager.getForecast(sessionStorage.zip, 1)
+            .then(weatherFromAPI => {
+                setWeather(weatherFromAPI.current)
+                sendAlerts(weatherFromAPI)
+            })
+        }
+    
         getCurrentWeather()
+        
     }, [])
 
     return (
