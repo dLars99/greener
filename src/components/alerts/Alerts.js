@@ -10,6 +10,7 @@ import Red from "./Red"
 import "./Alerts.js"
 
 const Alerts = (props) => {
+    
     const [redAlerts, setRedAlerts] = useState([])
     const [yellowAlerts, setYellowAlerts] = useState([])
 

@@ -26,13 +26,15 @@ const NextReminder = (props) => {
     async function checkSchedule(remindersFromAPI, entriesFromAPI) {
 
         const scheduleUpdated = await CheckForRecentEntry(remindersFromAPI, entriesFromAPI)
-        if (scheduleUpdated) {getReminders()}
-
+        if (scheduleUpdated) {
+            getReminders()
+            return}
         const scheduleOverdue = await CheckElapsed(remindersFromAPI)
         const sortedReminders = remindersFromAPI.sort((a, b) => new Date (a.startDate) - new Date(b.startDate))
         setNextReminder(sortedReminders[0])
         if (scheduleOverdue === true) {
             getReminders()
+            return
         } else if (scheduleOverdue !== false) {
             scheduleOverdue.forEach(alert => {
                 props.addAlert(alert)
@@ -42,14 +44,6 @@ const NextReminder = (props) => {
         }
 
     }
-
-    // useEffect(() => {
-    //     if (nextReminder) {
-    //         if (new Date() > new Date(nextReminder.startDate)) {
-    //             props.addAlert([{type: "current", data: nextReminder.activity.name}])
-    //         }
-    //     }
-    // }, [nextReminder])
 
     useEffect(() => {
         getReminders()    
