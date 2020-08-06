@@ -4,6 +4,7 @@ name and login information.
 Parent: Login */
 
 import React from "react"
+import { ArrowDownCircle } from "react-feather"
 
 const Login = props => {
 
@@ -29,8 +30,8 @@ const Login = props => {
                     <label htmlFor="confirm">Confirm</label>
                     <input type="password" id="confirm" autoComplete="new-password" placeholder="Confirm Password" onChange={props.handleFieldChange} />
                 </div>
-                <div className="form--row">
-                    <button type="button" onClick={props.toPartTwo}>Continue</button>
+                <div className="buttonDiv">
+                    <ArrowDownCircle color="white" strokeWidth={1.5} size={36} onClick={props.toPartTwo} />
                 </div>
             </div>
         </>
