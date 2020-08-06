@@ -4,13 +4,14 @@ to the database */
 
 import React, { useState, useEffect } from "react"
 import DatabaseManager from "../../modules/DatabaseManager"
+import ImageManager from "../../modules/ImageManager"
 import { Validate } from "../../modules/Validate"
 import { XCircle } from "react-feather"
 import "./NewTask.css"
 
 const NewTask = (props) => {
 
-    const [entry, setEntry] = useState({ date: "", length: "", direction: "", water: "", notes: "", activities: [] })
+    const [entry, setEntry] = useState({ date: "", length: "", direction: "", water: 0, notes: "", activities: [], picture: "" })
     const [newActivities, setNewActivities] = useState([])
     const [activities, setActivities] = useState([])
     const [mow, setMow] = useState(false)
@@ -53,19 +54,30 @@ const NewTask = (props) => {
         setEntry(updatedState)
     }
 
+    const handleImage = async evt => {
+        const updatedState = {...entry}
+        const files = evt.target.files
+        ImageManager.uploadImage(files[0])
+        .then((imgURL) => {
+            updatedState.picture = imgURL
+            setEntry(updatedState)
+        })
+    }
+
     const submitNewEvent = evt => {
         evt.preventDefault()
         setIsLoading(true)
         // Retrieve current user ID from session storage
         const currentUser = parseInt(sessionStorage.getItem("credentials"))
         // Construct and POST the main entry object
-        const newEntry = {
+        let newEntry = {
             userId: currentUser,
             date: entry.date,
             length: entry.length,
             direction: entry.direction,
-            water: parseInt(entry.water),
-            notes: entry.notes
+            water: parseFloat(entry.water),
+            notes: entry.notes,
+            picture: entry.picture
         }
         const errorCheck = Validate(newEntry, newActivities)
         if (errorCheck !== "") {
@@ -191,11 +203,21 @@ const NewTask = (props) => {
                         </div>
                     </fieldset>
                 }
-                {/* The remaining fields are default */}
+                {/* The remaining fields are default and optional to the user */}
                 <fieldset className="form--section">
                     <div className="form--notes">
                         <label htmlFor="notes">Notes</label>
                         <textarea id="notes" name="notes" rows="4" cols="40" onChange={handleFieldChange} placeholder="Found rabbit hole" />
+                    </div>
+                    <div className="form--picture">
+                        <label htmlFor="file">Picture</label>
+                        <input type="file" id="file" placeholder="Image.jpg" onChange={handleImage}/>
+                    </div>
+                    <div className="form--imgPreview">
+                        {entry.picture
+                        ? <img src={entry.picture} alt="Image preview" className="picture--upload" />
+                        : null
+                        }
                     </div>
                 </fieldset>
                 <button type="button" className="form--button" onClick={submitNewEvent} disabled={isLoading}>Complete Entry</button>
