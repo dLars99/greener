@@ -66,7 +66,13 @@ const TaskLog = (props) => {
                 {currentEntry.notes !== ""
                 ? <p>{currentEntry.notes}</p>
                 : <p>None</p>
-            }   
+                }
+                {currentEntry.picture !== ""
+                ? <div className="entry--picture">
+                    <img className="entry--img" src={currentEntry.picture} alt={`Picture from ${currentEntry.date}`} />
+                </div>
+                : null
+                } 
             </div>
 
             <div className="detail--buttonList">
