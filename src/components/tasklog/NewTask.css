@@ -166,6 +166,17 @@ input, select, textarea {
     font-size: 1rem;
 }
 
+.form--imgPreview {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.picture--upload {
+    max-width: 80%;
+    margin: .2rem;
+}
+
 .form--button {
     display: block;
     font-family: 'Catamaran', sans-serif;
