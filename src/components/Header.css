@@ -42,7 +42,8 @@ header {
     border-radius: 50%;
     width: 40px;
     height: 40px;
-    background-color: rgba(0, 0, 0, .4);
+    background: rgb(255,255,255);
+    background: linear-gradient(135deg, rgba(200, 199, 199, 0.3) 0%, rgba(0,0,0,0.3) 100%);
     box-shadow: 3px 3px 12px #5f5f5f;
 }
 
@@ -52,5 +53,5 @@ header {
     font-size: 30px;
     line-height: 30px;
     font-family: monospace;
-    color: rgba(255, 255, 255, 0.7);
+    color: rgba(255, 255, 255, 0.85);
 }

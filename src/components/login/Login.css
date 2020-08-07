@@ -3,6 +3,10 @@
     overflow: hidden;
     text-align: center;
     background-color: var(--light-green);
+    background-image: url("../../images/lawn-background.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 700%;
     color: white;
 }
 

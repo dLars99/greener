@@ -52,7 +52,6 @@ const Login = props => {
 
     const toPartTwo = () => {
         const verified = VerifyReg1(userLogin, dbUsers)
-        console.log(verified)
         if (verified === "") {
             revealMoreForm("Two")
         } else {
