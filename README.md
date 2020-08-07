@@ -41,9 +41,11 @@ The dashboard will give you a summary of everything you need to know for the day
 - The next upcoming scheduled task
 - A random tip from the database
 
+The dashboard can also be accessed by clicking the _Grass is Greener_ title at the top of the page.
+
 #### Creating a Log Entry
 
-The log is the heart of _Grass is Greener_. To create entries in that log, follow these instructions:
+To log a completed lawn care task, follow these instructions:
 1. In most sections, you will see a green circle with a white "plus" symbol in the bottom right corner. Click this to create a new log entry.
 2. On the New Entry page, check off any tasks you wish to log.
 3. Select the date that the tasks were completed.
@@ -51,6 +53,10 @@ The log is the heart of _Grass is Greener_. To create entries in that log, follo
 5. If you selected "water," an additional option will be presented to enter the water amount.
 6. Enter any additional notes you wish, and upload a picture. These are optional.
 7. Click "Submit Entry" to complete the entry and be taken to the log.
+
+#### The Log
+
+The log is the heart of _Grass is Greener_. It can be accessed from any page by clicking "View Log" near the top left.
 
 
 ### Planning Tools
