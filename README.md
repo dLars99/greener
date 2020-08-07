@@ -58,6 +58,11 @@ To log a completed lawn care task, follow these instructions:
 
 The log is the heart of _Grass is Greener_. It can be accessed from any page by clicking "View Log" near the top left.
 
+- The log will show all entries that have been entered by the user. They can be filtered at the top by the type using the checkboxes, or a specific date can be located as well.
+- Clicking on "View" on an individual log entry will take you to the full details of that entry.
+- The Detail view also gives you options to edit or delete the entry.
+
+
 
 ### Planning Tools
 [DbDiagram ERD](https://dbdiagram.io/d/5ef25c539ea313663b3af78b)
