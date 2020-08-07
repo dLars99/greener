@@ -13,7 +13,7 @@ import "./Reminders.css"
 const Reminders = (props) => {
 
     const [reminders, setReminders] = useState([])
-    const [entries, setEntries] = useState([])
+    // const [entries, setEntries] = useState([])
 
     const getReminders = () => {
         DatabaseManager.getByUser("entries", parseInt(sessionStorage.credentials), "activities")
@@ -35,9 +35,8 @@ const Reminders = (props) => {
         const scheduleOverdue = await CheckElapsed(remindersFromAPI)
         const sortedReminders = remindersFromAPI.sort((a, b) => new Date (a.startDate) - new Date(b.startDate))
         setReminders(sortedReminders)
-        if (scheduleOverdue.length > 0) {getReminders()}
-
-        setEntries(entriesFromAPI)
+        if (scheduleOverdue === true) {
+            getReminders()}
     }
 
     useEffect(() => {
@@ -46,6 +45,7 @@ const Reminders = (props) => {
 
     return (
         <section className="reminders">
+            {console.log(reminders)}
             <div className="reminders--top">
                 <Link to="/" className="reminders--link">
                 <ChevronsLeft color="#72A83D" strokeWidth={1} size={20}/>
