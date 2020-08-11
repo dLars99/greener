@@ -69,6 +69,8 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
+    margin: 0;
+    border: 0;
 }
 
 .form--page {
@@ -106,6 +108,27 @@ fieldset select {
 .lotSize {
     flex-direction: column;
     justify-content: flex-start;
+}
+
+.googleEarth {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: left;
+    background-color: rgba(255, 255, 255, 0.5);
+    color: black;
+    border-radius: 15px;
+    padding: .5rem;
+    margin: 1rem;
+}
+
+.googleEarth p {
+    text-align: center;
+    margin: 0;
+}
+
+.googleEarth ul {
+    margin: 0;
 }
 
 .form--info {

@@ -81,7 +81,7 @@ const Alerts = (props) => {
                         case "weather":
                             const weatherAlert = sortWeather(warning)
                             if (weatherAlert) {
-                                if (weatherAlert.type = "yellow") {
+                                if (weatherAlert.type === "yellow") {
                                     updateYellow.push({key: counter, message: weatherAlert.message})
                                 }
                             }
