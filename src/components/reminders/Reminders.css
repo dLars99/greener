@@ -16,7 +16,7 @@
     padding: .4rem;
 }
 
-.reminders--card {
+.reminders--list .reminders--card {
     background-color: white;
     display: flex;
     justify-content: space-between;

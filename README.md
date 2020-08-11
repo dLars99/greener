@@ -62,7 +62,15 @@ The log is the heart of _Grass is Greener_. It can be accessed from any page by 
 - Clicking on "View" on an individual log entry will take you to the full details of that entry.
 - The Detail view also gives you options to edit or delete the entry.
 
+#### Reminders
 
+When you create a new user, _Grass is Greener_ creates a schedule of recommended lawn care tasks for up to a year from the current date. The soonest item is visible on the Dashboard. Clicking on that item will allow you to see the full year's schedule.
+
+When it becomes time to complete a task, a reminder will be presented in the Alerts area of the dashboard. You can also create a new log entry directly from that item in the full schedule. If a task is missed or becomes past due, a warning will be presented, along with an option to remove that item from the list.
+
+#### Weather
+
+In addition to the above, _Grass is Greener_ gives the user weather information to help plan his or her lawn care. The current weather is presented on the dashboard, and clicking that will return a full five-day forecast.
 
 ### Planning Tools
 [DbDiagram ERD](https://dbdiagram.io/d/5ef25c539ea313663b3af78b)
