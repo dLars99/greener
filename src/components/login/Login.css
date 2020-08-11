@@ -66,7 +66,6 @@
 .registration {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     height: 100vh;
     margin: 0;
@@ -76,8 +75,23 @@
 .form--page {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     height: 100%;
+}
+
+.form--page-1 {
+    margin-top: 3rem;
+}
+.form--page-2 {
+    margin-top: 10rem;
+}
+.form--page-3 {
+    margin-top: 30vh;
+}
+.form--page-4 {
+    margin-top: 3rem;
+}
+.form--page-5 {
+    margin-top: 3rem;
 }
 
 label {

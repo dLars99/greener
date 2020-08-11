@@ -10,7 +10,7 @@ const Login = props => {
 
     return (
         <>
-            <div className="form--page"> 
+            <div className="form--page form--page-1"> 
                 <h2>Welcome to <br/>
                 Grass is Greener!</h2>
                 <p>Please register below to begin</p>

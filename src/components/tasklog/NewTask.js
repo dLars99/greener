@@ -217,7 +217,7 @@ const NewTask = (props) => {
                     </div>
                     <div className="form--imgPreview">
                         {entry.picture
-                        ? <img src={entry.picture} alt="Image preview" className="picture--upload" />
+                        ? <img src={entry.picture} alt="Preview" className="picture--upload" />
                         : null
                         }
                     </div>

@@ -69,7 +69,7 @@ const TaskLog = (props) => {
                 }
                 {currentEntry.picture !== ""
                 ? <div className="entry--picture">
-                    <img className="entry--img" src={currentEntry.picture} alt={`Picture from ${currentEntry.date}`} />
+                    <img className="entry--img" src={currentEntry.picture} alt={`From ${currentEntry.date}`} />
                 </div>
                 : null
                 } 

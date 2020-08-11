@@ -18,7 +18,7 @@ const Login = props => {
 
     return (
         <>
-            <div className="form--page">
+            <div className="form--page form--page-3">
                 {phz.zone
                 ? <>
                     <p>Your plant hardiness zone is:</p>

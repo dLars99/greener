@@ -11,7 +11,7 @@ const Login = props => {
 
     return (
         <>
-            <div className="form--page">            
+            <div className="form--page form--page-2">            
                 <div className="form--row">
                     <label htmlFor="address">Address</label>
                     <input type="text" id="address" placeholder="Address" onChange={props.handleFieldChange} />
