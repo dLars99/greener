@@ -9,7 +9,7 @@ const Login = props => {
 
     return (
         <>
-            <div className="form--info">  
+            <div className="form--info form--page-5">  
                 <h4>Please confirm your information below</h4>
                 <div className="form--confirm">
                     <p>First Name: {props.userLogin.name}</p>

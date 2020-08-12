@@ -80,7 +80,6 @@ export function VerifyReg2(newUser) {
 
     // 2. Verify proper zip
     const zipRegex = /^\d{5}$/
-    console.log(zipRegex.test(newUser.zip))
     if (!zipRegex.test(newUser.zip)) {
         return "Please enter a valid 5-digit zip code"
     }

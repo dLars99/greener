@@ -3,6 +3,10 @@
     overflow: hidden;
     text-align: center;
     background-color: var(--light-green);
+    background-image: url("../../images/lawn-background.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 700%;
     color: white;
 }
 
@@ -15,8 +19,17 @@
 }
 
 .login h1 {
-    margin: 12vh 0 5vh;
-    font-size: 3rem;
+    margin: 12vh 0 0;
+    font-size: 2.5rem;
+    font-family: 'Merriweather', Garamond, serif;
+}
+
+.tagline {
+    font-family: 'Pinyon Script', cursive;
+    font-size: 2rem;
+    color: yellow;
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #ffff50, 0 0 40px #ffff50, 0 0 50px #ffff50, 0 0 60px #ffff50, 0 0 70px #ffff50;
+    margin: 1rem 0 2.5rem;
 }
 
 .login button {
@@ -24,9 +37,9 @@
     margin: 1rem auto;
     padding: .4rem;
     border-radius: 10px;
-    background-color: var(--bluegreen);
+    background: rgb(255,255,255);
+    background: linear-gradient(132deg, rgba(112,198,118,1) 0%, rgba(42,124,48,1) 20%, rgba(42,124,48,1) 80%, rgba(32,75,37,1) 100%);
     color: white;
-    box-shadow: 5px 5px 12px #5f5f5f;
 }
 
 .login--form {
@@ -62,16 +75,32 @@
 .registration {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     height: 100vh;
+    margin: 0;
+    border: 0;
 }
 
 .form--page {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     height: 100%;
+}
+
+.form--page-1 {
+    margin-top: 3rem;
+}
+.form--page-2 {
+    margin-top: 10rem;
+}
+.form--page-3 {
+    margin-top: 30vh;
+}
+.form--page-4 {
+    margin-top: 3rem;
+}
+.form--page-5 {
+    margin-top: 3rem;
 }
 
 label {
@@ -102,6 +131,27 @@ fieldset select {
 .lotSize {
     flex-direction: column;
     justify-content: flex-start;
+}
+
+.googleEarth {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: left;
+    background-color: rgba(255, 255, 255, 0.5);
+    color: black;
+    border-radius: 15px;
+    padding: .5rem;
+    margin: 1rem;
+}
+
+.googleEarth p {
+    text-align: center;
+    margin: 0;
+}
+
+.googleEarth ul {
+    margin: 0;
 }
 
 .form--info {

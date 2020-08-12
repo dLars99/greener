@@ -62,9 +62,9 @@ const Alerts = (props) => {
     
         // Categorize alerts
         if (props.alerts.length > 0) {
+            let counter = 0
             const updateRed = [...redAlerts]
             const updateYellow = [...yellowAlerts]
-            let counter = 0
             props.alerts.forEach(warning => {
                 counter++
                 switch (warning.type) {
@@ -81,7 +81,7 @@ const Alerts = (props) => {
                         case "weather":
                             const weatherAlert = sortWeather(warning)
                             if (weatherAlert) {
-                                if (weatherAlert.type = "yellow") {
+                                if (weatherAlert.type === "yellow") {
                                     updateYellow.push({key: counter, message: weatherAlert.message})
                                 }
                             }
@@ -105,8 +105,8 @@ const Alerts = (props) => {
 
     return (
         <>
-            {redAlerts.map(red => <Red key={red.key} warning={red} {...props}/>)}
-            {yellowAlerts.map(yellow => <Yellow key={yellow.key} warning={yellow} {...props}/>)}
+            {redAlerts.map(red => <Red key={red.message} warning={red} {...props}/>)}
+            {yellowAlerts.map(yellow => <Yellow key={yellow.message} warning={yellow} {...props}/>)}
         </>
     )
 }

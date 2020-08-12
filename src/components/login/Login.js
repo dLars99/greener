@@ -52,7 +52,6 @@ const Login = props => {
 
     const toPartTwo = () => {
         const verified = VerifyReg1(userLogin, dbUsers)
-        console.log(verified)
         if (verified === "") {
             revealMoreForm("Two")
         } else {
@@ -119,8 +118,8 @@ const Login = props => {
         <>
         <main className="front--window">
             <section className="login">
-                <h1>Grass is<br/>
-                    Greener</h1>
+                <h1>Grass is Greener</h1>
+                <p className="tagline">Watch it grow!</p>
                 <button type="button" onClick={() => revealMoreForm("One")}>Create New Account</button>
                 <form className="login--form" name="login">
                     <div className="login--fields">
