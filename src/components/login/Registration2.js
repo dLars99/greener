@@ -11,7 +11,9 @@ const Login = props => {
 
     return (
         <>
-            <div className="form--page form--page-2">            
+            <fieldset className="form--page form--page-2"> 
+                <p>Next, we'll need some info <br />
+                about your location.</p>           
                 <div className="form--row">
                     <label htmlFor="address">Address</label>
                     <input type="text" id="address" placeholder="Address" onChange={props.handleFieldChange} />
@@ -39,7 +41,7 @@ const Login = props => {
                 <div className="buttonDiv">
                     <ArrowDownCircle color="white" strokeWidth={1.5} size={36} onClick={props.toPartThree} />
                 </div>
-            </div>
+            </fieldset>
         </>
     )
 }

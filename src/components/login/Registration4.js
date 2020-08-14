@@ -9,7 +9,7 @@ const Login = props => {
 
     return (
         <>
-            <div className="form--page form--page-4">  
+            <fieldset className="form--page form--page-4">  
                 <h4>Almost done!</h4>
                 <div className="lotSize">
                     <label htmlFor="lotSize">Please enter the size of your lawn in square feet</label>
@@ -30,7 +30,7 @@ const Login = props => {
                     <div className="buttonDiv">
                         <ArrowDownCircle color="white" strokeWidth={1.5} size={36} onClick={props.toPartFive} />
                     </div>
-           </div>
+           </fieldset>
         </>
     )
 }
