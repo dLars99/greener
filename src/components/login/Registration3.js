@@ -22,14 +22,16 @@ const Login = props => {
                 {phz.zone
                 ? <>
                     <p>Your plant hardiness zone is:</p>
-                    <p className="phz">{phz.zone}</p>
+                    <div className="phz">
+                       <p>{phz.zone}</p>
+                    </div>
                 </>
                 : <>
                     <p>We're sorry.</p>
                     <p>We could not find the plant hardiness zone for your zip code.</p>
                 </> }
                 <div className="buttonDiv">
-                    <ArrowDownCircle color="white" strokeWidth={1.5} size={36} onClick={() => props.toPartFour(phz.zone)} />
+                    <ArrowDownCircle color="white" strokeWidth={1.5} size={48} fill="#3E7C07" onClick={() => props.toPartFour(phz.zone)} />
                 </div>
             </div>
         </>

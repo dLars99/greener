@@ -127,7 +127,7 @@ const Login = props => {
                         <input type="password" id="password" autoComplete="password" placeholder="Password" onChange={handleFieldChange} />
                     </div>
                     <div className="login--button">
-                        <ArrowRightCircle color="white" strokeWidth={1.5} size={36} onClick={signIn} />
+                        <ArrowRightCircle color="white" strokeWidth={1.5} size={42} fill="#3E7C07" onClick={signIn} />
                     </div>
                 </form>
             </section>

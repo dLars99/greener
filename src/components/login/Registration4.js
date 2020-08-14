@@ -28,7 +28,7 @@ const Login = props => {
                     </ol>
                 </div>
                     <div className="buttonDiv">
-                        <ArrowDownCircle color="white" strokeWidth={1.5} size={36} onClick={props.toPartFive} />
+                        <ArrowDownCircle color="white" strokeWidth={1.5} size={48} fill="#3E7C07" onClick={props.toPartFive} />
                     </div>
            </fieldset>
         </>

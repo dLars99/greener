@@ -39,7 +39,7 @@ const Login = props => {
                     <input type="text" id="zip" placeholder="00000" onChange={props.handleFieldChange} />
                 </div>
                 <div className="buttonDiv">
-                    <ArrowDownCircle color="white" strokeWidth={1.5} size={36} onClick={props.toPartThree} />
+                    <ArrowDownCircle color="white" strokeWidth={1.5} size={48} fill="#3E7C07" onClick={props.toPartThree} />
                 </div>
             </fieldset>
         </>
