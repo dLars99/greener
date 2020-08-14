@@ -45,6 +45,14 @@
     box-shadow: 5px 5px 15px #888888;
 }
 
-.reminderCard--header {
+.reminders--list .reminderCard--header {
+    color: var(--green);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.reminderCard--header h4 {
+    margin: 0 .2rem;
     color: var(--green);
 }
