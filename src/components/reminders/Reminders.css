@@ -1,6 +1,7 @@
 .reminders--top {
     background-color: white;
-    margin: .4rem .2rem 0;
+    margin: .4rem .4rem 0;
+    border-radius: 15px 15px 0 0;
     padding: .2rem .4rem;
 }
 
@@ -8,6 +9,18 @@
     display: flex;
     align-items: center;
     color: var(--light-green)
+}
+
+.reminders--header {
+    background-color: white;
+    border-radius: 0 0 15px 15px;
+    margin: 0 .4rem;
+    padding: .5rem;
+    text-align: center;
+}
+
+.reminders--header h3 {
+    color: var(--bluegreen);
 }
 
 .reminders--list {
@@ -25,4 +38,8 @@
     margin: .4rem 0 .4rem 0;
     border-radius: 15px;
     box-shadow: 5px 5px 15px #888888;
+}
+
+.reminderCard--header {
+    color: var(--green);
 }

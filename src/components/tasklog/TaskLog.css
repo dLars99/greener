@@ -15,7 +15,6 @@
 .log--link {
     display: flex;
     align-items: center;
-    color: var(--light-green)
 }
 
 .log--link:link, .log--link:visited {

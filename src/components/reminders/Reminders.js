@@ -55,7 +55,7 @@ const Reminders = (props) => {
 
             <div className="reminders--header">
                 <h3>Lawn Care Schedule</h3>
-                <p>Scheduled based on recommended lawn care practices</p>
+                <p>With recommended date range for completion</p>
             </div>
             <div className="reminders--list">
                 {reminders.map(reminder => {

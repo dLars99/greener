@@ -3,6 +3,7 @@ reminders in the user's schedule
 Parent: Reminders */
 
 import React from "react"
+import { PlusCircle } from "react-feather"
 
 const parseDate = (date) => {
     const dateMonths = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
@@ -20,7 +21,7 @@ const ReminderCard = (props) => {
                 <h4>{props.reminder.activity.name}</h4>
                 {props.current
                 ? <div className="reminder--button">
-                        <button type="button" className="reminder--addNew" onClick={() => props.history.push("/log/new")}>Add to Log</button>
+                        <PlusCircle className="addNew" fill="#3E7C07" color="#3E7C07" strokeWidth={1.5} size={36} onClick={() => props.history.push("/log/new")} />
                     </div>
                 : null
                 }
