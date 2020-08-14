@@ -24,8 +24,8 @@ const RandomTip = (props) => {
         <>
             <h3>Random Tip</h3>
             <TipCard key={randomTip.id} tip={randomTip} />
-            <div className="currentWeather--link">
-                <Link to="/tips">View all tips and tricks &gt;</Link>
+            <div className="dashboard--viewMore">
+                <Link className="dashboard--link" to="/tips">View all tips and tricks &gt;</Link>
             </div>
         </>
     )

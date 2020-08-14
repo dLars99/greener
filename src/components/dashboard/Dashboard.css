@@ -1,8 +1,8 @@
 .dashboard {
     display: flex;
     flex-direction: column;
-    width: 100%;
     padding: .2rem;
+    width: 100%;
     box-sizing: border-box;
 }
 
@@ -87,10 +87,14 @@
     margin: 0;
 }
 
-.currentWeather--link {
+.dashboard--viewMore {
     display: flex;
     justify-content: flex-end;
-    padding: 0 .5rem;  
+    padding: 0 .5rem;
+}
+
+.dashboard--link:link, .dashboard--link:visited {
+    color: var(--light-green);
 }
 
 .water {
@@ -135,6 +139,10 @@
     box-shadow: 5px 5px 15px #888888;
 }
 
+.randomTip {
+    margin-bottom: 80px;
+}
+
 .randomTip p {
     margin: 0;
 }
@@ -144,12 +152,12 @@
 }
 
 .redAlert {
-    background-color: red;
+    background-color: #7c0907;
     color: white;
 }
 
 .yellowAlert {
-    background-color: yellow;
+    background-color: #fff388;
 }
 
 .alert--box {

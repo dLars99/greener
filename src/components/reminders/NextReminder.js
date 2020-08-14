@@ -56,8 +56,8 @@ const NextReminder = (props) => {
                 ? <ReminderCard reminder={nextReminder} {...props} />
                 : null
             }
-            <div className="currentWeather--link">
-                <Link to="/reminders">View full schedule &gt;</Link>
+            <div className="dashboard--viewMore">
+                <Link className="dashboard--link" to="/reminders">View full schedule &gt;</Link>
             </div>
 
         </>
