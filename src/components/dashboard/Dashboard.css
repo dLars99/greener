@@ -95,6 +95,7 @@
 
 .dashboard--link:link, .dashboard--link:visited {
     color: var(--light-green);
+    text-decoration: none;
 }
 
 .water {

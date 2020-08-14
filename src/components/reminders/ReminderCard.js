@@ -21,7 +21,7 @@ const ReminderCard = (props) => {
                 <h4>{props.reminder.activity.name}</h4>
                 {props.current
                 ? <div className="reminder--button">
-                        <PlusCircle className="addNew" fill="#3E7C07" color="#3E7C07" strokeWidth={1.5} size={36} onClick={() => props.history.push("/log/new")} />
+                        <PlusCircle className="addNew" color="#3E7C07" strokeWidth={1.5} size={36} onClick={() => props.history.push("/log/new")} />
                     </div>
                 : null
                 }

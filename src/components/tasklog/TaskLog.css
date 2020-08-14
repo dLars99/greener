@@ -15,11 +15,8 @@
 .log--link {
     display: flex;
     align-items: center;
-}
-
-.log--link:link, .log--link:visited {
-    text-decoration: none;
     color: var(--light-green);
+    text-decoration: none;
 }
 
 .log--filters {

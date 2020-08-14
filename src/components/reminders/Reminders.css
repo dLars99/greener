@@ -8,7 +8,12 @@
 .reminders--link {
     display: flex;
     align-items: center;
-    color: var(--light-green)
+    font-size: .8rem;
+}
+
+.reminders--link:link, .reminders--link:visited {
+    color: var(--light-green);
+    text-decoration: none;
 }
 
 .reminders--header {

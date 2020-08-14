@@ -6,17 +6,31 @@
 }
 
 .tips--top {
-    width: 100%;
+    width: 90%;
+    background-color: white;
+    margin: .4rem auto 0;
+    border-radius: 15px 15px 0 0;
+    padding: .3rem;
+    box-sizing: border-box;
 }
 
 .tips--header {
     background-color: white;
     width: 90%;
     text-align: center;
-    border-radius: 15px;
-    margin: .2rem;
+    border-radius: 0 0 15px 15px;
+    margin: .0rem .2rem .2rem;
+    box-sizing: border-box;
 }
 
+.tips--header h3 {
+    color: var(--bluegreen);
+    margin: 0;
+}
+
+.tips--header p {
+    margin: .2rem 0 .7rem;
+}
 .tipList {
     display: flex;
     flex-direction: column;
