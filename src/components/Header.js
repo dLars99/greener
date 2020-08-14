@@ -11,7 +11,7 @@ const Header = (props) => {
         <>
             <header>
                 <div className="title">
-                <Link className="header--link" to="/">
+                <Link className="title--link" to="/">
                     <h1>Grass is Greener</h1>
                 </Link>
                     <Link className="header--link" to="/log">

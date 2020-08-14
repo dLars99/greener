@@ -64,8 +64,8 @@ const CurrentWeather = (props) => {
                     <p>Feels like {parseInt(weather.feelslike_f)}&#176;</p>
                 </div>
             </div>
-            <div className="currentWeather--link">
-                <Link to="/forecast">Full forecast &gt;</Link>
+            <div className="dashboard--viewMore">
+                <Link className="dashboard--link" to="/forecast">Full forecast &gt;</Link>
             </div>
         </>
         : <p>Loading Current Weather</p>

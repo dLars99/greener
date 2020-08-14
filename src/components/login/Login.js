@@ -120,46 +120,46 @@ const Login = props => {
             <section className="login">
                 <h1>Grass is Greener</h1>
                 <p className="tagline">Watch it grow!</p>
-                <button type="button" onClick={() => revealMoreForm("One")}>Create New Account</button>
+                <button className="registration--button" type="button" onClick={() => revealMoreForm("One")}>Create New Account</button>
                 <form className="login--form" name="login">
                     <div className="login--fields">
                         <input type="email" id="email" autoComplete="username" placeholder="Email" onChange={handleFieldChange} />
                         <input type="password" id="password" autoComplete="password" placeholder="Password" onChange={handleFieldChange} />
                     </div>
                     <div className="login--button">
-                        <ArrowRightCircle color="white" strokeWidth={1.5} size={36} onClick={signIn} />
+                        <ArrowRightCircle color="white" strokeWidth={1.5} size={42} fill="#3E7C07" onClick={signIn} />
                     </div>
                 </form>
             </section>
         <form className="registration--form" name="registration">
-            <fieldset className="registration" id="registrationOne">
+            <div className="registration" id="registrationOne">
                 {regForm.One ?
                     <Registration1 dbUsers={dbUsers} handleFieldChange={handleFieldChange} toPartTwo={toPartTwo} />
                 : null}
-            </fieldset>
-            <fieldset className="registration" id="registrationTwo">
+            </div>
+            <div className="registration" id="registrationTwo">
                 {regForm.Two ?
                     <Registration2 handleFieldChange={handleFieldChange} toPartThree={toPartThree} />
                 : null}
-            </fieldset>
-            <fieldset className="registration" id="registrationThree">
+            </div>
+            <div className="registration" id="registrationThree">
                 {regForm.Three ?
                     <Registration3 revealMoreForm={revealMoreForm} toPartFour={toPartFour} zip={userLogin.zip} />
                 : null}
-            </fieldset>
-            <fieldset className="registration" id="registrationFour">
+            </div>
+            <div className="registration" id="registrationFour">
                 {regForm.Four ?
                     <Registration4 handleFieldChange={handleFieldChange} toPartFive={toPartFive} />
                 : null}
-            </fieldset>
-            <fieldset className="registration" id="registrationFive">
+            </div>
+            <div className="registration" id="registrationFive">
                 {regForm.Five ?
                 <>
                     <Registration5 userLogin={userLogin} registerNewUser={registerNewUser} />
-                    <button className="registration--button" type="button" disabled={isLoading} onClick={registerNewUser}>Finish</button>
+                    <button className="registration--button registration--submit" type="button" disabled={isLoading} onClick={registerNewUser}>Finish</button>
                 </>
                 : null}
-            </fieldset>
+            </div>
 
         </form>
 
