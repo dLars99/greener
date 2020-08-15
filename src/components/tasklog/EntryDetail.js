@@ -20,6 +20,15 @@ const TaskLog = (props) => {
     const activities = (currentEntry.activities) ? currentEntry.activities.map(activity => activity.name) : []
     const activityString = activities.join(", ")
     
+    // Convert large lengths of mowings
+    if (currentEntry.length === "7") {
+        currentEntry.length = `Greater than 6`
+    }
+
+    // Convert large amounts of water
+    if (currentEntry.water === 2.5) {
+        currentEntry.water = `Greater than 2`
+    }
 
     const handleDelete = id => {
         
@@ -59,7 +68,7 @@ const TaskLog = (props) => {
                 {water &&
                 <>
                     <h3>Water Amount</h3>
-                    <p>{currentEntry.water}</p>
+                    <p>{currentEntry.water}"</p>
                 </>
                 }
                 <h3>Notes</h3>
