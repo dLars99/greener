@@ -47,7 +47,9 @@ const Dashboard = (props) => {
                 </div>
                 <div className="dashboard--block water">
                     {logEntries 
-                    ? <Precipitation logEntries={logEntries} {...props} />
+                    ? <>
+                    <Precipitation logEntries={logEntries} {...props} />
+                    </>
                     : null}
                 </div>
             </div>

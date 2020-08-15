@@ -100,7 +100,6 @@ const Login = props => {
         DatabaseManager.addNew("users", newUser)
         .then((savedUser) => {
             FirstSchedule(savedUser).then(() => {
-                console.log("Then")
                 props.setUser(savedUser)
                 props.history.push("/")})   
         })

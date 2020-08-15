@@ -46,7 +46,6 @@ const Reminders = (props) => {
 
     return (
         <section className="reminders">
-            {console.log(reminders)}
             <div className="reminders--top">
                 <Link to="/" className="reminders--link">
                 <ChevronsLeft color="#72A83D" strokeWidth={1} size={20}/>
