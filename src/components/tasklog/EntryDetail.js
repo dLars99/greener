@@ -21,13 +21,13 @@ const TaskLog = (props) => {
     const activityString = activities.join(", ")
     
     // Convert large lengths of mowings
-    if (currentEntry.length === "7") {
-        currentEntry.length = `Greater than 6`
+    if (currentEntry.length === "10") {
+        currentEntry.length = "Greater than 9"
     }
 
     // Convert large amounts of water
     if (currentEntry.water === 2.5) {
-        currentEntry.water = `Greater than 2`
+        currentEntry.water = "Greater than 2"
     }
 
     const handleDelete = id => {
