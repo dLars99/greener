@@ -51,7 +51,7 @@ export function VerifyReg1(newUser, existingUsers) {
 
     // 1. Verify that all signin fields are complete; return an error if not
     if (Object.values(newUser).some(field => field === null || field === '' || field === undefined) ||
-        Object.keys(newUser).length !== 4) {
+        Object.keys(newUser).length < 4) {
         return "Please fill out all four fields"
     }
 
