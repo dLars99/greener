@@ -4,7 +4,7 @@ Parent: Dashboard */
 
 import React, { useState, useEffect } from "react"
 import WeatherManager from "../../modules/WeatherManager"
-import { Link } from "react-router-dom"
+import { ChevronRight } from "react-feather"
 
 const CurrentWeather = (props) => {
 
@@ -44,6 +44,7 @@ const CurrentWeather = (props) => {
         }
     
         getCurrentWeather()
+
         // eslint-disable-next-line
     }, [])
 
@@ -65,7 +66,8 @@ const CurrentWeather = (props) => {
                 </div>
             </div>
             <div className="dashboard--viewMore">
-                <Link className="dashboard--link" to="/forecast">Full forecast &gt;</Link>
+                Full forecast
+                <ChevronRight color="#72A83D" strokeWidth={1} size={20}/>
             </div>
         </>
         : <p>Loading Current Weather</p>

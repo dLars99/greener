@@ -42,7 +42,7 @@ const Dashboard = (props) => {
             <PlusCircle className="addNew" fill="#3E7C07" color="white" strokeWidth={1.5} size={72} onClick={() => props.history.push("/log/new")} />
 
             <div className="main-actions">
-                <div className="dashboard--block currentWeather">
+                <div className="dashboard--block currentWeather" onClick={() => props.history.push("/forecast")} >
                     <CurrentWeather addAlert={addAlert} />
                 </div>
                 <div className="dashboard--block water">
@@ -55,13 +55,13 @@ const Dashboard = (props) => {
                 <div className="dashboard--block lastEntry">
                     <LastEntry logEntries={logEntries} {...props} />
                 </div>
-                <div className="dashboard--block nextSchedule">
+                <div className="dashboard--block nextSchedule" onClick={() => props.history.push("/reminders")} >
                     {logEntries
                     ? <NextReminder logEntries={logEntries} addAlert={addAlert} {...props} />
                     : null}
                 </div>
             </div>
-            <div className="dashboard--block randomTip">
+            <div className="dashboard--block randomTip" onClick={() => props.history.push("/tips")} >
                 <RandomTip {...props} />
             </div>
         </main>

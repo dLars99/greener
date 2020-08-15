@@ -3,10 +3,10 @@ upcoming task in the dashboard.
 Parent: Dashboard */
 
 import React, { useState, useEffect } from "react"
-import { Link } from "react-router-dom"
 import DatabaseManager from "../../modules/DatabaseManager"
 import { CheckElapsed, CheckForRecentEntry } from "../reminders/Schedulers"
 import ReminderCard from "./ReminderCard"
+import { ChevronRight } from "react-feather"
 import "./Reminders.css"
 
 const NextReminder = (props) => {
@@ -58,9 +58,9 @@ const NextReminder = (props) => {
                 : null
             }
             <div className="dashboard--viewMore">
-                <Link className="dashboard--link" to="/reminders">View full schedule &gt;</Link>
+                View full schedule
+                <ChevronRight color="#72A83D" strokeWidth={1} size={20}/>
             </div>
-
         </>
     )
 
