@@ -18,9 +18,9 @@ const CurrentWeather = (props) => {
         }
         
         // Warning/alert for UV
-        if (weatherData.forecast.forecastday[0].day.uv >= 3 && weatherData.forecast.forecastday[0].day.uv < 6) {
+        if (weatherData.current.uv >= 3 && weatherData.current.uv < 6) {
             alertsToSend.push({type: "uv", condition: "yellow", data: "yellow"})
-        } else if (weatherData.forecast.forecastday[0].day.uv > 6) {
+        } else if (weatherData.current.uv > 6) {
             alertsToSend.push({type: "uv", condition: "red", data: "red"})
         }
         // Alert for current weather conditions
