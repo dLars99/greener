@@ -40,7 +40,6 @@ const Alerts = (props) => {
             case 1243:
             case 1246:
                 if (warning.condition === "yellow") {
-                    console.log("You are here")
                     return {type: "yellow", message: "There is rain in your area."}
                 } else {
                     return {type: "red", message: "There is rain in your area."}
@@ -91,7 +90,10 @@ const Alerts = (props) => {
                             break
                         case "elapsed":
                             updateRed.push({key: counter, message: `${warning.data} is past due.`})
-                            break                
+                            break
+                        default:
+                            // Do nothing if no match above
+                            break             
                         }
             })
             setRedAlerts(updateRed)
@@ -101,6 +103,7 @@ const Alerts = (props) => {
 
     useEffect (() => {
         sortAlerts()
+        // eslint-disable-next-line
     }, [props.alerts])
 
     return (

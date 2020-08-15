@@ -25,8 +25,9 @@ const TaskLog = (props) => {
         const currentUser = sessionStorage.getItem("credentials")
         DatabaseManager.getByUser("entries", currentUser, "activities")
         .then(entriesFromAPI => {
-            setEntries(entriesFromAPI)
-            setFilteredEntries(entriesFromAPI)
+            const sortedEntries = entriesFromAPI.sort((a, b) => new Date (b.date) - new Date(a.date))
+            setEntries(sortedEntries)
+            setFilteredEntries(sortedEntries)
         })
     }
 
@@ -75,6 +76,7 @@ const TaskLog = (props) => {
 
     useEffect(() => {
         setFilteredEntries(performFilter(entries, filterActivities, searchDate))
+        // eslint-disable-next-line
     }, [searchDate, filterActivities])
 
     return (

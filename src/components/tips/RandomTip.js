@@ -4,8 +4,8 @@ Parent: Dashboard */
 
 import React, { useState, useEffect } from "react"
 import DatabaseManager from "../../modules/DatabaseManager"
-import { Link } from "react-router-dom"
 import TipCard from "./TipCard"
+import { ChevronRight } from "react-feather"
 
 const RandomTip = (props) => {
 
@@ -25,7 +25,8 @@ const RandomTip = (props) => {
             <h3>Random Tip</h3>
             <TipCard key={randomTip.id} tip={randomTip} />
             <div className="dashboard--viewMore">
-                <Link className="dashboard--link" to="/tips">View all tips and tricks &gt;</Link>
+                View all tips and tricks
+                <ChevronRight color="#72A83D" strokeWidth={1} size={20}/>
             </div>
         </>
     )

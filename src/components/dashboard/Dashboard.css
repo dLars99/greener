@@ -90,7 +90,8 @@
 .dashboard--viewMore {
     display: flex;
     justify-content: flex-end;
-    padding: 0 .5rem;
+    align-items: center;
+    color: var(--light-green);
 }
 
 .dashboard--link:link, .dashboard--link:visited {

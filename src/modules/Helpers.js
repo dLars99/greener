@@ -1,4 +1,4 @@
-    // Converts UNIX times from above to yyyy-dd-mm
+// Converts UNIX times to yyyy-dd-mm
  export function convertDate(dateNum) {
 
         const UTCOffset = new Date(dateNum).getTimezoneOffset()

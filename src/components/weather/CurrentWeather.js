@@ -4,7 +4,7 @@ Parent: Dashboard */
 
 import React, { useState, useEffect } from "react"
 import WeatherManager from "../../modules/WeatherManager"
-import { Link } from "react-router-dom"
+import { ChevronRight } from "react-feather"
 
 const CurrentWeather = (props) => {
 
@@ -18,9 +18,9 @@ const CurrentWeather = (props) => {
         }
         
         // Warning/alert for UV
-        if (weatherData.forecast.forecastday[0].day.uv >= 3 && weatherData.forecast.forecastday[0].day.uv < 6) {
+        if (weatherData.current.uv >= 3 && weatherData.current.uv < 6) {
             alertsToSend.push({type: "uv", condition: "yellow", data: "yellow"})
-        } else if (weatherData.forecast.forecastday[0].day.uv > 6) {
+        } else if (weatherData.current.uv > 6) {
             alertsToSend.push({type: "uv", condition: "red", data: "red"})
         }
         // Alert for current weather conditions
@@ -44,7 +44,8 @@ const CurrentWeather = (props) => {
         }
     
         getCurrentWeather()
-        
+
+        // eslint-disable-next-line
     }, [])
 
     return (
@@ -65,7 +66,8 @@ const CurrentWeather = (props) => {
                 </div>
             </div>
             <div className="dashboard--viewMore">
-                <Link className="dashboard--link" to="/forecast">Full forecast &gt;</Link>
+                Full forecast
+                <ChevronRight color="#72A83D" strokeWidth={1} size={20}/>
             </div>
         </>
         : <p>Loading Current Weather</p>

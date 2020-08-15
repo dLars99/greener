@@ -1,0 +1,25 @@
+{
+    "users": [],
+    "entries": [],
+    "activities": [],
+    "reminders": [],
+    "tips": [
+      {
+        "description": "A healthy lawn should receive 1 to 1.5 inches of water per week.",
+        "id": 1
+      },
+      {
+        "description": "In season, always mow at your lawnmower's highest height. You may have to mow more often, but your grass will thank you!",
+        "id": 2
+      },
+      {
+        "description": "While it won't directly make your lawn healthier, regular edging will make it look cleaner and fuller.",
+        "id": 3
+      },
+      {
+        "description": "Regular lawnmower maintenance will help prevent unexpected breakdowns, as well as help your lawn! Make sure the engine is well-oiled, and the blade sharpened or replaced regularly.",
+        "id": 4
+      }
+    ],
+    "entries_activities": []
+  }
