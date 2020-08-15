@@ -3,7 +3,7 @@ It will set up a schedule for common seasonal lawn care tasks. */
 
 import DatabaseManager from "./DatabaseManager"
 
-export function FirstSchedule() {
+export function FirstSchedule(newUser) {
 
     const today = Date.now()
     const UTCOffset = new Date(today).getTimezoneOffset()
@@ -12,7 +12,7 @@ export function FirstSchedule() {
     const todayDate = offsetDate.toISOString().substring(0, 10)
     // const todayDate = today.substring(0, 10)
     const currentYear = todayDate.substr(0, 4)
-    const userId = parseInt(sessionStorage.credentials)
+    const userId = newUser.id
 
     // Assign dethatch
     const dethatchYear = (new Date(`${currentYear}-03-15`) > today) ? currentYear : parseInt(currentYear) + 1
@@ -29,8 +29,8 @@ export function FirstSchedule() {
     // Assign seed x 2
     const seed1 = (new Date(`${currentYear}-03-15`) > today) ? currentYear : parseInt(currentYear) + 1  
     const seed2 = (new Date(`${currentYear}-09-01`) > today) ? currentYear : parseInt(currentYear) + 1
-    schedule.push({userId: userId, activityId: 6, startDate: `${seed1}-03-15`, endDate: `${seed1}-03-31`},
-        {userId: userId, activityId: 6, startDate: `${seed2}-09-01`, endDate: `${seed2}-09-15`}
+    schedule.push({userId: userId, activityId: 7, startDate: `${seed1}-03-15`, endDate: `${seed1}-03-31`},
+        {userId: userId, activityId: 7, startDate: `${seed2}-09-01`, endDate: `${seed2}-09-15`}
     )
 
     // Assign fertilize x 3
@@ -42,11 +42,22 @@ export function FirstSchedule() {
         {userId: userId, activityId: 4, startDate: `${fertilize3}-10-01`, endDate: `${fertilize3}-10-31`}
     )
 
-    let savedSchedule = []
-    schedule.forEach(reminder => {
-        savedSchedule.push(DatabaseManager.addNew("reminders", reminder))
-    })
+    const saveSchedule = async (schedule) => {
+        for (const reminder of schedule) {
+            await DatabaseManager.addNew("reminders", reminder)
+            console.log("Loop", reminder)
+        }
+        console.log("Loop complete")
+        return
+    }
 
-    return Promise.all(savedSchedule)
+    return saveSchedule(schedule)
+
+    // let savedSchedule = []
+    // schedule.forEach(reminder => {
+    //     savedSchedule.push(DatabaseManager.addNew("reminders", reminder))
+    // })
+
+    // return Promise.all(savedSchedule)
 
 }

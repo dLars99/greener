@@ -76,7 +76,6 @@ const Login = props => {
 
     const toPartFive = () => {
         const verified = VerifyReg4(userLogin)
-        console.log(verified)
         if (verified === "") {
             revealMoreForm("Five")
         } else {
@@ -100,9 +99,10 @@ const Login = props => {
         }
         DatabaseManager.addNew("users", newUser)
         .then((savedUser) => {
-            props.setUser(savedUser)
-            FirstSchedule().then((props.history.push("/")))
-            
+            FirstSchedule(savedUser).then(() => {
+                console.log("Then")
+                props.setUser(savedUser)
+                props.history.push("/")})   
         })
     }
 

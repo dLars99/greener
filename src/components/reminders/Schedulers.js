@@ -11,7 +11,7 @@ export function CheckFullYear(reminders) {
                 }
                 return count
             }, 0)
-        return reminderCount < activity.repeat
+            return reminderCount < activity.repeat
         })
         // Sort by date, newest on top
         const sortedReminders = reminders.sort((a, b) => new Date(b.date) - new Date(a.date))
