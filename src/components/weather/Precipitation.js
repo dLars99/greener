@@ -48,6 +48,7 @@ const Precipitation = (props) => {
 
     useEffect(() => {
         getWeather()
+        // eslint-disable-next-line
     }, [props.logEntries])
 
     return (
@@ -61,11 +62,10 @@ const Precipitation = (props) => {
             </div>
             <p>Total water</p>
             {totalWater.total < 1
-            ? <div className="water--add">
-                {console.log(props.history)}
-            <Droplet size={16} onClick={() => props.history.push("/log/new")} /> Add water!
-            </div>
-        : null}
+            ?   <div className="water--add">
+                    <Droplet size={16} onClick={() => props.history.push("/log/new")} /> Add water!
+                </div>
+            : null}
         </>
     )
 }

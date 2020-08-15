@@ -44,7 +44,7 @@ const CurrentWeather = (props) => {
         }
     
         getCurrentWeather()
-        
+        // eslint-disable-next-line
     }, [])
 
     return (

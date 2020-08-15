@@ -43,7 +43,7 @@ const TaskLog = (props) => {
         setMow(mowExists)
         const waterExists = currentEntry.activities.some(activity => activity.name === "Water")
         setWater(waterExists)
-    }, [])
+    }, [currentEntry])
 
     return (
         <article className="detail">

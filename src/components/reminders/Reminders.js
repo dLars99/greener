@@ -40,7 +40,8 @@ const Reminders = (props) => {
     }
 
     useEffect(() => {
-        getReminders()    
+        getReminders()
+        // eslint-disable-next-line
     }, [])
 
     return (

@@ -75,6 +75,7 @@ const TaskLog = (props) => {
 
     useEffect(() => {
         setFilteredEntries(performFilter(entries, filterActivities, searchDate))
+        // eslint-disable-next-line
     }, [searchDate, filterActivities])
 
     return (
