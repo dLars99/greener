@@ -14,7 +14,6 @@ const Precipitation = (props) => {
     const [totalWater, setTotalWater] = useState({rain: 0, added: 0, total: -1})
 
     const getWeather = () => {
-
         const userZip = sessionStorage.zip
 
         const todayUTC = new Date()
@@ -25,13 +24,11 @@ const Precipitation = (props) => {
         const endDate = convertDate(today)
         WeatherManager.getPrecipitation(userZip, startDate, endDate)
         .then(weatherFromAPI => addWater(weatherFromAPI, today, lastWeek))
-
     }
 
     const addWater = (weatherData, today, lastWeek) => {
 
         const weatherHistory = weatherData.forecast.forecastday
-
         // Convert API objects to an iterable array and total precipitation
         const rainfall = weatherHistory.reduce((acc, cur) => acc + cur.day.totalprecip_in, 0)
         // Find all recent log entries which add water and total water amounts

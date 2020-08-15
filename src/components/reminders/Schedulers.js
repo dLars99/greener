@@ -11,7 +11,7 @@ export function CheckFullYear(reminders) {
                 }
                 return count
             }, 0)
-        return reminderCount < activity.repeat
+            return reminderCount < activity.repeat
         })
         // Sort by date, newest on top
         const sortedReminders = reminders.sort((a, b) => new Date(b.date) - new Date(a.date))
@@ -19,13 +19,10 @@ export function CheckFullYear(reminders) {
         let savedActivities = []
         // Set date for next occurrence of needed activities and save to database
         activitiesToAdd.forEach(activity => {
-            console.log(activity)
             const lastReminder = sortedReminders.find(reminder => reminder.activityId = activity.id)
-            console.log(lastReminder)
             // Add the interval number of days to the last occurrence to get the new date
             let newDate = new Date(`${lastReminder.startDate}T00:00:00`).getTime() + (86400000 * activity.interval)
             let dateString = convertDate(newDate)
-            console.log(dateString)
             const thisYear = new Date().getFullYear()
             if (newDate > new Date(`11/01/${parseInt(thisYear)}`).getTime() && newDate < new Date(`03/15/${parseInt(thisYear + 1)}`).getTime()) {
                 dateString = `${parseInt(thisYear + 1)}-${activity.firstAnnualDate}`

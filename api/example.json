@@ -1,8 +1,73 @@
 {
     "users": [],
     "entries": [],
-    "activities": [],
-    "reminders": [],
+    "activities": [
+      {
+        "name": "Mow",
+        "interval": 7,
+        "repeat": 0,
+        "firstAnnualDate": "",
+        "window": 7,
+        "id": 1
+      },
+      {
+        "name": "Edge",
+        "interval": 14,
+        "repeat": 0,
+        "firstAnnualDate": "",
+        "window": 21,
+        "id": 2
+      },
+      {
+        "name": "Water",
+        "interval": 400,
+        "repeat": 0,
+        "firstAnnualDate": "",
+        "window": 0,
+        "id": 3
+      },
+      {
+        "name": "Fertilize",
+        "interval": 90,
+        "repeat": 3,
+        "firstAnnualDate": "04-01",
+        "window": 30,
+        "id": 4
+      },
+      {
+        "name": "Weed Control",
+        "interval": 365,
+        "repeat": 1,
+        "firstAnnualDate": "05-01",
+        "window": 30,
+        "id": 5
+      },
+      {
+        "name": "Dethatch",
+        "interval": 365,
+        "repeat": 1,
+        "firstAnnualDate": "03-15",
+        "window": 16,
+        "id": 6
+      },
+      {
+        "name": "Add seed",
+        "interval": 170,
+        "repeat": 2,
+        "firstAnnualDate": "03-15",
+        "window": 16,
+        "id": 7
+      },
+      {
+        "name": "Aerate",
+        "interval": 365,
+        "repeat": 1,
+        "firstAnnualDate": "09-01",
+        "window": 16,
+        "id": 8
+      }
+    ],
+      "reminders": [],
     "tips": [
       {
         "description": "A healthy lawn should receive 1 to 1.5 inches of water per week.",
