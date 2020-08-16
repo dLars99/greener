@@ -8,10 +8,12 @@ import React, { useState, useEffect } from "react"
 import WeatherManager from "../../modules/WeatherManager"
 import { convertDate } from "../../modules/Helpers"
 import { Droplet } from "react-feather"
+import Gauge from "./Gauge"
 
 const Precipitation = (props) => {
 
-    const [totalWater, setTotalWater] = useState({rain: 0, added: 0, total: -1})
+    const [totalWater, setTotalWater] = useState(-1)
+    const [waterPercent, setWaterPercent] = useState(0)
 
     const getWeather = () => {
         const userZip = sessionStorage.zip
@@ -31,15 +33,16 @@ const Precipitation = (props) => {
         const weatherHistory = weatherData.forecast.forecastday
         // Convert API objects to an iterable array and total precipitation
         const rainfall = weatherHistory.reduce((acc, cur) => acc + cur.day.totalprecip_in, 0)
+  
         // Find all recent log entries which add water and total water amounts
         const recentEntries = props.logEntries.filter(entry => new Date(entry.date).getTime() < today && new Date(entry.date).getTime() > lastWeek )
-        const addedWater = parseInt(recentEntries.reduce((acc, cur) => acc + cur.water, 0))
+        const addedWater = recentEntries.reduce((acc, cur) => acc + cur.water, 0)
 
-        setTotalWater({
-            rain: parseFloat(rainfall.toFixed(2)),
-            added: parseFloat(addedWater.toFixed(2)),
-            total: parseFloat((rainfall + addedWater).toFixed(2))
-        })
+        const totalWater = parseFloat((rainfall + addedWater).toFixed(2))
+        setTotalWater(totalWater)
+
+        const percent = (totalWater / 1 >= 1.0 ) ? 100 : (totalWater / 1.0) * 100
+        setWaterPercent(percent)
         
     }
 
@@ -52,15 +55,20 @@ const Precipitation = (props) => {
         <>
             <h3>Past 7 Days</h3>
             <div className="water--total">
-                {totalWater.total !== -1
-                ?<p>{totalWater.total}"</p>
+                {totalWater !== -1
+                ?   <Gauge
+                    style={{ margin: '0 auto 0 auto' }}
+                    radius={50}
+                    value={waterPercent}
+                    displayValue={totalWater}
+                    />
                 : <p className="loading">Loading...</p>
                 }
             </div>
             <p>Total water</p>
-            {totalWater.total < 1
+            {totalWater < 1
             ?   <div className="water--add">
-                    <Droplet size={16} onClick={() => props.history.push("/log/new")} /> Add water!
+                    <Droplet size={16} color="#126C64" fill="#126C64" onClick={() => props.history.push("/log/new")} /> Add water!
                 </div>
             : null}
         </>
