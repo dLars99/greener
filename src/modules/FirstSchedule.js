@@ -45,9 +45,7 @@ export function FirstSchedule(newUser) {
     const saveSchedule = async (schedule) => {
         for (const reminder of schedule) {
             await DatabaseManager.addNew("reminders", reminder)
-            console.log("Loop", reminder)
         }
-        console.log("Loop complete")
         return
     }
 
