@@ -4,18 +4,30 @@ by David Larsen
 
 ### Overview
 
-BETA
-
-Grass is Greener is designed for personal use for individuals who want to keep better track of their lawn care. It will assist users in not only tracking their lawn care chores as they perform them, but also of helping users know when it is time to complete those tasks. It will also utilize weather API data to remind and alert users of tasks they may not know are needed to maintain a healthy lawn. The integrated weather data will help make this app a “one-stop shop” for lawn hobbyists, providing weather and forecast data to assist with planning lawn care chores.
+Grass is Greener is designed for personal use for individuals who want to keep better track of their lawn care. It assists users in not only tracking their lawn care chores as they perform them, but also of helping users know when it is time to complete those tasks. It also utilizes weather API data to remind and alert users of tasks they may not know are needed to maintain a healthy lawn. The integrated weather data help makes this app a “one-stop shop” for lawn hobbyists, providing weather and forecast data to assist with planning lawn care chores.
 
 ### Features
 
-- A log which allows users to document their lawn care tasks, as well as other information that may be useful for reference (lawn length, mow direction, water amount, additional notes, picture).
-- A full five-day weather forecast, along with current weather and alerts of weather that may impede lawn care or endanger the user
+- A log which allows users to document their lawn care tasks, as well as other information that may be useful for reference (lawn length, mow direction, water amount, additional notes, picture) with CRUD functionality
+- A full five-day weather forecast, along with current weather and alerts of weather that may impede lawn care or endanger the user via WeatherAPI
 - A precipitation monitoring tool which alerts the user if the amount of water they have received this week is less than an inch
-- A schedule of seasonal lawn care tasks such as fertilization, weed control, and overseeding which reminds the user when these tasks are due
+- A fully-automated schedule of seasonal lawn care tasks such as fertilization, weed control, and overseeding which reminds the user when these tasks are due
+
+### Screenshots
+
+While responsive, this app is optimized for a mobile viewport.
+
+<p>
+    <img src="./readme-img/title.png" width=20% height=20%>
+    <img src="./readme-img/dashboard.png" width=20% height=20%>
+    <img src="./readme-img/newlog.png" width=20% height=20%>
+    <img src="./readme-img/log.png" width=20% height=20%>
+    <img src="./readme-img/schedule.png" width=20% height=20%>
+</p>
 
 ### Installation
+
+_Note: an API key from WeatherAPI is required for full weather functionality._
 
 1. Use ```git clone``` to clone this repository
 2. Within the root of the cloned repo, run ```npm install .``` to install dependencies
@@ -28,7 +40,7 @@ Grass is Greener is designed for personal use for individuals who want to keep b
 #### Registration
 
 1. The first thing you will see is the login screen. Click **Create New Account** to go to the first-time registration.
-2. Follow all on-screen instructions to register an account. An accurate zip code will be needed for weather data. However, **do not use any sensitive credentials. This is not a secure application.**
+2. Follow all on-screen instructions to register an account. An accurate zip code will be needed for weather data. However, **login is only simulated, and is not secure. Do not use any sensitive credentials with this app.**
 3. At the end of the registration, you will be presented with a confirmation of the information you entered. Click "Finish Registration" to complete registration. You will be taken to the Dashboard.
 
 #### Dashboard

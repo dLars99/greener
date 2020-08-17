@@ -78,11 +78,6 @@
     margin: 0;
 }
 
-.forecast--icon {
-    display: flex;
-    justify-content: center;
-}
-
 .forecast--icon img {
     height: 100%; 
     object-fit: cover;
