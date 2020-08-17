@@ -17,11 +17,13 @@ Grass is Greener is designed for personal use for individuals who want to keep b
 
 ### Screenshots
 
-<img src="./readme-img/title.png" width=20% height=20%>
-<img src="./readme-img/dashboard.png" width=20% height=20%>
-<img src="./readme-img/newlog.png" width=20% height=20%>
-<img src="./readme-img/log.png" width=20% height=20%>
-<img src="./readme-img/schedule.png" width=20% height=20%>
+<p>
+    <img src="./readme-img/title.png" width=20% height=20%>
+    <img src="./readme-img/dashboard.png" width=20% height=20%>
+    <img src="./readme-img/newlog.png" width=20% height=20%>
+    <img src="./readme-img/log.png" width=20% height=20%>
+    <img src="./readme-img/schedule.png" width=20% height=20%>
+</p>
 
 ### Installation
 
