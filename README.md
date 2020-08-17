@@ -15,6 +15,14 @@ Grass is Greener is designed for personal use for individuals who want to keep b
 - A precipitation monitoring tool which alerts the user if the amount of water they have received this week is less than an inch
 - A schedule of seasonal lawn care tasks such as fertilization, weed control, and overseeding which reminds the user when these tasks are due
 
+### Screenshots
+
+<img src="./readme-img/title.png" width=20% height=20%>
+<img src="./readme-img/dashboard.png" width=20% height=20%>
+<img src="./readme-img/newlog.png" width=20% height=20%>
+<img src="./readme-img/log.png" width=20% height=20%>
+<img src="./readme-img/schedule.png" width=20% height=20%>
+
 ### Installation
 
 1. Use ```git clone``` to clone this repository
